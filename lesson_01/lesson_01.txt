@@ -1,0 +1,27 @@
+
+expression
+
+17
+
+constant/literal
+
+
+12
+3456.78
+0x1ac4
+
+
+constant expression
+
+
+12
+12 * 24 - 143
+
+declaration   definition
+bildirim      tanımlama
+
+
+
+int sum = 0;
+
+int ival;

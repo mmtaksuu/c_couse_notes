@@ -1,6 +1,6 @@
-# HEBE
+# C Programming Examples
 
-#[link](https://github.com/mmtaksuu/c_course)
+#[exp link](https://github.com/mmtaksuu/c_couse_notes)
 
 ``` python
 import os

@@ -3,5 +3,5 @@ project(LESSON_14 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(nutility src/nutility.c includes/nutility.h src/main.c)
+add_executable(nutility src/main.c)
 add_executable(macros_definitions src/macros_definitions.c)

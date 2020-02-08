@@ -1,19 +1,20 @@
+#ifndef  NUTILITY_INCLUDED
+#define  NUTILITY_INCLUDED
 
-#ifndef C_PROGRAMING_COURSE_NUTILITY_H
-#define C_PROGRAMING_COURSE_NUTILITY_H
+#define		isleap(y)     ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))
+#define     asize(x)      (sizeof(x) / sizeof(x[0]))
 
-/* Extrenal Function Prototypes */
+int isprime(int val);
+int ndigit(int val);
+void sl(void);
+void sleep(double sec);
+void swap(int *p1, int *p2);
+int day_of_the_week(int d, int m, int y); //sakomoto
+void randomize(void);
+char *sgets(char *p);
+void display_array(const int *ptr, int size);
+void set_random_array(int *ptr, int size);
+void bsort(int *p, int size);
 
-// Returns sum of the squares of two given numbers.
-double sum_square(int x, int y);
 
-// Returns the digits of a given number.
-int ndigit(int x);
-
-// Returns the power of the given set of numbers.
-double power(int base, int exp);
-
-// Return Non-zero value if the given number is a prime number, otherwise returns 0.
-int isprime(int x);
-
-#endif //C_PROGRAMING_COURSE_NUTILITY_H
+#endif

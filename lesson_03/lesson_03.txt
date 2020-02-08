@@ -1,0 +1,98 @@
+---------------------------------
+
+signed
+unsigned
+char
+short
+int
+long
+float
+double
+_Bool
+
+
+case-sensitive
+case-insensitive
+
+
+sum
+Sum
+SUM
+sum
+
+type alias
+
+--------------------------------------------------
+_Bool
+--------------------------------------------------
+char
+signed char
+unsigned char
+--------------------------------------------------
+signed short int
+signed short
+short int
+short
+--------------------------------------------------
+unsigned short int
+unsigned short
+--------------------------------------------------
+signed int
+int
+signed
+--------------------------------------------------
+unsigned int
+unsigned
+--------------------------------------------------
+signed long int
+signed long
+long int
+long
+--------------------------------------------------
+unsigned long int
+unsigned long
+--------------------------------------------------
+signed long long int
+signed long long
+long long int
+long long
+--------------------------------------------------
+unsigned long long int
+unsigned long long
+--------------------------------------------------
+
+extended integer type
+
+float
+double
+long double
+
+0123456789
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+_
+
+int SIZE;
+
+
+SIZE
+
+scope leakage
+
+{
+
+
+}
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int printf = 10;
+
+	printf("merhaba dunya");
+
+}

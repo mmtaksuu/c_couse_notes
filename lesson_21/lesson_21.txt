@@ -647,3 +647,61 @@ int main()
 
 }
 /**********************************************************************************************************************/
+
+
+COMMENT LINES
+-------------
+
+
+1) sentaks
+2) kullanıldığı yerler
+3) dikkat edilmesi gereken yerler
+
+
+C89 / C99
+
+/*       */
+
+
+
+//................................
+
+//#include <stdio.h>
+
+
+
+
+int main()
+{
+	/*  bu tek satirlik aciklama  */
+	int y = 20;
+	int x = 10;  /* koddan sonra ayni satirda aciklama  */
+	/* once aciklama sonra kod */ x += 10;
+	++x; /* aciklama */ ++y;
+	/*
+		bu satirlarin tamami aciklama
+		bu da aciklama
+		bu da
+		bu da
+	*/
+
+}
+
+
+
+x = 5; /* x degiskenine 5 degeri atandi
+y = 19; /* y degiskenine 19 degeri atanmadi */
+
+if (x % 2 == 0)   //x cift ise
+
+
+if (x > 10) {
+	for () {
+		while () {
+
+		} //while
+	} //for
+} //if
+
+
+

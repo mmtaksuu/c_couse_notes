@@ -1,0 +1,877 @@
+// maximum munch durumu
+
+int main()
+{
+	int x = 10;
+	int y = 50;
+
+	int z = x+++y;
+
+	printf("x = %d\n", x);
+	printf("y = %d\n", y);
+	printf("z = %d\n", z);
+
+}
+
+
+sum
+>>=
+val
+++
+>
+delta
+--
+-
+z
+;
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+
+int main()
+{
+	int x = 10;
+	int y = 50;
+
+	int z = x+++y;
+
+
+	printf("x = %d\n", x);
+	printf("y = %d\n", y);
+	printf("z = %d\n", z);
+
+}
+/**********************************************************************************************************************/
+
+
+karşılaştırma operatörleri
+
+
+6		> >= < <=
+
+7		== !=
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	printf("(%d) >  (%d) = (%d)\n", x, y, x > y);
+	printf("(%d) >= (%d) = (%d)\n", x, y, x >= y);
+	printf("(%d) <  (%d) = (%d)\n", x, y, x < y);
+	printf("(%d) <= (%d) = (%d)\n", x, y, x <= y);
+	printf("(%d) == (%d) = (%d)\n", x, y, x == y);
+	printf("(%d) != (%d) = (%d)\n", x, y, x != y);
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	int z;
+
+	z = x == y;
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	printf("sign (%d) = (%d)\n", x, (x > 0) - (x < 0));
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y, z, t;
+
+	printf("4 tamsayi giriniz: ");
+	scanf("%d%d%d%d", &x, &y, &z, &t);
+
+	int pos_cnt = 0;
+
+	if (x > 0)
+		++pos_cnt;
+
+	if (y > 0)
+		++pos_cnt;
+
+	if (z > 0)
+		++pos_cnt;
+
+	if (t > 0)
+		++pos_cnt;
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y, z, t;
+
+	printf("4 tamsayi giriniz: ");
+	scanf("%d%d%d%d", &x, &y, &z, &t);
+
+	int pos_cnt = (x > 0) + (y > 0) + (z > 0) + (t > 0);
+
+}
+/**********************************************************************************************************************/
+
+if (10 < x < 20)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	if (10 < x < 20)  //always true
+		printf("%d [10 20] araliginda\n", x);
+	else
+		printf("%d [10 20] araliginda degil\n", x);
+
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	double dval = 0.;
+
+	for (int i = 0; i < 10; ++i) {
+		dval += .1;
+	}
+
+	if (dval == 1.)
+		printf("esit\n");
+	else
+		printf("esit degil\n");
+
+
+}
+/**********************************************************************************************************************/
+
+d1 == d2
+
+fabs(d1 - d2) < delta
+
+/**********************************************************************************************************************/
+
+==    yan etkisi yok - ürettiği deger 0 ya da 1
+
+=    yan etkisi var -  ürettiği deger 0 nesneye atanan deger
+
+
+x = y
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	if (x = 5)
+		printf("evet esit\n");
+	else
+		printf("hayir esit degil\n");
+
+	printf("x = %d\n", x);
+
+
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	if (x = 0)
+		printf("evet esit\n");
+	else
+		printf("hayir esit degil\n");
+
+	printf("x = %d\n", x);
+
+
+
+
+}
+/**********************************************************************************************************************/
+
+
+if (5 == x)
+
+if (lval == rval)
+
+if (rval == lval)
+
+lojik operatörler
+=================
+
+lojik değil
+
+p	  doğru   yanlış
+!p    yanlış  doğru
+
+lojik ve
+
+p       q    p ve q
+D       D      D
+D       Y      Y
+Y       D      Y
+Y       Y      Y
+
+lojik veya
+
+p       q    p veya q
+D       D      D
+D       Y      D
+Y       D      D
+Y       Y      Y
+
+
+lojik özel veya
+
+p       q    p exor q
+D       D      Y
+D       Y      D
+Y       D      D
+Y       Y      Y
+
+!   logical  not
+&&   logical and
+||   logical or
+
+----------------------
+!exp			operatörünün operandı
+exp1 && exp2	operatörünün operandları
+exp || exp		operatörünün operandları
+if (exp)
+while (exp)
+do while(exp)
+for (; exp; )
+exp ? x : y
+
+
+if (ival)
+
+if (ival != 0)
+
+x && y
+-------------------------------
+
+lojik değil
+
+!x
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	printf("!(%d) = %d\n", x, !x);
+
+	printf("x = %d\n", x);
+
+}
+/**********************************************************************************************************************/
+
+
+if (x == 0)
+if (!x)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	printf("!!(%d) = %d\n", x, !!x);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	printf("(%d) ozel veya (%d) = (%d)\n", x, y, !!x != !!y);
+
+}
+/**********************************************************************************************************************/
+
+lojik ve operatörü
+
+x && y
+x & y
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	printf("%d && %d = %d\n", x, y, x && y);
+
+}
+/**********************************************************************************************************************/
+
+010101010111
+101010010011
+000000010011
+
+
+0000 1010
+0001 0100
+0000 0000
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	if (x && y)
+		printf("lojik ve dogru\n");
+	else
+		printf("lojik ve yanlis\n");
+
+	if (x & y)
+		printf("bitsel ve dogru\n");
+	else
+		printf("bitsel ve yanlis\n");
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	printf("%d || %d = %d\n", x, y, x || y);
+
+}
+/**********************************************************************************************************************/
+
+
+de morgan kuralları
+
+!(x && y)   !x || !y
+!(x || y)   !x && !y
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	printf("(%d) < (%d) = (%d)\n", x, y, x < y);
+	printf("(%d) > (%d) = (%d)\n", x, y, y < x);
+	printf("(%d) >= (%d) = (%d)\n", x, y, !(x < y));
+	printf("(%d) <= (%d) = (%d)\n", x, y, !(y < x));
+	printf("(%d) == (%d) = (%d)\n", x, y, !(x < y) && !(y < x)); // equivalance - equality
+	printf("(%d) != (%d) = (%d)\n", x, y, (x < y) || (y < x)); // equivalance - equality
+
+}
+/**********************************************************************************************************************/
+
+if (x != 5 || x != 13)  //always true
+	++y;
+
+if (x == 5 && x = 13)  //always false
+++y;
+
+if (x != 5 && x != 13)
+	++y;
+-------------------------------------------
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int getmid(int a, int b, int c)
+{
+	if (!(a > b && a > c || a < b && a < c))
+		return a;
+
+	if (!(b > a && b > c || b < a && b < c))
+		return b;
+
+	return c;
+}
+
+int main()
+{
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 0;
+	int y = 99;
+
+	int z = x && ++y;
+
+	printf("z = %d\n", z);
+	printf("y = %d\n", y);
+
+
+}
+/**********************************************************************************************************************/
+
+if (a > 10)
+	if (b > 50)
+		++x;
+
+if (a > 10 && b > 50)
+	++x;
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 10;
+	int y = 99;
+
+	int z = x || ++y;
+
+	printf("z = %d\n", z);
+	printf("y = %d\n", y);
+
+
+}
+/**********************************************************************************************************************/
+
+if (x == 0 && f() && g() && h() &&)
+
+
+
+
+if (p != NULL && *p > 100)
+-----------------------------
+
+a[x + y]
+
+atama operatörleri
+
+assignment assign
+initialize
+--------------------
+
+compound assignment
+
+=
++= -= *= /= %=                &= ^= |= <<= >>=
+
+=
+
+
+
+x = 5;
+
+C'de atama operatörlerinin ürettiği değer nesneye atanan değerdir
+
+
+x = 5
+x = 0
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+void func(int a)
+{
+	printf("a = %d\n", a);
+	//
+}
+
+int main()
+{
+	int x = 12;
+
+	func(x = 5);
+
+	printf("x = %d\n", x);
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int ch;
+
+	while (ch != '\n') { //ch cop degerde (tanımsız davranis)
+		//...
+	}
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+//dogru ama kotu kod
+
+int main()
+{
+	int ch;
+
+	printf("bir giris yapin: ");
+	ch = getchar();
+
+	while (ch != '\n') {
+		printf("%d ", ch);
+		ch = getchar();
+	}
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+//dogru ama kotu kod
+
+int main()
+{
+	int ch;
+
+	printf("bir giris yapin: ");
+
+	while (1) {
+		ch = getchar();
+		if (ch == '\n')
+			break;
+		printf("%d ", ch);
+	}
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+//dogru ama kotu kod
+
+int main()
+{
+	int ch;
+
+	printf("bir giris yapin: ");
+
+	while ((ch = getchar()) != '\n')
+		printf("%d ", ch);
+
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int func(void);
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	x = func();
+	if (x == -1) {
+		printf("hata\n");
+		//code
+	}
+
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int func(void);
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	if ((x = func()) == -1) {
+		printf("hata\n");
+		//code
+	}
+
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int *pd;
+	int n;
+	///
+
+	if ((pd = malloc(n * sizeof(int))) == NULL) {
+		//
+	}
+
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	FILE *f;
+
+	if ((f = fopen("notlarx.txt", "r")) == NULL) {
+		printf("dosya acilamadi\n");
+		return 1;
+	}
+
+	printf("dosya acildi\n");
+
+
+}
+/**********************************************************************************************************************/
+
+int ival;
+
+double dval = 12.6;
+
+ival = dval
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+	double dval = 12.98;
+
+	(x = dval) / 5
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int foo(void);
+
+int main()
+{
+	int x, y, z, t;
+
+	t = foo();
+	z = t;
+	y = z;
+	x = y;
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int foo(void);
+
+int main()
+{
+	int x, y, z, t;
+
+	x = y = z = t = foo();
+}
+/**********************************************************************************************************************/
+x = x + 5;			x += 5;
+y = y - 3;			y -= 3;
+z = z * 10;   z *=  10;
+x = x / 10;  x /= 10;
+m = m % 10;   m %= 10;
+
+
+if (x)
+if (x != 0)
+
+
+if (!x)
+if (x == 0)
+
+
+
+for (; 1; ) {
+
+}
+
+
+;; x += 2 )
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int day, hour, min, sec;
+	//
+	printf("gun, saat, dakika ve saniye olarak sureyi girin: ");
+	scanf("%d%d%d%d", &day, &hour, &min, &sec);
+
+	min += sec / 60;
+	sec %= 60;
+
+	hour += min / 60;
+	min %= 60;
+
+	day += hour / 24;
+	hour %= 24;
+
+	printf("%d gun %d saat %d dakika %d saniye\n", day, hour, min, sec);
+}
+/**********************************************************************************************************************/
+
+C ve C++ dillerinde çok önemli olan bazı terimlerin açıklaması
+
+undefined behavior (tanımsız davranış)
+
+implementation defined (implementation dependant)
+implementation specified
+
+
+f1() + f2() * f3()
+
+
+char *p1 = "mehmet";
+char *p2 = "mehmet";
+char *p3 = "mehmet";
+
+
+y = x + x++;
+
+if (x++ > 10)
+
+
+++x && f(x)
+

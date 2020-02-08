@@ -1,0 +1,684 @@
+// Sorting algorithms
+Sıralama ve sıralama algortiamalarına yönelik temel kavramlar
+
+stable sort  : Siralama yapildiktan sonra nesnelerin izafi konumlari korunur.
+unstable sort: Siralama yapildiktan sonra nesnelerin izafi konumlari korunmaz.
+
+
+// Buble Short Algoritmasi ile diziyi siralama.
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+
+#define   SIZE      100
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	for (int i = 0; i < SIZE; ++i) {
+		a[i] = rand() % 1000;
+		printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+	}
+	printf("\n");
+
+	for (int i = 0; i < SIZE - 1; ++i) {
+		for (int k = 0; k < SIZE - 1 - i; ++k) {
+			if (a[k] > a[k + 1]) {
+				int temp = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = temp;
+			}
+		}
+	}
+
+	for (int i = 0; i < SIZE; ++i) {
+		printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+	}
+	printf("\n");
+
+}
+/**********************************************************************************************************************/
+
+tekler başta (kendi içinde sirali)
+çiftler sonda (kendi içinde sirali)
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+
+#define   SIZE      100
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	for (int i = 0; i < SIZE; ++i) {
+		a[i] = rand() % 1000;
+		printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+	}
+	printf("\n");
+
+	for (int i = 0; i < SIZE - 1; ++i) {
+		for (int k = 0; k < SIZE - 1 - i; ++k) {
+			if ((a[k] % 2 == 0 && a[k + 1] % 2 != 0) || (a[k] % 2 == a[k + 1] % 2 && a[k] > a[k + 1])) {
+				int temp = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = temp;
+			}
+		}
+	}
+
+	for (int i = 0; i < SIZE; ++i) {
+		printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+	}
+	printf("\n");
+
+}
+/**********************************************************************************************************************/
+// Step by Step bubble sort algoritmasi uygulamasi
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+
+#define   SIZE      20
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	for (int i = 0; i < SIZE; ++i) {
+		a[i] = rand() % 1000;
+		printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+	}
+	printf("\n");
+
+	for (int i = 0; i < SIZE - 1; ++i) {
+		for (int k = 0; k < SIZE - 1 - i; ++k) {
+			if (a[k] > a[k + 1]) {
+				int temp = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = temp;
+			}
+		}
+
+		for (int i = 0; i < SIZE; ++i) {
+			printf("%3d%c", a[i], i % 20 == 19 ? '\n' : ' ');
+		}
+		_getch();
+		system("cls");
+	}
+	printf("\n");
+
+}
+/**********************************************************************************************************************/
+
+// Dizi isminin veya iterasyonun degiskeninin dizi indislerini gostermede ayni anlama geldiginin gosterilmesi.
+a[i]   i[a] // Ikisi ayni anlama gelir.
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      10
+
+int main()
+{
+	int a[SIZE] = { 218, 336, 693, 908, 379, 684, 412, 354, 295, 909, };
+
+	for (int i = 0; i < SIZE; ++i)
+		printf("%d %d\n", i[a], a[i]);
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+
+#define   SIZE      10
+
+int main()
+{
+	printf("%d\n", 3["coders"] - 2["coders"]);
+}
+
+//----------------------------------------------------------------------------------------------------------
+
+merge
+binary_search
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      500
+
+typedef struct {
+	int id;
+	int age;
+}person_t;
+
+int pcmp(const void *vp1, const void *vp2)
+{
+	return ((const person_t *)vp1)->id - ((const person_t *)vp2)->id;
+}
+
+int pcmp2(const void *vp1, const void *vp2)
+{
+	return ((const person_t *)vp1)->age - ((const person_t *)vp2)->age;
+}
+
+int main()
+{
+	person_t a[SIZE];
+
+	randomize();
+
+	for (int i = 0; i < SIZE; ++i) {
+		a[i].id = rand() % 20;
+		a[i].age = rand() % 20 + 15;
+	}
+
+	qsort(a, SIZE, sizeof(*a), &pcmp);
+	//qsort(a, SIZE, sizeof(*a), &pcmp2);
+	for (int i = 0; i < SIZE - 1; ++i) {
+		for (int k = 0; k < SIZE - 1 - i; ++k) {
+			if (a[k].age > a[k + 1].age) {
+				person_t temp = a[k];
+				a[k] = a[k + 1];
+				a[k + 1] = temp;
+			}
+		}
+	}
+
+
+	for (int i = 0; i < SIZE; ++i) {
+		printf("%2d  %d\n", a[i].id, a[i].age);
+	}
+
+
+
+}
+
+//----------------------------------------------------------------------------------------------------------
+// Merge Algorithm
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      20
+
+int main()
+{
+	int a[SIZE];
+	int b[SIZE];
+	int c[2 * SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	set_random_array(b, SIZE);
+	sort_array(a, SIZE);
+	sort_array(b, SIZE);
+	display_array(a, SIZE);
+	display_array(b, SIZE);
+
+	int idx_a = 0, idx_b = 0;
+
+	for (int i = 0; i < 2 * SIZE; ++i) {
+		if (idx_a == SIZE)
+			c[i] = b[idx_b++];
+		else if (idx_b == SIZE)
+			c[i] = a[idx_a++];
+		else if (a[idx_a] < b[idx_b])
+			c[i] = a[idx_a++];
+		else
+			c[i] = b[idx_b++];
+	}
+
+	display_array(c, 2 * SIZE);
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+// Binary Search Algorithm Implementation
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      100
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	sort_array(a, SIZE);
+	display_array(a, SIZE);
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	int idx_first = 0;
+	int idx_last = SIZE - 1;
+	int idx_mid;
+
+	while (idx_first <= idx_last) {
+		idx_mid = (idx_first + idx_last) / 2;
+		if (a[idx_mid] == x)
+			break;
+
+		if (a[idx_mid] > x)
+			idx_last = idx_mid - 1;
+		else
+			idx_first = idx_mid + 1;
+	}
+
+	if (idx_first > idx_last) {
+		printf("bulunamadi\n");
+	}
+	else {
+		printf("bulundu.... a[%d] = %d\n", idx_mid, a[idx_mid]);
+	}
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      50000
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	qsort_sort_array(a, SIZE);
+	//display_array(a, SIZE);
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	int idx_first = 0;
+	int idx_last = SIZE - 1;
+	int idx_mid;
+
+	int cnt = 0;
+
+	while (idx_first <= idx_last) {
+		++cnt;
+		idx_mid = (idx_first + idx_last) / 2;
+		if (a[idx_mid] == x)
+			break;
+
+		if (a[idx_mid] > x)
+			idx_last = idx_mid - 1;
+		else
+			idx_first = idx_mid + 1;
+	}
+
+	if (idx_first > idx_last) {
+		printf("bulunamadi\n");
+	}
+	else {
+		printf("bulundu.... a[%d] = %d\n", idx_mid, a[idx_mid]);
+	}
+
+	printf("cnt = %d\n", cnt);
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+#include <conio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define   SIZE      40
+#define   MAX_VAL   50
+
+int main()
+{
+	int a[SIZE];
+	int f[MAX_VAL] = { 0 };
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	for (int i = 0; i < SIZE; ++i)
+		++f[a[i]]; // bir artir.
+
+	int mod = f[0];
+	int fre = 0;
+
+	for (int i = 1; i < MAX_VAL; ++i) {
+		if (f[i] > mod) {
+			mod = f[i];
+			fre = i;
+		}
+	}
+
+	printf("mod = %d    ve %d kez tekrar ediyor\n", fre, mod);
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+
+
+C dilinde yazılar ve yazıların işlenmesi
+
+66  B
+65  A
+66  B
+65  A
+
+
+'\0'   null character  0   0000 0000
+'0'                   48   0011 0000
+
+( '\0'  =  0 )
+
+
+
+#include <stdio.h>
+
+
+int main()
+{
+	printf("null karakter : %d\n", '\0');
+	printf("0 karakteri   : %d\n", '0');
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE] = "cenk karagoz";
+	///code
+
+	for (int i = 0; str[i] != '\0'; ++i)
+		putchar(str[i]);
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE] = "BABA";
+	///code
+
+	int i;
+
+	for (i = 0; str[i]; ++i)
+		printf("%d %c\n", str[i], str[i]);
+
+	printf("str[%d] = %d\n", i, str[i]);
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+
+	str[0] = 'O';
+	str[1] = 'K';
+
+	for (int i = 0; str[i] != '\0'; ++i) { //ub sonunda null character olmadigi icin
+		putchar(str[i]);
+	}
+}
+//----------------------------------------------------------------------------------------------------------
+
+0011 0000
+0011 0000
+0011 0111
+0000 0000
+
+0000 0000
+0000 0000
+
+"ahmet"
+
+
+array to pointer conversion
+array decay
+
+
+a
+
+&a[0] =
+
+&x =
+
+str = "ahmet";
+
+#include <stdio.h>
+
+
+int main()
+{
+	char str[10] = { 'A', 'L', 'P' };
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+int main()
+{
+	char str[] = { 'A', 'L', 'P' };
+
+	for (int i = 0; str[i] != '\0'; ++i) { //UB
+		printf("%c", str[i]);
+	}
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+
+int main()
+{
+	char str[3] = { 'A', 'L', 'P' };
+
+	for (int i = 0; str[i] != '\0'; ++i) { //UB
+		printf("%c", str[i]);
+	}
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+
+int main()
+{
+	char str[] = { 'A', 'L', 'P', '\0' };
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		printf("%c", str[i]);
+	}
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+
+int main()
+{
+	char str[100] = "burak";
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		printf("%c", str[i]);
+	}
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char str[] = "burak";
+
+	printf("boyut str = %zu\n", asize(str));
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		printf("%c", str[i]);
+	}
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char str[] = { 'E', 'S', 'M', 'A' };
+
+	printf("boyut str = %zu\n", asize(str));
+
+	/*for (int i = 0; str[i] != '\0'; ++i) {
+		printf("%c", str[i]);
+	}*/
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char str[4] = "MERT"; //C'de gecerli C++'da gecersiz
+
+	for (int i = 0; str[i] != '\0'; ++i)  //Ub
+		putchar(str[i]);
+
+	printf("\n");
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char s1[10];
+	s1[0] = 'A';
+	s1[1] = 'K';
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char s2[] = { 'C', 'A' ,'N' };
+	char s3[3] = { 'C', 'A' ,'N' };
+	char s4[5] = "burak";
+
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char str[] = "muhittin";
+
+	puts(str);
+	printf("alican");
+}
+//----------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char name[40] = "tacettin";
+	char surname[40] = "eryilmaz";
+	int age = 45;
+
+	printf("%s %s isimli sahis %d yasinda\n", name, surname, age);
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	char name[40];
+
+	printf("isim giriniz: ");
+	scanf("%s", name);
+
+	printf("tamam anladik isminiz %s\n", name);
+
+
+}
+//----------------------------------------------------------------------------------------------------------

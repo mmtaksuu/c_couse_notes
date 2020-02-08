@@ -1,0 +1,492 @@
+sequence point
+(sequencing) (yan etki noktası)
+------------------------------------
+
+
+++x
+
+
+
+int main()
+{
+	int x = 10;
+
+	x = 5;
+	//deyim sonundan sonra artik x'in degeri 5
+
+
+}
+/**********************************************************************************************************************/
+int x = 10;
+
+++x && func(x)
+
+int y = 0;
+y++ || f(y)
+
+
+int a = 5;
+
+++a ?  :
+
+exp1 ,  exp2
+
+
+
+void f1(int);
+
+void f2(int);
+int main()
+{
+	int x = 10;
+
+
+	if (x++ > 5)
+		f1(x);
+	else
+		f2(x);
+
+
+}
+/**********************************************************************************************************************/
+
+
+int main()
+{
+	int x = 10, y = ++x, z = y + x;
+	//...
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x = 10;
+	int y;
+
+	y = x + x++;
+
+	printf("y = %d\n", y);
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	const int x = 10;
+	int *ptr = (int *)&x;
+
+	*ptr = 999;
+
+	printf("x = %d\n", x);
+
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+virgül operatörü
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+
+//bu koddaki hiçbir virgül operatör değil
+
+void func(int a, int b);
+
+int main()
+{
+	int x = 10, y = 20;
+	int a[] = { 1, 4, 5, 6 };
+	func(x, y);
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+x = 5, 7
+
+expr1, expr2
+
+x = 10, y = ++x, z = y * x;
+
+++x, ++y, ++z;
+
+
+exp1;
+exp2;
+exp3;
+exp4;
+---------------
+
+exp1, exp2, exp3, exp4;
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+
+int main()
+{
+	int x, y, temp;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	temp = x, x = y, y = temp;
+	/*temp = x;
+	x = y;
+	y = temp;
+*/
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+
+int main()
+{
+	int x = 10;
+	int i, k;
+
+	for (i = x, k = i + 2; i + k < 1000; ++i, k += i)
+		; //
+	//
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+
+int main()
+{
+	int x;
+	int a = 5, b = 7;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	if (x > 10)
+		++a, ++b;
+
+
+
+}
+/**********************************************************************************************************************/
+
+x, y
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x;
+	int y = 10, z = 87;
+
+	x = (y, z);
+	printf("x = %d\n", x);
+	x = (z, y);
+	printf("x = %d\n", x);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int c;
+
+	printf("giris lutfen: ");
+
+	while (c = getchar(), c != '\n')
+		printf("%d\n", c);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int f1(void)
+{
+	printf("f1 cagrildi\n");
+	return 1;
+}
+
+void f2(void)
+{
+	printf("f2 cagrildi\n");
+}
+
+int main()
+{
+	f1() && (f2(), 0);
+
+}
+/**********************************************************************************************************************/
+
+int main()
+{
+	double dval = 2.5;
+
+	if (dval > 5,7)
+		printf("dogru\n")
+	else
+		printf("yanlis\n")
+
+}
+
+func((x, y));
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int a[10] = { (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)};
+
+	for (int i = 0; i < 10; ++i) {
+		printf("%d ", a[i]);
+	}
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+
+d = -b / 2 / a;
+
+(-b - sqrt(delta)) / (2 * a)
+
+
+
+abcd
+
+
+
+uval & (1 << n)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+// abc  = a3 + b3 + c3
+
+int main()
+{
+	//printf("%d %d %d %d\n", 153, 370, 371, 407);
+	for (int i = 100; i < 1000; ++i) {
+		int d1 = i / 100;
+		int d2 = i / 10 % 10;
+		int d3 = i % 10;
+
+		if (i == (d1 * d1 * d1) + (d2 * d2 * d2) + (d3 * d3 * d3))
+			printf("%d\n", i);
+	}
+}
+//----------------------------------------------------------------------------------------------------------
+
+ kontrol deyimleri
+
+ expression statement
+ compound statement
+ null statement
+ control statement
+
+ if
+
+ while
+ do while
+ for
+
+ switch
+ goto
+
+ break
+ continue
+ return
+
+ int x = 10;
+
+ if (x - 100)
+	statement;
+
+if (x != 0)
+	++y;
+
+if (x)
+	++y;
+
+if (x == 0)
+	++y
+
+if (!x)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <time.h>
+
+
+int ndigit(int val)
+{
+	if (val == 0)
+		return 1;
+
+	int digit_count = 0;
+
+	while (val) {
+		++digit_count;
+		val /= 10;
+	}
+
+	return digit_count;
+}
+
+
+
+int power(int base, int exp)
+{
+	int result = 1;
+
+	while (exp--)
+		result *= base;
+
+	return result;
+}
+
+int isarmstrong(int val)
+{
+	int n = ndigit(val);
+
+	int temp = val;
+	int sum = 0;
+	while (temp) {
+		sum += power(temp % 10, n);
+		temp /= 10;
+	}
+
+	return sum == val;
+}
+
+
+int main()
+{
+	clock_t start = clock();
+
+	for (int i = 10; i < 999'999'999; ++i) {
+		if (isarmstrong(i))
+			printf("%d\n", i);
+	}
+
+
+	clock_t end= clock();
+	printf("toplam sure = %f saniye\n", (double)(end - start) / CLOCKS_PER_SEC);
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+
+if ((f = fopen("ali.txt", "r")) != NULL) {
+	///
+
+}
+
+f = fopen("ali.txt", "r");
+
+if (f != NULL) {
+	///
+
+}
+
+if (getvalue() > 10) {
+
+}
+
+if (getvalue(&x), x > 10) {
+}
+
+100100100100101
+011011011011010
+
+
+00000001
+00000000
+
+if (x++ > 100)
+
+if (exp1 && exp2)
+
+if (!!exp1 & !!exp2)
+
+
+
+if (x != 13 || x != 20)
+if (x != 13 && x != 20)
+
+if (x == y)
+if (x = y)
+
+if (x > 10 && x < 20)
+if (10 < x < 20)
+
+if (dval > 12,7)
+if (dval > 12.7)
+
+if (func())
+
+if (func)  //always true
+
+if (x > 10)
+	;
+
+++y;
+
+true path
+
+if (!expr)
+	statement2;
+
+
+if (i < size && a[i] == val )
+
+if (getval1() > 5 & func() < 10)
+
+if (expr1 && expr2 && expr3)
+
+if (exp)
+	;
+
+statement1;
+else
+	statement2;
+
+
+if (lval == rval)
+
+if (rval == lval)
+
+if (5 == x)

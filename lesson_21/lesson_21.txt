@@ -1,0 +1,649 @@
+// Lesson 21 C dilinde yazilar konusunun devami
+
+
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+// Yazinin uzunlugu -1 'den baslayarak yaziyi tersten yazdir.
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+
+	int i;
+	for ( i = 0; str[i] != '\0'; ++i)
+		;
+
+	for (--i; i >= 0; --i)
+		putchar(str[i]);
+
+	printf("\n");
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+
+	unsigned int i;
+	for ( i = 0; str[i] != '\0'; ++i)
+		;
+
+	//buraya bir kod yazin
+	//yaziyi sondan basa dongu degiskeni i'yi kullanarak yazdiersin
+	//bos yazaida dogru calissin
+
+	printf("\n");
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+
+	int len;
+	for (len = 0; str[len] != '\0'; ++len)
+		;
+
+	printf("uzunluk = %d\n", len);
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+
+	int len = 0;
+	for (int i = 0; str[i] != '\0'; ++i)
+		++len;
+
+	printf("uzunluk = %d\n", len);
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------
+Ana Naci Dede ne dedi  Canan'a?
+Kalas yok kütük koy, Salak!!
+en iyi meşe     beşe mi yine?
+Para hazır ama Rıza harap
+At sahibi gibi hasta
+Traş neden şart?
+Madam I'm Adam!
+A man, a plan, a canal: Panama!
+------------------------------------------------------------------
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+	char temp[SIZE];
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("[%s]\n", str);
+
+	int idx = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i)
+		if (isalpha(str[i]))
+			temp[idx++] = toupper(str[i]);
+
+	int i = 0;
+	for (; i < idx / 2; ++i)
+		if (temp[i] != temp[idx - i - 1])
+			break;
+
+	if (i == idx / 2)
+		printf("palindrom\n");
+	else
+		printf("palindrom degil\n");
+
+
+
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+	int ch;
+
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("sayilacak karakteri girin: ");
+	ch = getchar();
+
+	//C++ not C
+	//int cnt = 0;  also in C
+	//int cnt(0);
+	//int cnt{ 0 };
+	//int cnt{};
+	//auto cnt = 0;
+
+
+
+
+
+}
+//----------------------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+	char str[SIZE];
+	int ch;
+
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("sayilacak karakteri girin: ");
+	ch = getchar();
+
+	int cnt = 0;
+	for (int i = 0; str[i] != '\0'; ++i) {
+		if (toupper(str[i]) == toupper(ch))
+			++cnt;
+	}
+
+	printf("toplam %d tane %c karakteri var\n", cnt, ch);
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+AHMET ALAKURT
+
+
+K    7
+M    5
+E    4
+
+remove_copy
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+int main()
+{
+	char str[SIZE];
+	char buffer[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("[%s]\n", str); // [ankaradan halamin selami var]
+
+	int c;
+
+	printf("silinecek karakter: ");
+	c = getchar();
+
+	int buffer_idx = 0;
+	for (int i = 0; str[i] != '\0'; ++i) {
+		if (str[i] != c) {
+			buffer[buffer_idx++] = str[i];
+		}
+	}
+
+	buffer[buffer_idx] = '\0';
+
+	printf("[%s]\n", buffer);// [nkrdn hlmin selmi vr]
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("[%s]\n", str); // [ankaradan halamin selami var]
+
+	int c;
+	printf("silinecek karakter: ");
+	c = getchar();
+	int write_idx = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		if (str[i] != c)
+			str[write_idx++] = str[i];
+	}
+
+	str[write_idx] = '\0';
+
+	printf("[%s]\n", str);// [nkrdn hlmin selmi vr]
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+//ikinci bir dizi kullanmak yok
+
+int main()
+{
+	char str[SIZE];
+
+	printf("iki kelime araya bir bosluk: ");
+	sgets(str);
+	printf("[%s]\n", str); // [ali denizhan]
+	//code
+	printf("[%s]\n", str); // [denizhan ali]
+}
+/**********************************************************************************************************************/
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char s1[SIZE];
+	char s2[SIZE];
+	char s3[SIZE];
+
+	printf("iki isim girin: ");
+	scanf("%s%s", s1, s2); //omer faruk
+
+	int i;
+	for (i = 0; s1[i] != '\0'; ++i) {
+		s3[i] = s1[i];
+	}
+
+	int j;
+
+	for (j = 0; s2[j] != '\0'; ++j)
+		s3[i + j] = s2[j];
+
+	s3[i + j] = '\0';
+
+	printf("(%s) + (%s) = (%s)\n", s1, s2, s3); //(omer) + (faruk) = (omerfaruk)
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char s1[SIZE];
+	char s2[SIZE];
+	char s3[SIZE];
+
+	printf("iki isim girin: ");
+	scanf("%s%s", s1, s2); //omer faruk
+
+	int i;
+	for (i = 0; s1[i] != '\0'; ++i) {
+		s3[i] = s1[i];
+	}
+
+	for (int j = 0; s2[j] != '\0'; ++j)
+		s3[i++] = s2[j];
+
+	s3[i] = '\0';
+
+	printf("(%s) + (%s) = (%s)\n", s1, s2, s3); //(omer) + (faruk) = (omerfaruk)
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char s1[SIZE];
+	char s2[SIZE];
+
+	printf("iki isim girin: ");
+	scanf("%s%s", s1, s2); //omer faruk
+
+	int i;
+	for (i = 0; s1[i] != '\0'; ++i)
+		;
+
+	for (int j = 0; s2[j] != '\0'; ++j, ++i)
+		s1[i] = s2[j];
+
+	s1[i] = '\0';
+
+	printf("(%s)\n", s1);
+
+
+}
+/**********************************************************************************************************************/
+
+
+76123
+
+ival = ival * 10 + basamak degeri
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	scanf("%s", str);
+	printf("[%s]\n", str);
+	int ival = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		ival = ival * 10 + str[i] - '0';
+	}
+
+	printf("ival = %d\n", ival);
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	scanf("%s", str);
+	printf("[%s]\n", str);
+	int ival = 0;
+
+	int i = 0, flag = 0;
+
+	if (str[i] == '-')
+		i = 1, flag = 1;
+
+	for (; str[i] != '\0'; ++i) {
+		ival = ival * 10 + str[i] - '0';
+	}
+
+	if (flag)
+		ival = -ival;
+
+	printf("ival = %d\n", ival);
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	scanf("%s", str);
+	printf("[%s]\n", str); //[1Ab]
+	int ival = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		if (isdigit(str[i])) {
+			ival = ival * 16 + str[i] - '0';
+		}
+		else if (isxdigit(str[i])) {
+			ival = ival * 16 + toupper(str[i]) - 'A' + 10;
+		}
+	}
+	printf("ival = %d\n", ival);  //427
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	scanf("%s", str);
+	printf("[%s]\n", str); //[10101010010101001010101]
+	int ival = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		ival = ival * 2 + str[i] - '0';
+	}
+
+	printf("ival = %d\n", ival);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+
+#define   SIZE      1000
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+	char str[SIZE] = "";
+
+	int temp = x;
+	int idx = 0;
+
+	while (temp != 0) {
+		str[idx++] = temp % 10 + '0';
+		temp /= 10;
+	}
+	str[idx] = '\0';
+
+	for (int i = 0; i < idx / 2; ++i) {
+		char temp = str[i];
+		str[i] = str[idx - 1 - i];
+		str[idx - 1 - i] = temp;
+	}
+
+	printf("[%s]\n", str);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+
+#define   SIZE      1000
+
+
+int main()
+{
+	char s1[SIZE];
+	char s2[SIZE];
+
+	printf("birinci yaziyi girin: ");
+	sgets(s1);
+	printf("ikinci yaziyi girin: ");
+	sgets(s2);
+
+	int i = 0;
+	int flag = 0;
+
+	while (s1[i] == s2[i]) {
+		if (s1[i] == '\0') {
+			flag = 1;
+			break;
+		}
+		++i;
+	}
+
+	if (flag)
+		printf("evet esit\n");
+	else
+		printf("hayir esit degil\n");
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <ctype.h>
+#include "nutility.h"
+
+#define   SIZE      1000
+
+#define     INWORD			 1
+#define     OUTWORD			 0
+
+int main()
+{
+	char str[SIZE];
+
+	printf("bir yazi girin: ");
+	sgets(str);
+	printf("[%s]\n", str);
+	int wordflag = OUTWORD;
+	int word_cnt = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i) {
+		if (isspace(str[i])) {
+			wordflag = OUTWORD;
+		}
+		else if (wordflag == OUTWORD) {
+			++word_cnt;
+			wordflag = INWORD;
+		}
+	}
+
+	printf("toplam %d kelime\n", word_cnt);
+
+}
+/**********************************************************************************************************************/

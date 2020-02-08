@@ -1,0 +1,569 @@
+// goto statement
+-------------------------------------------------------
+
+long jump
+local jump - near jump
+
+vo
+
+out:
+	statement;
+
+
+void func()
+{
+	//statement;
+
+	goto out;
+
+out:
+	//statement;
+
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int a[1000];
+	int b[1000];
+	int c[1000];
+	///code
+	int val;
+	printf("deger girin: ");
+	scanf("%d", &val);
+
+	int i, j, k;
+
+
+	for (int i = 0; i < 1000; ++i) {
+		for (int j = 0; j < 1000; ++j) {
+			for (int k = 0; k < 10000; ++k) {
+				if (a[i] + b[j] + c[k] == val)
+					goto out;
+			}
+	}
+
+	out:
+		printf("a[%d] (%d) + b[%d] (%d) + c[%d] (%d)\n", i, a[i], j, b[j], k, c[k]);
+
+
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int a[1000];
+	int b[1000];
+	int c[1000];
+	///code
+	int val;
+	printf("deger girin: ");
+	scanf("%d", &val);
+
+	int i, j, k;
+
+	//sort array a
+	for (int i = 0; i < 1000; ++i) {
+		for (int j = 0; j < 1000; ++j) {
+			int x = val - (b[i] + c[j]);
+			//binary search x in array a
+		}
+	}
+
+}
+/**********************************************************************************************************************/
+
+void func()
+{
+	////
+	int ival = do_something();
+	if (ival == -1)
+		goto out:
+	////
+
+
+out1:
+	cleanup();
+out2:
+
+out3:
+
+
+}
+
+
+
+
+switch (x) {
+case 1: printf(""); break;
+case 3: printf("");
+case 5: printf("");
+case 9: printf("");
+defualt: printf("xyz\n")
+
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+void func(int m)
+{
+	switch (m) {
+	case 3:
+	case 4:
+	case 5: printf("ilkbahar\n"); break;
+	case 6:
+	case 7:
+	case 8: printf("Yaz\n"); break;
+	case 9:
+	case 10:
+	case 11: printf("sonbahar\n"); break;
+	case 12:
+	case 1:
+	case 2: printf("kis\n"); break;
+	defualt: printf("gecersiz ay\n");  //defualt
+	}
+}
+
+int main()
+{
+	func(14);
+
+}
+/**********************************************************************************************************************/
+
+type conversions
+----------------
+
+tür dönüşümü
+
+ival + dval
+
+
+implicit type conversion
+explicit type conversion
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x = -1;
+	unsigned int y = 0;
+
+	if (x > y)
+		printf("evet dogru\n");
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	char c = 175;
+
+	if (c == 175)
+		printf("dogru\n");
+	else
+		printf("yanlis\n");
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	float f = 0.5f;
+
+	if (f == 0.5)
+		printf("dogru\n");
+	else
+		printf("yanlis\n");
+
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 10;
+	int y = 3;
+
+	double d = x / y;
+
+	printf("d = %f\n", d);
+
+}
+/**********************************************************************************************************************/
+
+
+x   +   y
+t1  +   t2
+
+
+int x = 10;
+///
+
+rank
+
+long double
+double
+float
+
+long long
+long
+int
+-------
+
+unsigned short
+short
+unsigned char
+char
+
+
+
+char c1 = 5;
+char c2 = 2;
+
+s1 + s2
+
+signed long
+unsigned int
+
+g c d
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+//warning C4018: '>': signed/unsigned mismatch
+
+int main()
+{
+	int x = -1;
+	unsigned int y = 1;
+
+	if (x > y)
+		printf("dogru\n");
+}
+
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+//warning C4018: '>': signed/unsigned mismatch
+
+int main()
+{
+	unsigned int x = 3456987123;
+	unsigned int y = 2454319675;
+
+	printf("%u\n", x * y);
+
+}
+
+/**********************************************************************************************************************/
+
+ival * 1000L
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x, y;
+
+	printf("iki tamsayi giriniz: ");
+	scanf("%d%d", &x, &y);
+
+	double dval = x / y;
+
+	printf("dval = %f\n", dval);
+
+
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	double dval;
+
+	dval = x / 3;
+
+	printf("dval = %f\n", dval);
+
+	dval = x / 3.;
+
+	printf("dval = %f\n", dval);
+
+}
+
+/**********************************************************************************************************************/
+
+
+(i1 * i2) * d
+
+(d * i2) * i1
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x = 5;
+
+	double dval = (x > 2 ? 10 : 1.2) / 3;
+
+	printf("dval = %f\n", dval);
+}
+
+/**********************************************************************************************************************/
+
+
+atama tür dönüşümleri
+
+a) açık ilk değer verme (initialization)
+
+T x = expr;
+
+b) atama
+
+x = expr
+
+c) işlev çağrıları
+
+func(expr);
+
+d) return statement
+
+return expr;
+
+
+
+narrowing conversion
+
+ival = lval;
+
+ch = ival;
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+
+	printf("x = %d\n", x);
+	printf("x = %x\n", x);
+
+	signed char c = x;
+
+	printf("c = %d\n", c);
+	printf("c = %x\n", c);
+
+}
+
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+//warning C4244 : 'initializing' : conversion from 'double' to 'int', possible loss of data
+
+#include <stdio.h>
+
+
+int main()
+{
+	double d;
+
+	printf("bir gercek sayi giriniz: ");
+	scanf("%lf", &d);
+
+	int x = d;
+
+	printf("x = %d\n", x);
+
+
+}
+
+/**********************************************************************************************************************/
+
+
+c = ival;
+
+#define _CRT_SECURE_NO_WARNINGS
+
+//warning C4244 : 'initializing' : conversion from 'double' to 'int', possible loss of data
+
+#include <stdio.h>
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+
+	char c;
+
+	c = (char)x;
+
+}
+
+/**********************************************************************************************************************/
+
+
+0. + i1 + i2
+
+00AF == FFAF
+
+
+explicit type conversions
+type-cast operators
+
+
+------------------------------------------------
+1
+------------------------------------------------
+2         (target-type)operand
+------------------------------------------------
+
+int x = 132;
+
+x
+
+(double)x
+
+((double)i1) / i2
+
+i1 / i2
+
+(double)i1 / i2
+
+
+(long)i1 + i2
+
+ival = (int)dval;
+
+#include <stdio.h>
+
+int factorial(int x)
+{
+	return  x < 2 ? 1 : x * factorial(x - 1);
+}
+
+int main()
+{
+	double sum = 0.;
+
+	for (int i = 0; i < 10; ++i) {
+		sum += 1. / factorial(i);
+	}
+
+	printf("sum = %f\n", sum);
+
+
+
+}
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+
+
+int main()
+{
+	int min, sec;
+
+	printf("dakika ve saniye olarak sure degerini girin: ");
+	scanf("%d%d", &min, &sec);
+
+	printf("%d dakika ve %d saniye %f saat yapar\n", min, sec, min / 60. + sec / 3600.);
+
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+
+
+int main()
+{
+	double d;
+
+	printf("[-10 10] araliginda bir gercek sayi giriniz: ");
+	scanf("%lf", &d);
+
+	printf("%d\n", (int)((d > 0 ? .5 : -.5) + d));
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+
+
+int main()
+{
+	double d;
+
+	printf("[-10 10] araliginda bir gercek sayi giriniz: ");
+	scanf("%lf", &d);
+
+	printf("%d\n", (int)((d > 0 ? .5 : -.5) + d));
+
+}
+/**********************************************************************************************************************/
+

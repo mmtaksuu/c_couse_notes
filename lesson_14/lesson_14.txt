@@ -1,0 +1,239 @@
+//function prototype declaration
+
+int foo(int, int, int);
+
+int main()
+{
+	double dval = 34.56;
+
+	//foo(12, 45); //gecersiz
+	//foo(12, 45, 56, 98); //gecersiz
+	foo(12, 657, dval);  //gecerli ama veri kaybi
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+
+//int foo(int, int, int);
+int foo(int a, int b, int c);
+
+int main()
+{
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+fonksiyon bildirimlerinde parametre değişkenlerine isim verilebilir ya da verilmeyebilir.
+Ancak eğer isim verilirse bu isimler özel bir kapsam kuralına tabidir.
+
+bu kurala  "function prototype scope"
+
+file scope
+block scope
+function prototype scope
+function scope
+
+
+
+//int foo(int, int, int);
+int foo(int a, int b, int a); //gecersiz iki isim de function prototype scope'ta
+
+int main()
+{
+
+}
+//----------------------------------------------------------------------------------------------------------
+
+//gecerli ama boyle bir bildirim yapmayin
+int x, func(int), foo(double);
+
+int main()
+{
+	
+
+}
+
+
+//asagidaki iki bildirim C++ dilinde özdeş (aynı anlamda)
+//her ikisi de parametre değişkeni olmayan fonksiyonların bildirimi
+//ancak C'de bu iki bildirim arasında anlam farklılığı var
+// f2 parametre değişkeni olmayan bir fonksiyon
+// f1 ise parametre değişkenleri hakkında bilgi verilmeyen bir fonksiyon
+
+int f1();
+int f2(void);
+
+
+
+int main()
+{
+	f1(1);
+	f1(1, 2);
+	f1(1, 2, 3);
+	f2();
+	f2(1);
+}
+//----------------------------------------------------------------------------------------------------------
+
+int func();
+
+
+int main()
+{
+	func(12, 56);
+}
+/**********************************************************************************************************************/
+
+
+function redeclaration 
+fonksiyonun yeniden bildirimi
+
+Bir fonksiyon bildiriminin  (özdeş olmak kaydıyla) birden fazla kes tekrar etmesi geçerli bir durumdur
+
+
+
+int foo(int);
+int foo(int x); //OK
+int foo(int y); //OK
+
+
+int foo(int);
+double foo(int); //gecersiz
+
+
+/**********************************************************************************************************************/
+BÜYÜK RESİM
+
+
+
+stdio
+ctype
+stdlib
+math
+
+
+
+bir başlık dosyasında (header file) (tipik olarak) neler olur?
+
+a) external fonksiyonların bildirimi (external function prototypes)
+	- asla diğer kaynak dosyalara kapatılmış (internal - static) fonksiyonların bildirimlerini başlık dosyalarına koymayın
+
+b) external global değişkenlerin bildirimi
+
+c) makrolar
+	nesnel makrolar (object-like macros)
+	işlevsel makrolar (function-like macros)
+
+d) tür bildirimleri
+	user defined types (programcı tarafından oluşturulan türler)
+		structures (yapılar)
+		unions (birlikler)
+		enumarations (numaralandırmalar)
+	type alias decalaration (tür eş isimleri)
+
+e) external inline function definitions (C99)
+	
+
+önişlemci programı (preprocessor)
+8 - 10 saat arası
+
+
+source file ------> translation unit
+
+-----------------------------------------------------------------
+önce açıklama satırları (comment lines) koddan çıkartılır
+	sonra önişlemci komutları yürütülür
+		sonra derleyici devreye girer
+-----------------------------------------------------------------
+önişlemci C bilmez
+
+preprocessor directives
+önişlemci komutları
+	
+
+conditional compiling
+koşullu derleme
+
+#  //null directive
+
+#include
+#define
+#undef
+#if
+#endif
+#else
+#elif
+#ifdef
+#ifndef
+#line
+#error
+#pragma
+
+
+#include <stdio.h>
+#include "nutility.h"
+
+//default directory
+//"" actual directory
+
+çift tırnak içinde yazılmış ise
+	önce "actual directory" ye bak
+	bulamaz isen
+	"defaultdirectory" ye bak
+
+
+açısal parantez yazılmış ise
+	yalnizca "default directory" ye bak
+
+
+#if  1
+void func();
+
+#endif
+
+
+#define komutu
+
+macro
+
+a) basit yer değiştirme
+     (substitution)
+	 (replacement)
+
+
+	#include <stdio.h>
+
+#define    NECO			100 + 500
+
+int main()
+{
+	int x = 5 * NECO;
+
+	printf("x = %d\n", x);
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+
+#define    NECO			(100 + 500)
+
+int main()
+{
+	int x = 5 * NECO;
+
+	printf("x = %d\n", x);
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+
+#define    NECO			(100 + 500) + \
+(200 * 5)
+
+int main()
+{
+	int x = 5 * NECO;
+
+	printf("x = %d\n", x);
+}
+/**********************************************************************************************************************/

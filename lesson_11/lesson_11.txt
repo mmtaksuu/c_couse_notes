@@ -1,0 +1,682 @@
+dangling else (Redundancy Else)
+-------------------------
+
+
+if (x > 10)
+	if (y > 20)
+		++a;
+	else
+		++b;
+
+
+if (x > 10) {
+	if (y > 20)
+		++a;
+}
+else
+	++b;
+
+----------------------
+eger y 10'dan buyukse
+	x'in 5' esit olması durununda
+eger y 10'dan buyuk degilse
+	x'in 12'ye esit olması durumunda
+
+a'yi arttir
+
+if (y > 10) {
+	if (x == 5)
+		++a;
+}
+else if (x == 12)
+	++a;
+
+if (x == (y > 10 ? 5 : 12))
+
+if (ndays < (isleap(y) ? 29 : 28))
+----------------------------------
+
+if (x == 3)
+	a = 5;
+else if (x == 7)
+	b = 8;
+else if (x == 11)
+	c++;
+else if (x == 23)
+	c = 45;
+else
+	???
+
+
+if (mon == 12)
+	statement1;
+else if (expr2)
+	statement2;
+else if (expr3)
+	statement3;
+else if (expr4)
+	statement4;
+else
+	statement5;
+
+
+switch (mon) {
+case JANUARY :
+case FEBRUARY:
+}
+
+
+if (expr)
+	; //null statement
+
+	#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+//ax2 + bx + c = 0
+
+int main()
+{
+	int a, b, c;
+
+	printf("denklemin katsayilarini girin: ");
+	scanf("%d%d%d", &a, &b, &c);
+	double delta = b * b - 4 * a * c;
+
+	if (delta > 0) {
+		double root_delta = sqrt(delta);
+		printf("kok 1 = %f\n", (-b - root_delta) / (2 * a));
+		printf("kok 2 = %f\n", (-b + root_delta) / (2 * a));
+	}
+	else if (delta == 0) {
+		printf("kok = %f\n", -b / (2 * a));
+	}
+	else
+		printf("denklemin gercek koku yok\n");
+	//
+}
+
+/**********************************************************************************************************************/
+
+
+if (x > 10)
+	++a;
+
+
+if (x > 10)
+
+redundancy
+	redeundant elsew
+
+int max2(int a, int b)
+{
+	if (a > b)
+		return a;
+
+	return b;
+}
+
+
+
+if (!p)
+	throw std::bad_ alloc{};
+
+
+while (expr) {
+	statement1;
+	statement2;
+	statement3;
+	if (cexpr)
+		continue;
+	else {
+		statement4;
+		statement5;
+		statement6;
+	}
+}
+
+
+
+if (y != 0)
+	x = y;
+else
+	x = 0;
+
+x = y;
+----------------------
+
+test fonksiyonları
+
+test function
+query function
+predicate
+
+int isneco(int x);
+
+
+if (isprime(x) && isprime(y))
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+int iseven(int x)
+{
+	return x % 2 == 0;
+}
+
+
+
+int main()
+{
+
+
+}
+
+
+
+
+
+if (x & 1) {
+
+}
+
+clamp
+
+int clamp(int v, int low, int high)
+{
+    return (v < low) ? low : (high < v) ? high : v;
+}
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+int is_in_range(int x, int low, int high)
+{
+	return x >= low && x <= high;
+}
+
+int main()
+{
+
+}
+
+/**********************************************************************************************************************/
+
+
+
+if (y % 4 == 0)
+
+4'e tam bolunenlerden
+	100'e tam bolunmeyenler ya da 400'e tam bolunenler
+
+1987  degil
+1984
+2000
+1900
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+int isleap(int y)
+{
+	return y % 4 == 0 && (y % 100 != 0 || y % 400 == 0);
+}
+
+
+int main()
+{
+	int year;
+	printf("bir yil girin: ");
+	scanf("%d", &year);
+
+	//if (isleap(year) != 0)
+	if (isleap(year))
+		printf("%d artik yil\n", year);
+	else
+		printf("%d artik yil degil\n", year);
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+int isleap(int y)
+{
+	return y % 4 == 0 && (y % 100 != 0 || y % 400 == 0);
+}
+
+
+int main()
+{
+	int year;
+	printf("bir yil girin: ");
+	scanf("%d", &year);
+
+	//if (isleap(year) == 0) //artik yil degil ise
+	if (!isleap(year)) //artik yil degil ise
+		printf("%d artik yil degil\n", year);
+	else
+		printf("%d artik yil\n", year);
+
+}
+
+/**********************************************************************************************************************/
+
+Mersenne primes
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <math.h>
+
+//33550336
+
+// 6 = 1 + 2 + 3
+// 28 = 1 + 2 + 4 + 7 + 14
+
+int isperfect(int x)
+{
+	int divsum = 0;
+
+	for (int i = 1; i <= x / 2; ++i)
+		if (x % i == 0)
+			divsum += i;
+
+	return x == divsum;
+}
+
+int main()
+{
+	/*for (int i = 2; i < 10000; ++i) {
+		if (isperfect(i))
+			printf("%d\n", i);
+	}*/
+
+	printf("%d\n", isperfect(33550336));
+}
+/**********************************************************************************************************************/
+
+
+standart ctype kütüphanesi
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+	int c;
+	printf("bir karakter girin: ");
+	c = getchar();
+
+	printf("c = %d\n", c);
+
+	if (isupper(c))
+		printf("isupper ---> OK\n");
+	else
+		printf("isupper ---> NOT OK\n");
+
+	if (islower(c))
+		printf("islower ---> OK\n");
+	else
+		printf("islower ---> NOT OK\n");
+
+	if (isalpha(c))
+		printf("isalpha ---> OK\n");
+	else
+		printf("isalpha ---> NOT OK\n");
+
+	if (isdigit(c))
+		printf("isdigit ---> OK\n");
+	else
+		printf("isdigit ---> NOT OK\n");
+
+	if (isalnum(c))
+		printf("isalnum ---> OK\n");
+	else
+		printf("isalnum ---> NOT OK\n");
+
+	if (isxdigit(c))
+		printf("isxdigit ---> OK\n");
+	else
+		printf("isxdigit ---> NOT OK\n");
+
+	if (ispunct(c))
+		printf("ispunct ---> OK\n");
+	else
+		printf("ispunct ---> NOT OK\n");
+
+	if (isspace(c))
+		printf("isspace ---> OK\n");
+	else
+		printf("isspace ---> NOT OK\n");
+
+	if (isblank(c))
+		printf("isblank ---> OK\n");
+	else
+		printf("isblank ---> NOT OK\n");
+
+	if (isprint(c))
+		printf("isprint ---> OK\n");
+	else
+		printf("isprint ---> NOT OK\n");
+
+	if (isgraph(c))
+		printf("isgraph ---> OK\n");
+	else
+		printf("isgraph ---> NOT OK\n");
+
+	if (iscntrl(c))
+		printf("iscntrl ---> OK\n");
+	else
+		printf("iscntrl ---> NOT OK\n");
+}
+
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <time.h>
+
+void delay(double sec)
+{
+	clock_t start = clock();
+
+	while ((double)(clock() - start) / CLOCKS_PER_SEC < sec)
+		;
+}
+
+int main()
+{
+	srand((unsigned)time(0));
+
+	for (;;) {
+		int c = rand() % 128;
+		if (isgraph(c)) {
+			printf("%c", c);
+			delay(0.03);
+		}
+	}
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int ch;
+	printf("bir karakter girin: ");
+	ch = getchar();
+
+	printf("ch = %d\n", ch);
+
+	printf("%c ----> %c\n", ch, toupper(ch));
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int ch;
+	printf("bir karakter girin: ");
+	ch = getchar();
+
+	printf("ch = %d\n", ch);
+
+	printf("%c ----> %c\n", ch, tolower(ch));
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int c1, c2;
+	printf("iki karakter girin: ");
+	c1 = getchar();
+	c2 = getchar();
+
+	if (toupper(c1) == toupper(c2)) {
+		printf("ayni karakterler\n");
+	}
+	else {
+		printf("farkli karakterler\n");
+	}
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+//1ac
+int main()
+{
+	int x;
+
+	printf("hex olarak bir sayi girin: ");
+	int c;
+
+	x = 0;
+	while ((c = getchar()) != '\n') {
+		if (isdigit(c)) {
+			x = x * 16 + c - '0';
+		}
+		else if (isxdigit(c)) {
+			x = x * 16 + toupper(c) - 'A' + 10;
+		}
+	}
+
+	printf("x = %d\n", x);
+
+}
+
+/**********************************************************************************************************************/
+
+ternary operator (conditional operator)
+koşul operatörü
+
+
+
+op1 ? op2 : op3
+
+
+x != 0 ? y : z
+
+x ? y : z
+
+ x > y ? x : y
+
+ x > 0 ? x : -x
+ ---------------------
+
+ C kodlarında koşul operatörünün kullanıldığı tipik senaryolar
+
+ (önce okumayı öğrenin sonra siz de kullanın!
+
+
+ 1. Bir nesneye bir koşula bağlı olarak iki değerden biri atanıyor ise
+
+ if (x > 10)
+	y = a;
+ else
+    y = b;
+
+y = x > 10 ? a : b;
+
+max = a > b ? a : b;
+
+val = val >= 0 ? val : -val;
+
+ndays = isleap(y) ? 29 : 28;
+
+yeardays = isleap (y) ? 366 : 365;
+c = islower(c) ? c - 'a' + 'A' : c;
+-----------------------------------
+bir fonksiyon bir koşula bağlı olarak iki değerden biri ile çağrılıyor
+
+if (x > 5)
+	func(a);
+else
+	func(b);
+
+func(x > 5 ? a : b);
+
+-----------------------------------------------
+
+if (x > 10)
+	return a;
+else
+	return b;
+
+-----------------------------------------------
+return x > 10 ? a : b;
+
+
+(x > 10) ? a : b
+
+-----------------------------------------------
+
+if (x > (isleap(y) ? 366 : 365)) {
+	++a;
+}
+
+
+if (isleap(y)) {
+	if ( x > 366)
+		++a;
+}
+else if (x > 365)
+	++a;
+
+
+for (int i = x > y ? x : y; )
+
+
+if (x > 10)
+	a = z;
+else
+	b = z;
+
+
+x > 10 ? a : b = z;
+
+C ve C++ dilleri arasında value category farklılıkları
+
+aşağıdaki ifadeler C dilinde R val. expr iken C++ dilinde L val expr
+
+++x ifadesi
+
+--x ifadesi
+
+(x, y)
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int x = 23, a = 10, b = 45, z = 4;
+
+	x > 10 ? a : b = z;  //C'de gecersiz (R val. expr)
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int x = 23, a = 10, b = 45, z = 4;
+
+	*(x > 10 ? &a : &b) = z;  //C'de yapilan hile
+}
+
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	int y = x == 5 ? 13 :
+			x == 9 ? 17 :
+			x == 19 ? 65 : 26;
+
+	printf("x = %d  y = %d\n", x, y);
+
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main()
+{
+	int x;
+
+	printf("bir tamsayi giriniz: ");
+	scanf("%d", &x);
+
+	int y = (x == 5 ? 13 :(x == 9 ? 17 : (x == 19 ? 65 : 26)));
+
+	printf("x = %d  y = %d\n", x, y);
+}
+
+/**********************************************************************************************************************/
+
+a > 10 ? b++ : c++
+
+
+x++ > 10 ? f(x) : g(x)

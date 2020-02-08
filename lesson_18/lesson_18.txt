@@ -1,0 +1,475 @@
+rastgele sayı üretimi
+
+2 3 6 8 2 3 6 8 2 3 6 8 ?
+
+-  -  -  -  -  - - -
+
+
+8757965956977468653846644464
+9248791287935481289741298050981289358912589129805102985
+287935481289741298050981289358912589
+4509238975029783587237845782378095238458723*0785920*9450*9650253692
+
+29805
+82378
+
+
+1010010101001010100101010010101001010101001010010101010010101001010100100010010010010100101
+
+15423414341432
+
+<random>
+
+#include <random>
+#include <iostream>
+#include <conio.h>
+
+int main()
+{
+	using namespace std;
+
+	mt19937 eng{ random_device{}() };
+	normal_distribution<double> dist{ 50, 5. };
+
+	for (;;) {
+		cout << dist(eng) << " ";
+		_getch();
+	}
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	printf("rand max = %d\n", RAND_MAX);
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	char filename[100];
+
+	for (int i = 1; i < 100; ++i) {
+		sprintf(filename, "seed%03d.txt", i);
+		FILE *f = fopen(filename, "w");
+		if (!f) {
+			printf("dosya olusturma hatasi\n");
+			return 1;
+		}
+		srand(i);
+		for (int k = 0; k < 2000; ++k) {
+			fprintf(f, "%-5d%c", rand(), k % 10 == 9 ? '\n' : ' ');
+		}
+
+		fclose(f);
+	}
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	char filename[100];
+
+	for (int i = 1; i < 100; ++i) {
+		sprintf(filename, "seed%03d.txt", i);
+		FILE *f = fopen(filename, "w");
+		if (!f) {
+			printf("dosya olusturma hatasi\n");
+			return 1;
+		}
+		srand(i);
+		for (int k = 0; k < 2000; ++k) {
+			fprintf(f, "%-5d%c", rand(), k % 10 == 9 ? '\n' : ' ');
+		}
+
+		fclose(f);
+	}
+
+}
+/**********************************************************************************************************************/
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	int a[RAND_MAX + 1] = { 0 };
+	///
+
+	for (int i = 0; i < 500'000'000; ++i) {
+		++a[rand()];
+	}
+
+
+	FILE *f = fopen("rand.txt", "w");
+	if (!f) {
+		printf("dosya olusturma hatasi\n");
+		return 1;
+	}
+
+	for (int i = 0; i < RAND_MAX; ++i) {
+		fprintf(f, "%d\n", a[i]);
+	}
+
+	fclose(f);
+
+
+}
+/**********************************************************************************************************************/
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+	srand(rand()); //espri
+
+	for (int i = 0; i < 10; ++i) {
+		printf("%d\n", rand());
+	}
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+
+
+int main()
+{
+	printf("%lld\n", time(NULL));
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	for(;;)
+		printf("%lld\r", time(NULL));
+
+}
+/**********************************************************************************************************************/
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	srand((unsigned)time(NULL));
+
+	for (int i = 0; i < 100; ++i) {
+		printf("%-5d%c", rand(), i % 10 == 9 ? '\n': ' ');
+	}
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "nutility.h"
+
+int main()
+{
+	randomize();
+
+	for (;;) {
+		printf("%d ", rand() % 6 + 1);
+		sleep(0.04);
+	}
+
+}
+/**********************************************************************************************************************/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "nutility.h"
+
+int main()
+{
+	int n;
+	int heads_count = 0;
+
+	printf("kac kez yazi tura atilsin: ");
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; ++i) {
+		if (rand() % 2 == 0)
+			++heads_count;
+	}
+
+	printf("olasilik : %f\n", (double)heads_count / n);
+
+
+}
+/**********************************************************************************************************************/
+
+
+
+
+7  11
+2   3  12
+
+4  5 6 8 9 10
+
+10 2 8 12 8 6 10
+
+9
+12
+3
+8
+5
+4
+7
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+#define   NGAMES    10'000'000
+
+
+int rolldice(void)
+{
+	int dice1 = rand() % 6 + 1;
+	int dice2 = rand() % 6 + 1;
+
+	return dice1 + dice2;
+}
+
+int game_(int dice)
+{
+	for (;;) {
+		int newdice = rolldice();
+		if (newdice == dice)
+			return 1;
+		if (newdice == 7)
+			return 0;
+	}
+}
+
+int game(void)
+{
+	int dice = rolldice();
+
+	switch (dice) {
+	case 2 :
+	case 3 :
+	case 12: return 0;
+	case 7 :
+	case 11: return 1;
+	default: return game_(dice);
+	}
+}
+
+
+int main()
+{
+	int wincount = 0;
+
+	for (int i = 0; i < NGAMES; ++i) {
+		wincount += game();
+	}
+
+	printf("olasilik  %f\n", (double)wincount / NGAMES);
+
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <random>
+
+#define   NGAMES    10'000'000
+
+int rolldice(void)
+{
+	using namespace std;
+
+	static mt19937 eng;
+	static uniform_int_distribution<int> dist{ 1, 6 };
+	int dice1 = dist(eng);
+	int dice2 = dist(eng);
+	return dice1 + dice2;
+}
+
+
+//int rolldice(void)
+//{
+//	int dice1 = rand() % 6 + 1;
+//	int dice2 = rand() % 6 + 1;
+//
+//	return dice1 + dice2;
+//}
+
+int game_(int dice)
+{
+	for (;;) {
+		int newdice = rolldice();
+		if (newdice == dice)
+			return 1;
+		if (newdice == 7)
+			return 0;
+	}
+}
+
+int game(void)
+{
+	int dice = rolldice();
+
+	switch (dice) {
+	case 2 :
+	case 3 :
+	case 12: return 0;
+	case 7 :
+	case 11: return 1;
+	default: return game_(dice);
+	}
+}
+
+
+int main()
+{
+	int wincount = 0;
+
+	for (int i = 0; i < NGAMES; ++i) {
+		wincount += game();
+	}
+
+	printf("olasilik  %f\n", (double)wincount / NGAMES);
+
+}
+/**********************************************************************************************************************/
+
+
+#include <ctype.h>
+#include <stdio.h>
+
+#include "nutility.h"
+
+
+void print_random_psw(void)
+{
+
+	int c;
+	int n = rand() % 8 + 5;
+	for (int i = 0; i < n; ++i) {
+		while (!isalnum(c = rand() % 128))
+			;
+		printf("%c", c);
+	}
+	printf("\n");
+}
+
+int main()
+{
+	randomize();
+
+	for (int i = 0; i < 20; ++i) {
+		print_random_psw();
+	}
+
+}
+/**********************************************************************************************************************/
+
+ARRAYS (diziler)
+data structures & algorithms
+
+O(1)
+O(logn)
+O(n)
+O(nlogn)
+O(n2)
+O(n3)
+O(n!)
+
+
+int a[expr];
+
+int a[2,3];
+
+
+int main()
+{
+
+	//int a[10], x, b[20];
+	int a[10];
+	int x;
+	int b[20];
+
+}
+
+
+
+int a[20];
+
+
+void func(int p[40])
+{
+	int b[50];
+	static int c[100];
+}
+
+
+
+------------------------------------------
+1          ()   []   .   ->   soldan sağa
+------------------------------------------
+
+
+a[x + y]
+

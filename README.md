@@ -276,15 +276,88 @@
     - Conditional Compiling
     - Preprecessor expressions
     - Multiple Inclusion Guard
-        1) 
-        ``` c
-        #ifndef NUTILITY_H
-        #define NUTILITY_H
-            
-        #endif
-        ```
-        2) 
-        ``` c
-        #pragma once
-        ```
+``` c
+#ifndef NUTILITY_H
+#define NUTILITY_H
+    
+#endif
+```
+
+``` c
+#pragma once
+```
+    - #undef 
+    - Predefined Symbolic Constants
+``` c
+__LINE__
+__FILE__
+__DATE__
+__TIME__
+__func__
+__STDC__
+```
+    - switch statement
+
+
+## Lesson 17 :
+    - goto statement
+    - Type Conversions
+        1) Implicit Type Conversion
+        2) Explicit Type Conversion 
+    - Type-Cast Operators
+    - Random Number Generators
+        
+## Lesson 18 :
+    - randomize() idiom
+``` c
+#define     randomize()     srand((unsigned)time(NULL))
+
+int main(void)
+{
+    // Used to generate different pseudo value with srand()
+    printf("%lld\r", time(NULL));
+    return 0;
+}
+```    
+    - Arrays in C 
+    - Data Structures and Algorithms
+    - Complexcitiy of the Algorithms
+    - Big-O Notation
+        O(1)
+        O(logn)
+        O(n)
+        O(nlogn)
+        O(n2)
+        O(n3)
+        O(n!)
+
+
+## Lesson 19 :
+    - Linear Searching
+    - Finding max value in an array
+    - Finding min value in an array
+    - Finding runner-up in a given array
+    - Reverse algorithm
+    - Reverse-copy algorithm
+    - Initialization of Arrays
+    - Sizeof() Operator
+
+
+## Lesson 20 :
+    - Sorting Algorithms
+        * Bubble Sort ( Stable sort )
+        * Quick Sort ( Unstable sort )
+    - Merge Algorithm
+    - Binary Search Algorithm
+    - C Strings
+    - Null Character ( '\0' )
+    - Initialization of Char Arrays
+    - Prints of the Char Arrays into Output Stream
+    - Gets of the Char Arrays from Input Stream
+    
+## Lesson 21 :
+    - puts() function
+    - gets() function
+    - gets_s() function
+    - Polindrom strings
     

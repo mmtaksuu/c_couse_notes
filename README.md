@@ -110,11 +110,74 @@
         
 
 ## Lesson 06 :
+    - Funtion Calling
+    - Difference between parameter and argument of a funtion
+    - C standard library 
+    - Constant Literals
+        * Integer Constants
+        * Floating Constants
+    - Types of Constants
 
-
-
-
-
+## Lesson 07 :
+    - Character Literals
+    - Escape sequences in C
+    - Input and Output Operations in C
+        * Formatted Input
+            - scanf()
+            - fscanf()
+            - sscanf() 
+        * Formatted Output
+            - printf()
+            - fprintf()
+            - sprintf()
+     
+## Lesson 08 :
+    - Unformatted Input and Output
+        * getchar()
+        * putchar()
+    - Operators in C 
+        * unary   operator ( ++, -- )
+        * binary  operator ( <, >=  )
+        * ternary operator ( ?  :   )
+          
+        * prefix  ( ++x   )
+        * postfix ( x++   )
+        * infix   ( x + y )
+    - Side Effect
+    - Priority of the Operators
+    - Table of the Priority Order of the Operators in C
+                    TABLE
+    -------------------------------------------
+    1    ()  []   .  ->
+    -------------------------------------------
+    2    + -  ++ --  ! ~ &  * sizeof  (type)    from right to left precedence
+    -------------------------------------------
+    3	 * /  %
+    -------------------------------------------
+    4	  + -
+    -------------------------------------------
+    5	 >>  <<
+    -------------------------------------------
+    6     > < >= <=
+    -------------------------------------------
+    7     ==  !=
+    -------------------------------------------
+    8      &
+    -------------------------------------------
+    9      ^
+    -------------------------------------------
+    10     |
+    -------------------------------------------
+    11		&&
+    -------------------------------------------
+    12		||
+    -------------------------------------------
+    13     ? :								    from right to left precedence
+    -------------------------------------------
+    14    = += *= -= /= %=  >>= <<= &= ^=  |=   from right to left precedence
+    -------------------------------------------
+    15   ,
+    -------------------------------------------
 
 ## [link](https://github.com/mmtaksuu/c_couse_notes)
 

@@ -360,4 +360,52 @@ int main(void)
     - gets() function
     - gets_s() function
     - Polindrom strings
+    - Comment lines
+    
+## Lesson 22 :
+    - Pointers
+    - Definition of a pointer
+    - Pointer operators
+    --------------------------
+    1         [ ]       ->
+    --------------------------
+    2          &      *
+    --------------------------
+    - Adress operator ( & )
+    - Array to Pointer Conversion
+    - Direfecencing Operator ( * )   
+    
+## Lesson 23 : 
+    - Const keyword
+    - Pointers and const keyword
+``` c
+// const pointer to int
+int * const ptr = &x;
+
+// Pointer to const int
+const int * ptr = &x;
+
+// const pointer to const int
+const int * const ptr = &x;
+```
+    - Pointers as a parameter of a function
+    - Adress types and types conversions
+    - Pointer Arithmetic
+    - Index operator ( [ ] )
+    - Valid and Invalid Pointers
+
+
+## Lesson 24 :
+    - Invalid Pointers
+    - Functions for array operations
+    - Array traversal
+``` c
+for (int i = 0; i < size; ++i)
+		printf("%d\n", ptr[i]);
+```
+``` c   
+    while(size --)
+		printf("%d\n", *ptr++);
+```
+    - Compairing of Adress
     

@@ -276,9 +276,15 @@
     - Conditional Compiling
     - Preprecessor expressions
     - Multiple Inclusion Guard
-        1)  #ifndef NUTILITY_H
-            #define NUTILITY_H
+        1) 
+        ``` c
+        #ifndef NUTILITY_H
+        #define NUTILITY_H
             
-            #endif
-        2) #pragma once
+        #endif
+        ```
+        2) 
+        ``` c
+        #pragma once
+        ```
     

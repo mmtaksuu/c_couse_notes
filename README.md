@@ -88,20 +88,6 @@
         * to declare a function
     - Syntax and Semantics of C language
     - Defining a function
-    - Control Statements of C
-        * if statement
-          
-        * while statement
-          do while statement
-          for statement
-          
-        * switch statement
-          goto statement
-          
-        * continue statement
-          break statement
-          return statement
-          
     - Call by value and Call by refrence
     - Return values of funtions in C
         * to discard the return value
@@ -181,17 +167,118 @@
     15   ,
     -------------------------------------------
 
-## [link](https://github.com/mmtaksuu/c_couse_notes)
 
-``` python
-import os
-for i in range(5):
-    i+=1
-```
+## Lesson 09 :
+    - Maximum munch ( int z = x+++y; )
+    - Comparison Operators ( > >= < <= == != )
+    - Logic Operators ( ! && || )
+    - Assigment Operators ( = += -= *= /= %= &= |= ^= <<= >>= )
+    - Undifined Behaviour
+    - Implementation Defined
+    - Implementation Specified
+    
+## Lesson 10 :
+    - Squence Points in C  
+        1) End of the each statement ( exp; )
+        2) exp1 && exp2
+        3) exp1 || exp2
+        4) * exp ? exp1 : exp2
+        5) exp1, exp2
+        6) if (exp++)
+    - Comma Operators ( , )
+    - Control Statements of C
+            * if statement
+              
+            * while statement
+              do while statement
+              for statement
+              
+            * switch statement
+              goto statement
+              
+            * continue statement
+              break statement
+              return statement
+    
+    
+## Lesson 11 :
+    - Else-if statement
+    - Redundancy if
+    - Test Functions
+    - Clamp expression
+    - Mersenne Primes
+    - Standard ctype.h library funtions
+        1) isupper(ch)
+        2) islower(ch)
+        3) isalpha(ch)
+        4) isdigit(ch)
+        4) isalnum(ch)
+        5) isxdigit(ch)
+        6) ispunct(ch)
+        7) isspace(ch)
+        8) isblank(ch)
+        9) isprint(ch)
+        10) isgraph(ch)
+        11) iscntrl(ch)
+    - Ternary Operator ( ? : )
+    
+## Lesson 12 :
+    - Loop statements in C
+        * while loop
+    - How to get out of a loop in C ? 
+        1) With a false control statement 
+        2) return statement
+        3) break statement 
+        4) goto statement 
+        5) exit / quick_exit / abort
+    - break statement
+    - do while loop
+    - continue statement
+    
+## Lesson 13 :
+    - For loop
+    - For - while relationship
+    - Infinite loop ( for(;;), for(;1;), while(1) )
+    - Nested Loops
+    - Function Prototypes or Decleration
 
-``` c
-int main(){
 
-    return 0;
-}
-```
+## Lesson 14 :
+    - Function prototype decleration
+    - C seperate compilation model ( .c file and .h file )
+    - Header files
+    - Preprecessor Directives
+        #  //null directive
+        #include
+        #define
+        #undef
+        #if
+        #endif
+        #else
+        #elif
+        #ifdef
+        #ifndef
+        #line
+        #error
+        #pragma
+    - Object-like Macros
+
+
+## Lesson 15 :
+    - Funtion-like Macros
+    - Macros versus Funtions
+    - Preprecessor Operators
+        1) #    stringification (stringizing)
+        2) ##   token-pasting
+        3) defined operator
+
+## Lesson 16 :    
+    - Conditional Compiling
+    - Preprecessor expressions
+    - Multiple Inclusion Guard
+        1)  #ifndef NUTILITY_H
+            #define NUTILITY_H
+            
+            #endif
+        2) #pragma once
+    

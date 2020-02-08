@@ -146,7 +146,9 @@
     - Side Effect
     - Priority of the Operators
     - Table of the Priority Order of the Operators in C
-                    TABLE
+
+## Table of the Priority Order of the Operators in C
+    TABLE
     -------------------------------------------
     1    ()  []   .  ->
     -------------------------------------------
@@ -172,7 +174,7 @@
     -------------------------------------------
     12		||
     -------------------------------------------
-    13     ? :								    from right to left precedence
+    13     ? :                                  from right to left precedence
     -------------------------------------------
     14    = += *= -= /= %=  >>= <<= &= ^=  |=   from right to left precedence
     -------------------------------------------

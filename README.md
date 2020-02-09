@@ -401,11 +401,22 @@ const int * const ptr = &x;
     - Array traversal
 ``` c
 for (int i = 0; i < size; ++i)
-		printf("%d\n", ptr[i]);
+	printf("%d\n", ptr[i]);
 ```
 ``` c   
-    while(size --)
-		printf("%d\n", *ptr++);
+while(size --)
+    printf("%d\n", *ptr++);
 ```
     - Compairing of Adress
+
+
+## Lesson 25 :
+    - Pointer idioms
+    - Functions Returning Address
+    - Static Object Address
+    - Type Alias and Typedef Declerations
     
+
+## Lesson 26 :
+    - size_t, time_t, ptrdiff_t, clock_t, etc.
+    - NULL Pointer 

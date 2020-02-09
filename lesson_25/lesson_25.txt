@@ -1,0 +1,879 @@
+pattern
+idiom
+
+
+pointer idiyomları
+-----------------------------------------------------------
+++ --  &   *  []
+
+	++x
+	--x
+
+
+	&x
+
+
+	a[b]   *(a + b)
+	b[a]
+
+
+
+
+
+-----------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      10
+
+
+int main()
+{
+	int a[5] = { 1, 2, 3, 4, 5 };
+
+	++1[a][a][a][a];
+	display_array(a, 5);
+}
+/**********************************************************************************************************************/
+
+
+
+int main()
+{
+	int x = 10;
+	++&x;
+
+}
+
+
+&x++ adres operatörünün operandı L val değil
+&++x adres operatörünün operandı L val değil
+++&x ++  operatörünün operandı L val değil
+
+#include <stdio.h>
+#include "nutility.h"
+
+int main()
+{
+	int a[5] = { 10, 20, 30, 40, 50 };
+	int *p = a;
+
+	*p++ = 555;
+	display_array(a, 5);
+	*p = 777;
+	display_array(a, 5);
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+#include "nutility.h"
+
+void copy(int *pdest, const int *psource, int n)
+{
+	while (n--) {
+		*pdest++ = *psource++;
+	}
+}
+
+int main()
+{
+	int a[5] = { 10, 20, 30, 40, 50 };
+	int *p = a;
+
+	*p++ = 555;
+	display_array(a, 5);
+	*p = 777;
+	display_array(a, 5);
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      20
+
+void rdisplay_array(const int *p, int size)
+{
+	p += size;
+	while (size--)
+		printf("%3d ", *--p);
+
+	printf("\n");
+
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+	rdisplay_array(a, SIZE);
+
+}
+/**********************************************************************************************************************/
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      20
+
+void reverse_copy(int *pdest, const int *psource, int size)
+{
+	psource += size;
+
+	while (size--)
+		*pdest++ = *--psource;
+
+}
+
+void rdisplay_array(const int *p, int size)
+{
+	p += size;
+	while (size--)
+		printf("%3d ", *--p);
+
+	printf("\n");
+
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+	rdisplay_array(a, SIZE);
+
+}
+/**********************************************************************************************************************/
+
+
+
+int main()
+{
+	int a[5] = { 10, 20, 30, 40, 50 };
+	int *p = a;
+
+	++*p;  //++a[0]
+
+
+
+*a   ----  a[0]
+
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      20
+
+void foo(int *p, int size)
+{
+	while (size--)
+		++*p++;
+}
+
+int main()
+{
+	int a[5] = { 10, 20, 30, 40, 50 };
+
+	display_array(a, 5);
+	foo(a, 5);
+	display_array(a, 5);
+
+}
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int get_array_max(const int *p, int size)
+{
+	int max = *p;
+
+	for (int i = 1; i < size; ++i) {
+		if (p[i] > max)
+			max = p[i];
+	}
+
+	return max;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+}
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int foo(void);
+
+int main()
+{
+	int x = foo();
+
+	x = foo();
+
+}
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int *foo(void);
+
+int main()
+{
+	int* p = foo();
+
+	///...
+
+	p = foo();
+
+	*p = 345;
+
+	++*foo();
+
+
+
+}
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+
+int g = 77;
+
+int *func()
+{
+	///code
+	return &g;
+}
+
+
+int main()
+{
+	printf("g = %d\n", g);
+
+	int *ptr = func();
+	*ptr = 999;
+
+	printf("g = %d\n", g);
+
+}
+
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+
+int g = 77;
+
+int *func()
+{
+	///code
+	return &g;
+}
+
+
+int main()
+{
+	printf("g = %d\n", g);
+
+	++*func();
+
+	printf("g = %d\n", g);
+
+}
+
+/**********************************************************************************************************************/
+#include <stdio.h>
+#include "nutility.h"
+
+
+int a[5] = { 10, 20, 30, 40, 50 };
+
+int *func()
+{
+	///code
+	return a;
+}
+
+
+int main()
+{
+	++func()[2];
+
+}
+
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+//warning C4172: returning address of local variable or temporary: x
+#include <stdio.h>
+#include "nutility.h"
+
+
+int* get_value()
+{
+	int x;
+
+	printf("bir tamsayi girin: ");
+	scanf("%d", &x);
+
+	return &x;
+}
+
+int foo(int val)
+{
+	int x = 10;
+	//...
+
+	return val * x;
+}
+
+int main()
+{
+	int *p = get_value();
+	int x = foo(3);
+
+	printf("*p = %d\n", *p);
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int *func(int x)
+{
+	///....
+
+	return &x;  //ub
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int *func()
+{
+	int x = 10;
+	int *ptr = &x;
+
+	return ptr;
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+int *func()
+{
+	static int x = 10;
+	int *ptr = &x;
+
+	return ptr; //ok
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+
+char *get_name()
+{
+	char str[100];
+
+	printf("bir isim giriniz: ");
+	scanf("%s", str);
+
+	return str; //ub
+}
+
+
+int main()
+{
+	char *p = get_name();
+
+	printf("isim: %s\n", p);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      20
+
+
+int* get_array_max(const int *ptr, int size)
+{
+	const int *pmax = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] > *pmax)
+			pmax = ptr + i;
+			//pmax = &ptr[i];
+	}
+
+	return (int *)pmax;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	int *pmax = get_array_max(a, SIZE);
+
+	printf("MAX = %d ve dizinin %d indisli elemani\n", *pmax, pmax - a);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      10
+
+
+int* get_array_max(const int *ptr, int size)
+{
+	const int *pmax = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] > *pmax)
+			pmax = ptr + i;
+			//pmax = &ptr[i];
+	}
+
+	return (int *)pmax;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	int *pmax = get_array_max(a, SIZE);
+
+	display_array(a, pmax - a + 1);
+	display_array(pmax, a + SIZE - pmax);
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      10
+
+
+int* get_array_max(const int *ptr, int size)
+{
+	const int *pmax = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] > *pmax)
+			pmax = ptr + i;
+			//pmax = &ptr[i];
+	}
+
+	return (int *)pmax;
+}
+
+
+int* get_array_min(const int *ptr, int size)
+{
+	const int *pmin = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] < *pmin)
+			pmin = ptr + i;
+		//pmin = &ptr[i];
+	}
+
+	return (int *)pmin;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	int *pmax = get_array_max(a, SIZE);
+	int *pmin = get_array_min(a, SIZE);
+
+	swap(pmax, pmin);
+
+	display_array(a, SIZE);
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      10
+
+
+int* get_array_max(const int *ptr, int size)
+{
+	const int *pmax = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] > *pmax)
+			pmax = ptr + i;
+			//pmax = &ptr[i];
+	}
+
+	return (int *)pmax;
+}
+
+
+int* get_array_min(const int *ptr, int size)
+{
+	const int *pmin = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] < *pmin)
+			pmin = ptr + i;
+		//pmin = &ptr[i];
+	}
+
+	return (int *)pmin;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	int *pmax = get_array_max(a, SIZE);
+	int *pmin = get_array_min(a, SIZE);
+
+	if (pmax > pmin)
+		display_array(pmin, pmax - pmin + 1);
+	else
+		display_array(pmax, pmin - pmax + 1);
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      10
+
+
+int* get_array_max(const int *ptr, int size)
+{
+	const int *pmax = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] > *pmax)
+			pmax = ptr + i;
+			//pmax = &ptr[i];
+	}
+
+	return (int *)pmax;
+}
+
+
+int* get_array_min(const int *ptr, int size)
+{
+	const int *pmin = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] < *pmin)
+			pmin = ptr + i;
+		//pmin = &ptr[i];
+	}
+
+	return (int *)pmin;
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+
+	int *pmax = get_array_max(a, SIZE);
+	int *pmin = get_array_min(a, SIZE);
+
+	if (pmax > pmin) {
+		int *p = pmin;
+		while (p <= pmax)
+			printf("%3d ", *p++);
+	}
+	else {
+		int *p = pmax;
+		while (p <= pmin)
+			printf("%3d ", *p++);
+	}
+	printf("\n");
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+
+#define   SIZE      100
+
+
+int* get_array_min(const int *ptr, int size)
+{
+	const int *pmin = ptr;
+
+	for (int i = 1; i < size; ++i) {
+		if (ptr[i] < *pmin)
+			pmin = ptr + i;
+		//pmin = &ptr[i];
+	}
+
+	return (int *)pmin;
+}
+
+void selection_sort(int *p, int size)
+{
+	for (int i = 0; i < size - 1; ++i) {
+		swap(p + i, get_array_min(p + i, size - i));
+	}
+}
+
+int main()
+{
+	int a[SIZE];
+
+	randomize();
+	set_random_array(a, SIZE);
+	display_array(a, SIZE);
+	selection_sort(a, SIZE);
+	display_array(a, SIZE);
+
+
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+
+char *getname()
+{
+	static char str[100];
+
+	printf("isim girin: ");
+	scanf("%s", str);
+
+	return str;
+}
+
+int main()
+{
+	char *p1 = getname();
+	char *p2 = getname();
+	char *p3 = getname();
+	char *p4 = getname();
+
+	printf("iste size birbirinden guzel 4 isim %s %s %s %s\n", p1, p2, p3, p4);
+
+}
+
+
+typedef bildirimleri ve tür eş isimleri
+
+type alias
+
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+#include <time.h>
+
+void func();
+
+typedef int *(*Fptr)(int *, int *);
+
+Fptr func(Fptr, Fptr);
+
+int main()
+{
+
+}
+/**********************************************************************************************************************/
+
+
+
+
+
+typedef int Word;
+typedef Word Myint;
+
+Word wx;
+Word *wp = &wx;
+
+Word func(Word, Word);
+
+int main()
+{
+	Word a[10];
+}
+/**********************************************************************************************************************/
+
+
+
+
+
+typedef int * Iptr;
+
+int main()
+{
+	//int *p1, p2;
+	Iptr p1, p2; //int *p1, *p2;
+
+}
+/**********************************************************************************************************************/
+
+
+#define Iptr   int *
+
+int main()
+{
+	Iptr p1, p2;  //p2 is int
+
+}
+/**********************************************************************************************************************/
+
+typedef bildirimlerinin altın kuralı
+------------------------------------
+
+1. Hangi türe eş isim vermek istiyorsanız o türden bir değişken tanımlayın.
+2. Tanımlamanın başına typedef anahtar sözcüğünü yazın
+3. değişken ismini tür (eş) ismi olarak değiştirin
+
+typedef int Word;
+
+typedef int *Iptr;
+
+typedef int Inta10[10];
+
+
+
+typedef int Inta10[10];
+
+int main()
+{
+	Inta10 a, b, c;
+	//int a[10], b[10], c[10];
+
+	for (int i = 0; i < 10; ++i) {
+		a[i] = b[i] = c[i] = i;
+	}
+
+}
+/**********************************************************************************************************************/
+
+
+typedef int(*Fptr)(int, int);
+
+Fptr foo(Fptr);
+
+int main()
+{
+	Fptr a[10];
+}
+/**********************************************************************************************************************/
+
+
+
+typedef int *IPTR;
+
+int main()
+{
+	int x = 10;
+	int y = 23;
+
+	const int *p1 = &x;
+	int *const p2 = &x;
+
+	IPTR const p3 = &x;
+
+	p3 = &y;  //gecersiz
+	*p3 = 987;
+
+}
+/**********************************************************************************************************************/
+
+
+typedef const int *CIPTR;
+
+int main()
+{
+	int x = 10;
+	int y = 23;
+
+	CIPTR ptr = &x;
+
+	//*ptr = 12;
+	ptr = &y;
+
+}
+/**********************************************************************************************************************/
+
+
+typedef const int *CIPTR;
+
+int main()
+{
+	int x = 10;
+	int y = 23;
+
+	const CIPTR ptr = &x;
+	//const int *const ptr = &x;
+	//*ptr = 12;
+	//ptr = &y;
+
+}
+/**********************************************************************************************************************/

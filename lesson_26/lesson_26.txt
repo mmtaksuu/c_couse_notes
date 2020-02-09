@@ -1,0 +1,131 @@
+typedef unsigned long size_t;
+size_t strlen(const char *p);
+
+-------------------------------------------------------------
+size_t
+ptrdiff_t
+clock_t
+fpos_t
+ldiv_t
+....
+
+size_t
+
+sizeof operatörünün ürettiği değerin türü
+derleyicinin seçimine bağlı olarak işaretsiz bir tamsayı türü
+std library size_t türünü aşağıdaki durumlarda kullanir:
+
+1) yazı uzunluğu türü
+2) tane-adet türü
+3) sizeof türü
+4) dizi boyutu türü
+
+
+#include <stdio.h>
+
+int *gp;
+
+int main()
+{
+	printf("%d\n", gp == NULL);
+}
+/**********************************************************************************************************************/
+
+
+#include <stdio.h>
+
+int g = 12;
+
+int main()
+{
+	int *p[5] = { &g };
+	printf("%d\n", p[1] == NULL);
+	printf("%d\n", p[2] == NULL);
+	printf("%d\n", p[3] == NULL);
+	printf("%d\n", p[4] == NULL);
+}
+/**********************************************************************************************************************/
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+
+int main()
+{
+	size_t n;
+
+	printf("kac ogeli bir dizi: ");
+	scanf("%zu", &n);
+	int *pd = malloc(n * sizeof(int));
+	if (!pd) {
+		printf("bellek yetersiz\n");
+		return 1;
+	}
+
+	set_random_array(pd, n);
+	display_array(pd, n);
+	free(pd); //pd is a dangling pointer now
+	pd = NULL;
+
+	///code
+}
+/**********************************************************************************************************************/
+
+
+
+int *pf = NULL;
+
+if (exp) {
+	pf = object address;
+	////
+
+}
+
+if (pf)
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include "nutility.h"
+#include <stdlib.h>
+
+int main()
+{
+	size_t n;
+
+	printf("kac ogeli bir dizi: ");
+	scanf("%zu", &n);
+	int *pd = malloc(n * sizeof(int));
+	if (!pd) {
+		printf("bellek yetersiz\n");
+		return 1;
+	}
+
+	set_random_array(pd, n);
+	display_array(pd, n);
+	free(pd); //pd is a dangling pointer now
+	pd = NULL;
+
+	///code
+}
+/**********************************************************************************************************************/
+
+string kütüphanesi
+<string.h>
+
+
+
+string literals (string sabitleri)
+pointer arrays (gösterici dizileri)
+pointer to pointer (gösterici gösteren göstericiler)
+void pointers (void göstericiler)
+function pointers (fonksiyon göstericileri)
+multi-dimensional arrays (çok boyutlu diziler)
+dynamic memory management (dinamik bellek yönetimi)
+pointer hataları
+-----------------
+
+
+
+size_t strlen(const char *p);

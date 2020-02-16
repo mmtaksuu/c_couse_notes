@@ -401,7 +401,7 @@ const int * const ptr = &x;
     - Array traversal
 ``` c
 for (int i = 0; i < size; ++i)
-	printf("%d\n", ptr[i]);
+    printf("%d\n", ptr[i]);
 ```
 ``` c   
 while(size --)
@@ -420,3 +420,8 @@ while(size --)
 ## Lesson 26 :
     - size_t, time_t, ptrdiff_t, clock_t, etc.
     - NULL Pointer 
+    
+## Lesson 27 :
+    - string.h header file 
+    - strlen, strchr, strcpy, strcmp, strstr, strcat functions
+    - restrict keyword

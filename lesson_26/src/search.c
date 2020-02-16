@@ -9,11 +9,11 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <time.h>
+//#include <time.h>
 
 
-#define     randomize()       (srand((unsigned)time(NULL)))
-#define     SIZE              20
+//#define     randomize()       (srand((unsigned)time(NULL)))
+//#define     SIZE              20
 
 
 void set_random_array(int *p, size_t size)
@@ -46,28 +46,28 @@ int * search(const int *p, size_t size, int * desired_val)
 }
 
 
-int main(void)
-{
-
-    int a[SIZE];
-
-    randomize();
-
-    set_random_array(a, SIZE);
-    display_array(a, SIZE);
-
-    int ival;
-    printf("Enter the desired value : ");
-    scanf("%d", &ival);
-
-    int *ptr = search(a, SIZE, &ival);
-
-    if (ptr == NULL)
-        printf("Desired value was not found !\n");
-    else
-        printf("Desired value found at %d index : %d", ptr-a, *ptr);
-
-    return 0;
-}
+//int main(void)
+//{
+//
+//    int a[SIZE];
+//
+//    randomize();
+//
+//    set_random_array(a, SIZE);
+//    display_array(a, SIZE);
+//
+//    int ival;
+//    printf("Enter the desired value : ");
+//    scanf("%d", &ival);
+//
+//    int *ptr = search(a, SIZE, &ival);
+//
+//    if (ptr == NULL)
+//        printf("Desired value was not found !\n");
+//    else
+//        printf("Desired value found at %d index : %d", ptr-a, *ptr);
+//
+//    return 0;
+//}
 
 

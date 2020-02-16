@@ -1,0 +1,74 @@
+
+1. NULL bir makrodur. Bir anahtar sözcük değildir. Bir isim (identifier değildir)
+
+2. Bu makro, C'nin bazı standart başlık dosyalarında tanımlanmıştır. Örneğin:
+	stddef.h, stdio.h, stdlib.h, string.h, time.h, locale.h
+	Derleyicilerin çok büyük çoğunluğunda NULL makrosu şöyle tanımlanmıştır:
+	#define   NULL   ((void *)0)
+
+3. NULL bir adres sabitidir. (NULL pointer/NULL gösterici diye okuyunuz)
+   NULL pointer sabiti pointer değişkenlere atamak ya da ilk değer vermek için kullanılır.
+   Asla pointer olmayan bir değişkene NULL sabitini atamayın.
+   Herhangi türden bir pointer değişkene atanabilir.
+
+4. NULL pointer geçerli bir adrestir (valid pointer). Ancak NULL pointer hiçbir nesnenin adresi değildir.
+	Eğer bir pointer bir nesneyi gösteriyor ise ya da bir dizinin bittiği yerin adresini tutuyor ise
+	değeri NULL pointer olamaz.
+	değeri NULL pointer olan bir değişkeni "dereference etmek" (yani içerik opertörünün ya da [] operatörünün)
+	operandı yapmak tanımsız davranıştır.
+	pointer aritmetiğine dayalı tüm aritmetik işlemler tanımsız davranıştır
+
+5.  NULL pointer == ve != operatörlerinin operandları olabilir
+
+	if (ptr == NULL)
+	if (ptr != NULL)
+
+	gibi
+
+	eğer iki pointer değişkenin ikisinin de değeri NULL pointer ise bu pointer değişlkenler değerce eşttir
+
+6. Lojik kontrol gereken yerlerde aritmetik türlerden bir ifade kullanılırsa
+   lojik yorumlama ifade değerinin  zero/non-zero olmasına göre yapılır.
+   Ancak C ve C++ dillerinde  Lojik kontrol gereken bir yerde bir adres ifadesinin bulunması geçerlidir
+   Bu durumda lojik yorumlama
+	eğer adres NULL pointer ise ----> yanlış
+	eğer adres NULL pointer değil ise ----> true biçiminde sonuçlanır
+
+
+	Yani bu dillerde ptr bir pointer değişken olmak üzere
+	if (ptr != NULL)
+	demek ile
+	if (ptr)
+	demek aynı anlamdadır
+
+	tabi ki
+	if (ptr == NULL)
+	demek ile
+	if (!ptr)
+	aynı anlamdadır
+
+	Normal olarak bir pointer değişkene bir adres atanmalıdır. Bir pointer değişkene
+	bir tamsayı ifadesinin atanması yanlıştır. (C++'da sentaks hatasıdır)
+	Ancak bu durumun bir istisanası vardır: Bir pointer değişkene tamsayı sabiti olarak
+	0 atanması:
+
+	int *ptr = 0;
+
+
+	iptr = 0;
+
+
+	Temel türlerden (basic types) statik ömürlü bir değişkene ilk değer verilmez ise derleyici onu (içsel olarak)
+	0 değeri ile hayata başlatır. Ancak statik ömürlü bir pointer değişkene ilk değer verilmez ise derleyici onu NULL
+	pointer değeri ile hayata başlatır.
+
+	eğer dizi temel türlerden ise
+	Bir dizinin tanımında dizi boyutu belirtilirse ve diziye ilk değer verilirse,
+	eğer ilk değer veren ifade sayısı dizinin belirtilen boyutundan küçük ise
+	ilk değer verilemeyen tüm öğeler derleyici tarafından hayata 0 değeri ile başlatılır.
+
+	dizi pointer dizisi ise
+	Bir dizinin tanımında dizi boyutu belirtilirse ve diziye ilk değer verilirse,
+	eğer ilk değer veren ifade sayısı dizinin belirtilen boyutundan küçük ise
+	ilk değer verilemeyen tüm öğeler derleyici tarafından hayata NULL pointer değeri ile başlatılır.
+

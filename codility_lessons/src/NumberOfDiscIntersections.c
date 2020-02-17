@@ -29,8 +29,8 @@ int solution(const int A[], int N)
     int cnt = 0;
 
     for (int i = 0; i < N; ++i) {
-        for (int j = i; j < N; ++j) {
-            if (((i + A[i]) > (j - A[j])) && i != j){
+        for (int j = i+1; j < N; ++j) {
+            if (((i + A[i]) >= (j - A[j])) && i != j){
                 printf("A[%d] and A[%d] \n", i, j);
                 ++cnt;
             }

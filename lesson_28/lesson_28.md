@@ -1,7 +1,11 @@
 <locale.h> header file
 ----------------------
 
-
+```shell script
+sudo mkdir "new_files"  
+cd new_files
+sudo chmod 777 mycode.c
+```
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS

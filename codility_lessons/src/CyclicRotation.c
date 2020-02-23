@@ -1,10 +1,11 @@
-/*
-  Project Name: LESSON_
-  Author: MEHMET AKSU	
-  Author Email: mmtaksu.25@gmail.com
-  Date: 17 / February / 2020	
-  File Description: CyclicRotation.c file 
-*/
+/**
+ * @file    : codility project file
+ * @author  : MEHMET AKSU
+ * @note    : mmtaksu.25@gmail.com
+ * @date    : 17 / February / 2020
+ * @code    : CyclicRotation.c file
+ * @details :
+ */
 
 #include <stdio.h>
 
@@ -50,7 +51,12 @@ int main(void)
     return 0;
 }
 
-
+/**
+ * @brief this function swaps two numbers for the given address
+ * @param num1 of the address
+ * @param num2 of the address
+ * @returns nothing
+ */
 void swap(int *num1, int *num2)
 {
     int temp = *num1;
@@ -58,7 +64,13 @@ void swap(int *num1, int *num2)
     *num2 = temp;
 }
 
-
+/**
+ *
+ * @param A
+ * @param N
+ * @param K
+ * @return
+ */
 Results solution(int A[], int N, int K)
 {
     Results temp_t;

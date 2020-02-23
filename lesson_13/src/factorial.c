@@ -6,7 +6,7 @@
   File Description: factorial.c file calculates factorial for the given number.
 */
 
-/**********************************************************************************************************************/
+
 #include <stdio.h>
 
 long long int factorial(int x)

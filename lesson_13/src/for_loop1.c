@@ -29,6 +29,7 @@ int main(void)
 // Function Definitions
 int f1(void){
     i = 0;
+    return i;
 }
 
 

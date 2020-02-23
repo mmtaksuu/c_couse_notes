@@ -30,10 +30,5 @@ int main(void)
     else
         printf("%c is not an alphanumeric.\n", ch);
 
-
-
-
-
-
     return 0;
 }

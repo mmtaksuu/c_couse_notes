@@ -6,12 +6,14 @@
   Description: for_loop2.c file
 */
 
+
 #include <stdio.h>
 
-#define    SIZE    10
+#define     SIZE              10
 
 
 int main(void) {
+
     int arr[SIZE];
 
     printf("Please fill the array with 10 numbers.\n");
@@ -19,6 +21,7 @@ int main(void) {
     for (int i = 0; i < SIZE; ++i) {
         printf("[%d] : ", i);
         scanf("%d", &arr[i]);
+
     }
 
 

@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.15)
 project(LESSON_13 C)
 
-set(CMAKE_C_STANDARD 99)
-#set (CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_STANDARD 11)
+set (CMAKE_CXX_STANDARD 11)
 
 # lots of warnings and all warnings as errors
 add_compile_options(-Wall -Wextra -pedantic-errors -Werror -Wconversion -Wsign-conversion)
 
 add_executable(for_loop1 src/for_loop1.c )
 add_executable(for_loop2 src/for_loop2.c)
-add_executable(recursive_01 src/recursive_01.c)
+add_executable(recursive_and_iterative_power_func src/recursive_and_iterative_power_func.c)
 add_executable(factorial src/factorial.c)
 add_executable(factorial_look_up_table src/factorial_look_up_table.c)
 add_executable(recursive_factroial src/recursive_factroial.c)

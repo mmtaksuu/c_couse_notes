@@ -1,10 +1,11 @@
-/*
-  Project Name: LESSON_27
-  Author: MEHMET AKSU	
-  Author Email: mmtaksu.25@gmail.com
-  Date: 17 / February / 2020	
-  File Description: main.c file 
-*/
+/**
+ * @file    : codility project file
+ * @author  : MEHMET AKSU
+ * @note    : mmtaksu.25@gmail.com
+ * @date    : 17 / February / 2020
+ * @code    : NumberOfDiscIntersections.c file
+ * @details :
+ */
 
 #include <stdio.h>
 

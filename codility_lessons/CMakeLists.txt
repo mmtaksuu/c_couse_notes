@@ -8,3 +8,4 @@ add_compile_options(-Wall -Wextra -pedantic-errors -Werror -Wconversion -Wsign-c
 
 add_executable(NumberOfDiscIntersections src/NumberOfDiscIntersections.c)
 add_executable(CyclicRotation src/CyclicRotation.c)
+add_executable(bsort src/bsort.c ../../helper.c ../../helper.h)

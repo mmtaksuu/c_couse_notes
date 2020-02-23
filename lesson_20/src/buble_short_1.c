@@ -9,25 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../../helper.h"
 
 #define     SIZE            40
-#define     randomize()     (srand((unsigned)time(NULL)))
 
-
-void set_random_array(int *p, int size)
-{
-    for (int i = 0; i < size; ++i) {
-        p[i] = rand() % 20;
-    }
-}
-
-
-void display_array(int *p, int size)
-{
-    for (int i = 0; i < size; ++i) {
-        printf("%2d%c", p[i], i % 20 == 19 ? '\n' : ' ');
-    }
-}
 
 
 void swap_array_items(int *p1, int *p2)
@@ -40,12 +25,9 @@ void swap_array_items(int *p1, int *p2)
 
 void do_bubble_sort(int *p, int size)
 {
-    for (int i = 0; i < size - 1; ++i)
-    {
-        for (int k = 0; k < size - 1 - i; ++k)
-        {
-            if (p[k] > p[k+1])
-            {
+    for (int i = 0; i < size - 1; ++i) {
+        for (int k = 0; k < size - 1 - i; ++k) {
+            if (p[k] > p[k+1]) {
                 swap_array_items(&p[k], &p[k+1]);
             }
         }
@@ -60,7 +42,7 @@ int main(void)
     randomize();
 
     // Fill array with random numbers
-    set_random_array(a, SIZE);
+    set_random_array(a, SIZE, 3);
 
     printf("\nUnsorted Array : \n");
     display_array(a, SIZE);

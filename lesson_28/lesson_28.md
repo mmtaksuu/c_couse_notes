@@ -1,12 +1,6 @@
 <locale.h> header file
 ----------------------
 
-```shell script
-sudo mkdir "new_files"  
-cd new_files
-sudo chmod 777 mycode.c
-sudo apt install <package_name>
-```
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS

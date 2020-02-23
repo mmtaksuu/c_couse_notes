@@ -12,25 +12,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../../helper.h"
 
 #define     SIZE            60
-#define     randomize()     (srand((unsigned)time(NULL)))
-
-
-void set_random_array(int *p, int size)
-{
-    for (int i = 0; i < size; ++i) {
-        p[i] = rand() % 20;
-    }
-}
-
-
-void display_array(int *p, int size)
-{
-    for (int i = 0; i < size; ++i) {
-        printf("%2d%c", p[i], i % 20 == 19 ? '\n' : ' ');
-    }
-}
 
 
 void swap_array_items(int *p1, int *p2)
@@ -54,6 +38,7 @@ void do_bubble_sort(int *p, int size)
 
             // Case 2: Ardisik elemanlarin tek-cift durumlari ayni ve a[k] > a[k+1] oldugu durumdur.
             // ((a[k] % 2 == a[k+1] % 2) && a[k] > a[k+1])
+
             if ((p[k] % 2 == 0 && p[k+1] % 2 != 0) || ((p[k] % 2 == p[k+1] % 2) && p[k] > p[k+1]))
             {
                 swap_array_items(&p[k], &p[k+1]);
@@ -70,7 +55,7 @@ int main(void)
     randomize();
 
     // Fill array with random numbers
-    set_random_array(a, SIZE);
+    set_random_array(a, SIZE, 2);
 
     printf("\nUnsorted Array : \n");
     display_array(a, SIZE);

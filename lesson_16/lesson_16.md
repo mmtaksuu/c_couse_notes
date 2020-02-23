@@ -1,3 +1,116 @@
+Kosullu Derleme
+---------------
+
+```c
+#defined NECO
+#ifdef   NECO
+	#ifndef  DOGAN
+	typedef int Word
+	#endif
+#endif
+```
+
+```c
+#define  NECO
+
+#if defined   NECO &&  !defined  DOGAN
+	typedef int Word
+#endif
+```
+
+
+multiple inclusion guard
+------------------------
+
+```c
+#ifndef  NUTILITY_H
+#define  NUTILITY_H
+
+struct Data {
+	int x, y, z;
+};
+
+#endif
+```
+
+
+```c
+#define   DOLLAR    1
+#define   EURO		2
+#define   GBP		3
+#define   YEN		4
+
+#define   CURRENCY       YEN
+
+
+#if  CURRENCY == DOLLAR
+	const char *const pcur = "dollar";
+#else
+	#if  CURRENCY == EURO
+		const char *const pcur = "dollar";
+	#else
+#if  CURRENCY == GBP
+const char *const pcur = "pound";
+#else
+#if  CURRENCY == YEN
+const char *const pcur = "yen";
+#endif
+#endif
+#endif
+#endif
+```
+
+
+```c
+#define   DOLLAR    1
+#define   EURO		2
+#define   GBP		3
+#define   YEN		4
+
+#define   CURRENCY       YEN
+
+
+#if  CURRENCY == DOLLAR
+	const char *const pcur = "dollar";
+#elif  CURRENCY == EURO
+		const char *const pcur = "dollar";
+#elif  CURRENCY == GBP
+const char *const pcur = "pound";
+#elif  CURRENCY == YEN
+const char *const pcur = "yen";
+#endif
+
+
+#undef
+```
+
+
+
+```c
+#define    max2(a, b)   ((a) > (b) ? (a) : (b))
+#undef  max2
+
+
+#undef      NEC
+#define     NEC   100
+```
+
+
+ÖN TANIMLI SEMBOLİK SABİTLER
+predefined symbolic constants
+-----------------------------
+
+```c
+__LINE__
+__FILE__
+__DATE__
+__TIME__
+
+__func__
+__STDC__
+```
+
+
 ``` c
 #include <stdio.h>
 
@@ -78,17 +191,20 @@ int main()
 
 
 switch statement
+---------------
 
 label
 
 
+```c
 switch (integer exp) {
 case 2:
 case 5:
-statementx;
+    statementx;
 case 6:
 
 }
+```
 
 ``` c
 #define _CRT_SECURE_NO_WARNINGS
@@ -114,6 +230,7 @@ int main()
 ```
 
 
+```c
 case 'A' :
 
 case "B" : //gecersiz
@@ -121,23 +238,28 @@ case "B" : //gecersiz
 case 3.4:
 
 case ival:
+```
 
 sembolik sabit
 enumaration
 
 
+```c
 switch (getCardSuit(Card)) {
 case CLUB   :
 case DIAMOND:
 case HEART  :
 case SPADE :
 }
+```
 
+```c
 case  NEC + XYZ:
 
 case 1 << 4 :
 case 1 << 4 :
 case 1 << 5 :
+```
 
 ``` c
 #define _CRT_SECURE_NO_WARNINGS
@@ -164,7 +286,6 @@ int main()
 	}
 
 }
-/**********************************************************************************************************************/
 ```
 
 ``` c
@@ -191,7 +312,6 @@ int main()
 	}
 
 }
-/**********************************************************************************************************************/
 ```
 
 
@@ -238,13 +358,4 @@ int main()
 	}
 
 }
-/**********************************************************************************************************************/
 ```
-
-
-switch (x) {
-case 2: case 5: case 123: case 194: case 212: case 345:
-
-x = 10;
-
-}

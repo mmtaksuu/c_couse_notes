@@ -1,3 +1,9 @@
+<locale.h> header file
+----------------------
+
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
@@ -21,9 +27,10 @@ int main()
 	printf("d = %f\n", d);
 
 }
-/**********************************************************************************************************************/
+```
 
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
@@ -47,11 +54,11 @@ int main()
 	strftime(buffer, SIZE, "%d %A %B %Y", localtime(&timer));
 	puts(buffer);
 }
-/**********************************************************************************************************************/
+```
 
-J
-MARIA VARGA LLOZA
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
@@ -63,7 +70,7 @@ MARIA VARGA LLOZA
 #define   SIZE      100
 
 //   dogancan  can
-//
+
 int is_at_end(const char *p1, const char *p2)
 {
 	size_t lenp1 = strlen(p1);
@@ -92,8 +99,10 @@ int main()
 		printf("hayir yok\n");
 
 }
-/**********************************************************************************************************************/
+```
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
@@ -124,9 +133,10 @@ int main()
 	printf("[%s]\n", str);
 	//printf("[%s]\n", trim(str));
 }
+```
 
-/**********************************************************************************************************************/
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <string.h>
@@ -148,11 +158,11 @@ int main()
 
 	printf("ch = %d\n", ch);
 
-
 }
+```
 
-/**********************************************************************************************************************/
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -172,8 +182,10 @@ int main()
 	fclose(f);
 
 }
-/**********************************************************************************************************************/
+```
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -209,10 +221,10 @@ int main()
 
 
 }
-/**********************************************************************************************************************/
+```
 
 
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -261,9 +273,12 @@ int main()
 
 
 }
-/**********************************************************************************************************************/
+```
 
-string literal
+
+
+String Literals
+---------------
 
 "mustafa"
 
@@ -284,6 +299,7 @@ Bu konuda C ve C++ dilleri arasında kural farklılığı var
 string literalleri statik ömürlü dizilerdir.
 string literallerini değiştirme girişimi tanımsız davranıştır
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -297,7 +313,9 @@ int main()
 	putchar(*"dogancan");
 	putchar("ibrahim"[3]);
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -310,7 +328,9 @@ int main()
 	printf("%d\n", 3["coders"] - 2["coders"]);
 	printf("%d\n", "coders"[3] - "coders"[2]);
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -322,7 +342,9 @@ int main()
 {
 	printf("%zu\n", strlen("cenk"));
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -338,7 +360,9 @@ int main()
 		//printf("%p\n", str);
 	}
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 
@@ -350,8 +374,9 @@ int main()
 	char *p = "mustafa"; //gecersiz const char * -----> char * dönüşümü yok
 
 }
-/**********************************************************************************************************************/
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -365,7 +390,10 @@ int main()
 
 	puts(p);
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -384,7 +412,10 @@ int main()
 
 
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -398,10 +429,11 @@ int main()
 
 	strcat(p, str); //ub
 
-
-
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -414,9 +446,11 @@ int main()
 
 	_strrev(p); //ub
 
-
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -430,11 +464,11 @@ int main()
 
 	strcat(s, p);
 
-
 }
-/**********************************************************************************************************************/
+```
 
 
+```c
 void func()
 {
 	//char str[] = "nurcan";
@@ -446,9 +480,11 @@ int main()
 {
 
 }
-/**********************************************************************************************************************/
-#include <stdio.h>
+```
 
+
+```c
+#include <stdio.h>
 
 const char *get_day_name(int weekday)
 {
@@ -475,7 +511,10 @@ int main()
 	printf("haftanin %d. gunu %s\n", n, get_day_name(n));
 
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #include <stdio.h>
 
 int get_hexchar(int val)
@@ -499,7 +538,9 @@ int main()
 	}
 
 }
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -517,8 +558,8 @@ int main()
 	else
 		printf("yanlis\n");
 }
+```
 
-/**********************************************************************************************************************/
 
 
 char str[100];
@@ -528,6 +569,7 @@ if (str == "necati")
 
 'a'    "a"
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -566,7 +608,9 @@ int main()
 
 	printf("(%s)  (%s)\n", old_file_name, new_file_name);
 }
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -603,7 +647,10 @@ int main()
 
 	printf("(%s)  (%s)\n", old_file_name, new_file_name);
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -614,20 +661,21 @@ int main()
 
 int main()
 {
-												const char *pmsg = "su anda tum hatalarimiz dolu oldugundan \
+	const char *pmsg = "su anda tum hatalarimiz dolu oldugundan \
 musteri temsilcilerimiz size yanit veremiyor en erken bes dakika icinde \
 hizmet alabileceksiniz. simdi ayni mesaji ";
 
 	puts(pmsg);
 
 }
-/**********************************************************************************************************************/
+```
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <string.h>
-
 
 
 int main()
@@ -641,14 +689,14 @@ int main()
 	puts(p);
 
 }
-/**********************************************************************************************************************/
+```
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <string.h>
-
-
 
 int main()
 {
@@ -661,4 +709,4 @@ int main()
 		"[6] Programdan Cik\n");
 
 }
-/**********************************************************************************************************************/
+```

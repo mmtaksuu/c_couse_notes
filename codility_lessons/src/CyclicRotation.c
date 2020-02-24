@@ -8,8 +8,9 @@
  */
 
 #include <stdio.h>
+#include "../../helper.h"
 
-#define     asize(x)          (sizeof(x) / sizeof (x[0]))
+#define     SIZE              10
 
 typedef struct {
     int * A;
@@ -17,52 +18,29 @@ typedef struct {
 } Results;
 
 Results solution(int A[], int N, int K);
-void swap(int *, int *);
 
 
 int main(void)
 {
-    int a[] = {3, 8, 9, 7, 6};
-    int size = (int)asize(a);
+
+    int a[SIZE];
+    set_random_array(a, SIZE, 2);
+    int rotation_numbers = 7;
+
 
     printf("Given   : = ");
-    printf("[ ");
-    for (int i = 0; i < size; ++i) {
-        printf("%d%c ", a[i], i % size == size-1 ? ' ' : ',');
-    }
-    printf("]\n");
+    display_array(a, SIZE);
 
+    Results test_t;
 
-    Results result_t;
-
-    result_t.A = a;
-    result_t.N = size;
-    result_t = solution(result_t.A, result_t.N, 3);
-
+    test_t = solution(a, SIZE, rotation_numbers);
 
     printf("Rotated : = ");
-    printf("[ ");
-    for (int i = 0; i < result_t.N; ++i) {
-        printf("%d%c ", *(result_t.A + i), i % result_t.N == result_t.N-1 ? ' ' : ',');
-    }
-    printf("]\n");
-
+    display_array(test_t.A, (size_t)test_t.N);
 
     return 0;
 }
 
-/**
- * @brief this function swaps two numbers for the given address
- * @param num1 of the address
- * @param num2 of the address
- * @returns nothing
- */
-void swap(int *num1, int *num2)
-{
-    int temp = *num1;
-    *num1 = *num2;
-    *num2 = temp;
-}
 
 /**
  *
@@ -73,21 +51,39 @@ void swap(int *num1, int *num2)
  */
 Results solution(int A[], int N, int K)
 {
-    Results temp_t;
+    Results result_t;
 
-    for (int i = 0; i < K; ++i) {
-        for (int j = 0; j < N-1; ++j) {
-            swap(&A[j], &A[j+1]);
-//            if (j != N-1)
-//                swap(&A[j], &A[j+1]);
-//            else
-//                swap(&A[j], &A[N-1]);
+    if (K == 0 || K == N){
+        result_t.A = A;
+        result_t.N = N;
+        return result_t;
+    }
+
+    else if (K > N){
+        K = K % N;
+    }
+
+    int remaining_elem_num = (N - K);
+    int * pRem_elems = (int *) malloc(sizeof(int) * remaining_elem_num);
+
+    for (int i = 0; i < remaining_elem_num; ++i) {
+        pRem_elems[i] = A[i];
+    }
+
+    for (int i = 0; i < N; ++i) {
+
+        if (i < K){
+            A[i] = A[remaining_elem_num + i];
+        }
+        else{
+            A[i] = pRem_elems[i - K];
         }
     }
 
+    free(pRem_elems);
 
-    temp_t.A = A;
-    temp_t.N = N;
+    result_t.A = A;
+    result_t.N = N;
 
-    return temp_t;
+    return result_t;
 }

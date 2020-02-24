@@ -20,6 +20,12 @@
 #define     randomize()       (srand((unsigned)time(NULL)))
 
 /**
+ * @brief Asize idiom
+ * @details Used to find size of the given array
+ */
+#define     asize(x)          (sizeof(x) / sizeof (x[0]))
+
+/**
  * @brief Integer random number generator
  * @param num_of_digits is number of digit for generating number
  * @details Generates random numbers type of int for the given number of digits

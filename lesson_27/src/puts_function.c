@@ -8,9 +8,7 @@
 
 #include <stdio.h>
 
-
 #define     SIZE              100
-
 
 char *sgets(char *p)
 {
@@ -25,20 +23,14 @@ char *sgets(char *p)
     return ptemp;
 }
 
-int puts_(char *p)
+void puts_(const char *p)
 {
-    char * ptemp = p;
-
-    while (*ptemp != '\0') {
-        putchar(*ptemp);
-        ++ptemp;
-    }
+    while (*p != '\0')
+        printf("%c", *p++);
 
     putchar('\n');
 
-    return (int)(ptemp - p);
 }
-
 
 
 int main(void)
@@ -48,10 +40,7 @@ int main(void)
     printf("Enter a text : ");
     sgets(str);
 
-    puts(str);
-
-    int len = puts_(str);
-    printf("len is %d\n", len);
+    puts_(str);
 
     return 0;
 }

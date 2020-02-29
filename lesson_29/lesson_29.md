@@ -91,22 +91,10 @@ Endianness
 
 int main()
 {
-	int x = 15;
+	int x = 15; // 4 bytes
 }
-
-0000 0000 0000 0000 0000 0000 0000 1111
-
-Big endian
-4000   0000 0000
-4001   0000 0000
-4002   0000 0000
-4003   0000 0001
-
-Little endian
-4000   0000 0001
-4001   0000 0000
-4002   0000 0000
-4003   0000 0000
+MSB                                     LSB
+  0000 0000 0000 0000 0000 0000 0000 1111
 ```
 
 
@@ -127,6 +115,29 @@ int main()
 }
 ```
 
+```text
+int main()
+{
+	int x = 1; // 4 bytes
+}
+MSB                                     LSB
+  0000 0000 0000 0000 0000 0000 0000 0001
+
+Sistemde tanimlanan bir degiskenin dusuk anlamli biti "LSB" 
+yuksek sayisal adreste tutuluyor ise little endian mimaridir.
+
+Big endian 
+4000   0000 0000
+4001   0000 0000
+4002   0000 0000
+4003   0000 0001
+
+Little endian
+4000   0000 0001
+4001   0000 0000
+4002   0000 0000
+4003   0000 0000
+```
 
 
 ```c

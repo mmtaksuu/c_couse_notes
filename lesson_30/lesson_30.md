@@ -790,13 +790,12 @@ int main()
 {
 	int x = 10;
 	void *vp = &x;
-	//int *iptr = vp;  //C'de gecerli ve dogru
-	//C++'da gecersiz
+	int *iptr = vp;  //C'de gecerli ve dogru
+	                //C++'da gecersiz
 
 	int *iptr = (int*) vp;
 
 }
 ```
 
-generic functions and generic pointer
-------------------------------------
+

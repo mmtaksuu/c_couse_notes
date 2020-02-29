@@ -11,9 +11,9 @@
 
 #define     SIZE              100
 
-char * sgets(char *p)
+char *sgets(char *p)
 {
-    char * ptemp = p;
+    char *ptemp = p;
     int ch;
 
     while((ch = getchar()) != '\n')
@@ -35,6 +35,13 @@ size_t strlen_(const char *p)
     return len;
 }
 
+void puts_(const char *p)
+{
+    while (*p != '\0')
+        printf("%c", *p++);
+
+    putchar('\n');
+}
 
 void rputs_(char *p)
 {
@@ -55,7 +62,7 @@ int main(void)
     printf("Enter a text : ");
     sgets(str);
 
-    puts(str);
+    puts_(str);
     rputs_(str);
 
     return 0;

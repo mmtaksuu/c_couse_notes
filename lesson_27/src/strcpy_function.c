@@ -11,12 +11,12 @@
 
 #define     SIZE              100
 
-char * sgets(char *p)
+char *sgets(char *p)
 {
-    char * ptemp = p;
+    char *ptemp = p;
     int ch;
 
-    while ((ch = getchar()) != '\n')
+    while((ch = getchar()) != '\n')
         *p++ = (char)ch;
 
     *p = '\0';

@@ -1,52 +1,52 @@
 <string.h> header file
 ----------------------
 
+```c
 size_t strlen(const char *p);
-	strchr
-	strrchr
-	strstr
-	strpbrk
-	strspn
-	strcspn
-strcpy
-strcat
+char * strchr(const char *p, int ch);
+char * strrchr(const char *p, int ch);
+char * strstr(char *pdest, const char *psource);
+strpbrk
+strspn
+strcspn
+char * strcpy(char *pdest, const char *psource);
+char * strcat(char *pdest, const char *psource);
 strcmp
 strcoll
-stncpy
-strncat
+stncpy(char *pdest, const char *psource, size_t n);
+strncat(char *pdest, const char *psource, size_t n);
 strncmp
 strtok
 strerror
+```
 
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <string.h>
-
 
 #define   SIZE      100
 
 int main()
 {
-	char str[SIZE];
-
-	printf("bir isim girin: ");
-	scanf("%s", str);
-	size_t  len = strlen(str);
-
-	printf("uzunluk = %zu\n", len);
-
-
+    char str[SIZE];
+    
+    printf("bir isim girin: ");
+    scanf("%s", str);
+    size_t  len = strlen(str);
+    
+    printf("uzunluk = %zu\n", len);
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <string.h>
 #include "nutility.h"
-
 
 
 #define   SIZE      100
@@ -79,10 +79,11 @@ int main()
 	rputs2(str);
 
 }
-/**********************************************************************************************************************/
+```
 
-ahmet ibrahim aksoy
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -102,9 +103,10 @@ int main()
 	for (size_t i = 0; i < len; ++i)
 		puts(str + i);
 
-
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -158,7 +160,9 @@ int main()
 	printf("%zu %zu %zu %zu\n", len1, len2, len3, len4);
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -205,7 +209,10 @@ int main()
 	puts(str);
 
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -270,7 +277,10 @@ int main()
 	}
 	puts(str);
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -278,8 +288,6 @@ int main()
 #include "nutility.h"
 
 #define   SIZE      100
-
-
 
 int main()
 {
@@ -299,9 +307,9 @@ int main()
 	printf("%zu\n", sizeof *cp);  //1
 
 }
-/**********************************************************************************************************************/
+```
 
-
+```text
 Bir pointer değişkeni gösterdiği yazının sonuna ötelemek
 
 while (*p)
@@ -340,8 +348,9 @@ p bir yazıyı göstermiyor ise veya p'nin gösterdiği yazı boş ise
 if (p == NULL || *p == '\0')
 
 if (!p || !*p)
----------------------------------------------------
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -360,7 +369,9 @@ int main()
 	strcpy(s2, s1);
 	printf("(%s) (%s)\n", s1, s2);
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -381,12 +392,20 @@ int main()
 	printf("(%s) (%s) (%s)\n", s1, s2, s3);
 
 }
-/**********************************************************************************************************************/
+```
 
+
+
+```text
+Iki char turden arrayi birbirine null karakter ile birlikte kopyalamak icin kullanilan C 
+idiomu :
 
 while (*p1++ = *p2++)
 	;
+```
 
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -406,18 +425,20 @@ char* strcpy1(char *pdest, const char *psource)
 	return ptemp;
 }
 
-//char* strcpy1(char *pdest, const char *psource)
-//{
-//	char *ptemp = pdest;
-//
-//	while (*psource != '\0') {
-//		*pdest = *psource;
-//		++pdest;
-//		++psource;
-//	}
-//  *pdest = '\0';
-//	return ptemp;
-//}
+
+char* strcpy2(char *pdest, const char *psource)
+{
+	char *ptemp = pdest;
+
+	while (*psource != '\0') {
+		*pdest = *psource;
+		++pdest;
+		++psource;
+	}
+  *pdest = '\0';
+	return ptemp;
+}
+
 
 int main()
 {
@@ -430,10 +451,13 @@ int main()
 	printf("(%s) (%s)\n", s1, s2);
 
 }
-/**********************************************************************************************************************/
+```
+
 
 pointer aliasing
+----------------
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -446,18 +470,16 @@ pointer aliasing
 int main()
 {
 	char str[100] = "gulden";
-	//
+	
 	strcpy(str + 3, str); //ub (strcpy işlevini overlapped bloklar üstünde kullanmamlısınız)
 
 	puts(str);
 
 }
-/**********************************************************************************************************************/
+```
 
 
-
-ahmetaksoy
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -480,7 +502,10 @@ int main()
 	printf("(%s) (%s)\n", s1, s2);
 
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -488,25 +513,6 @@ int main()
 #include "nutility.h"
 
 #define   SIZE      1000
-
-int main()
-{
-	char s1[SIZE];
-	char s2[SIZE];
-	char s3[SIZE];
-
-	printf("iki isim girin: ");
-	scanf("%s%s", s1, s2); //hilal altuntas
-
-	strcpy(s3, s1);
-	strcat(s3, s2);
-
-	printf("(%s) + (%s) = (%s)\n", s1, s2, s3); //(hilal) + (altuntas) = (hilalaltuntas)
-
-
-}
-/**********************************************************************************************************************/
-#include <string.h>
 
 
 char* strcat1(char *pdest, const char *psource)
@@ -536,7 +542,27 @@ char* strcat3(char *pdest, const char *psource)
 	return pdest;
 }
 
-/**********************************************************************************************************************/
+
+int main()
+{
+	char s1[SIZE];
+	char s2[SIZE];
+	char s3[SIZE];
+
+	printf("iki isim girin: ");
+	scanf("%s%s", s1, s2); //hilal altuntas
+
+	strcpy(s3, s1);
+	strcat(s3, s2);
+
+	printf("(%s) + (%s) = (%s)\n", s1, s2, s3); //(hilal) + (altuntas) = (hilalaltuntas)
+
+}
+```
+
+
+
+```c
 #include <string.h>
 #include "nutility.h"
 
@@ -561,11 +587,14 @@ int main()
 	}
 
 }
-/**********************************************************************************************************************/
+```
 
-yazıların karşılaştırılması
 
-container - collection
+Yazıların Karşılaştırılması
+--------------------------
+
+```text
+Container - collection
 
 lexicographical compare
 
@@ -580,3 +609,4 @@ MASA
 
 KUCUK MASA
 BUYUK MASA
+```

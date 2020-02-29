@@ -11,17 +11,27 @@
 
 #define     SIZE              100
 
-char * sgets(char *p)
+char *sgets(char *p)
 {
     char *ptemp = p;
     int ch;
 
-    while ((ch = getchar()) != '\n')
+    while((ch = getchar()) != '\n')
         *p++ = (char)ch;
 
     *p = '\0';
 
     return ptemp;
+}
+
+size_t strlen_(const char *p)
+{
+    size_t len = 0;
+
+    while (*p++ != '\0')
+        ++len;
+
+    return len;
 }
 
 
@@ -40,17 +50,21 @@ char* strchr_(const char *p, int ch)
 }
 
 
-size_t strlen_(const char *p)
+char * strchr(const char *p, int ch)
 {
-    size_t len = 0;
+    size_t i;
+    size_t len = strlen_(p);
 
-    while (*p++ != '\0')
-        ++len;
+    for (i = 0; p[i] != '\0' ; ++i) {
+        if (p[i] == ch)
+            break;
+    }
 
-    return len;
+    if (i < len)
+        return (char *)&p[i];
+    else
+        return NULL;
 }
-
-
 
 
 int main(void)
@@ -66,7 +80,7 @@ int main(void)
     printf("Enter the character you want to find : ");
     scanf("%c", &c);
 
-    char * cptr = strchr_(str, c);    // searches by starting 0 index
+    char * cptr = strchr(str, c);    // searches by starting 0 index
 
     if (cptr == NULL)
         printf("It didn't find!\n");

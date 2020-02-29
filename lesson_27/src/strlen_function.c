@@ -11,17 +11,17 @@
 
 #define     SIZE              100
 
-char* sgets(char * p)
+char *sgets(char *p)
 {
-    char * temp = p;
+    char *ptemp = p;
     int ch;
 
-    while ((ch = getchar()) != '\n')
+    while((ch = getchar()) != '\n')
         *p++ = (char)ch;
 
     *p = '\0';
 
-    return temp;
+    return ptemp;
 }
 
 
@@ -34,7 +34,6 @@ size_t strlen_(const char *p)
 
     return len;
 }
-
 
 
 int main(void)

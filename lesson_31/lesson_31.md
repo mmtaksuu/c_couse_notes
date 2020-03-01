@@ -1,6 +1,22 @@
-generic functions and generic pointers
+Generic Functions and Generic Pointers
 --------------------------------------
 
+```text
+<string.h> header file icerisinde 5 adet turden bagimsiz generic fonksiyon bulunmaktadir.
+Bu fonksiyonlar string.h dosyasi icinde tanimlanmis olsa dahi sadece yazilar icin degil tum
+turler ile islem yapmak icin kullanilabilir. Bu fonksiyonlar asagida verilmistir.
+```
+
+```c
+void *memset(void *vp, int val, size_t n);
+void *memcpy(void  *restrict vpdest, const void *restrict vpsource, size_t n);
+void *memmove(void *vpdest, const void *vpsource, size_t n);
+void *memchr(const void *vp, int val, size_t n);
+int   memcmp(const void *vp1, const void *vp2, size_t n);
+```
+
+
+
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -10,10 +26,10 @@ generic functions and generic pointers
 
 int main()
 {
-	int x = 12976;
-	memset(&x, 0, sizeof x);
-
-	printf("x = %d\n", x);
+    int x = 12976;
+    memset(&x, 0, sizeof x);
+    
+    printf("x = %d\n", x);
 }
 ```
 
@@ -28,15 +44,15 @@ int main()
 
 int main()
 {
-	int a[SIZE];
-
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-
-	memset(a, 0, sizeof(a));
-
-	display_array(a, SIZE);
+    int a[SIZE];
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    
+    memset(a, 0, sizeof(a));
+    
+    display_array(a, SIZE);
 }
 ```
 
@@ -51,17 +67,17 @@ int main()
 
 int main()
 {
-	int a[SIZE];
-
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-	int idx, n;
-	printf("indeks ve adet giriniz: ");
-	scanf("%d%d", &idx, &n);
-
-	memset(a + idx, 0, n * sizeof(int));
-	display_array(a, SIZE);
+    int a[SIZE];
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    int idx, n;
+    printf("indeks ve adet giriniz: ");
+    scanf("%d%d", &idx, &n);
+    
+    memset(a + idx, 0, n * sizeof(int));
+    display_array(a, SIZE);
 }
 ```
 
@@ -76,11 +92,11 @@ int main()
 
 int main()
 {
-	char str[100] = "bugun cok yagmur yagdi";
-	//3  10
-	memset(str + 3, 'X', 7);
-
-	puts(str);
+    char str[100] = "bugun cok yagmur yagdi";
+    //3  10
+    memset(str + 3, 'X', 7);
+    
+    puts(str);
 
 }
 ```
@@ -101,12 +117,12 @@ int main()
 int main()
 {
 
-	int x;
-
-	memset(&x, 255, sizeof x);
-	printf("x = %d\n", x);
-	memset(&x, 1, sizeof x);
-	printf("x = %d\n", x);
+    int x;
+    
+    memset(&x, 255, sizeof x);
+    printf("x = %d\n", x);
+    memset(&x, 1, sizeof x);
+    printf("x = %d\n", x);
 
 }
 ```
@@ -115,10 +131,7 @@ int main()
 int x;
 memset(&x, 255, sizeof x);
 
-1111 1111
-1111 1111
-1111 1111
-1111 1111
+1111 1111 1111 1111 1111 1111 1111 1111
 
 int x;
 memset(&x, 1, sizeof x);
@@ -138,46 +151,23 @@ memset(&x, 1, sizeof x);
 
 void* memset1(void *vp, int val, size_t n)
 {
-	//unsigned char *p = vp;
-	unsigned char *p = (unsigned char*)vp;
-	while (n--)
-		*p++ = (unsigned char)val;
-
-	return vp;
+    //unsigned char *p = vp;
+    unsigned char *p = (unsigned char*)vp;
+    while (n--)
+        *p++ = (unsigned char)val;
+    
+    return vp;
 }
 
 int main()
 {
 
-	int x;
-
-	memset(&x, 255, sizeof x);
-	printf("x = %d\n", x);
-	memset(&x, 1, sizeof x);
-	printf("x = %d\n", x);
-
-}
-```
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <string.h>
-#include "nutility.h"
-
-#define   SIZE      100
-
-int main()
-{
-	int a[SIZE];
-	int b[SIZE];
-
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-	memcpy(b, a, sizeof(a));
-	display_array(b, SIZE);
+    int x;
+    
+    memset(&x, 255, sizeof x);
+    printf("x = %d\n", x);
+    memset(&x, 1, sizeof x);
+    printf("x = %d\n", x);
 
 }
 ```
@@ -193,20 +183,15 @@ int main()
 
 int main()
 {
-	int a[SIZE];
-	int b[SIZE] = { 0 };
+    int a[SIZE];
+    int b[SIZE];
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    memcpy(b, a, sizeof(a));
+    display_array(b, SIZE);
 
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-	
-	size_t idx_a, idx_b, n;
-
-	printf("a'da indeks b'de indeks ve oge sayisi : ");
-	scanf("%zu%zu%zu", &idx_a, &idx_b, &n);
-	memcpy(b + idx_b, a + idx_a, n * sizeof(int));
-
-	display_array(b, SIZE);
 }
 ```
 
@@ -221,13 +206,41 @@ int main()
 
 int main()
 {
-	int a[SIZE];
-	
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-	
-	memcpy(a + 20, a, 60 * sizeof(int)); //ub
+    int a[SIZE];
+    int b[SIZE] = { 0 };
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    
+    size_t idx_a, idx_b, n;
+    
+    printf("a'da indeks b'de indeks ve oge sayisi : ");
+    scanf("%zu%zu%zu", &idx_a, &idx_b, &n);
+    memcpy(b + idx_b, a + idx_a, n * sizeof(int));
+    
+    display_array(b, SIZE);
+}
+```
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+#include "nutility.h"
+
+#define   SIZE      100
+
+int main()
+{
+    int a[SIZE];
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    
+    memcpy(a + 20, a, 60 * sizeof(int)); //ub
 
 }
 ```
@@ -244,24 +257,24 @@ int main()
 
 void* memcpy1(void *vpdest, const void *vpsource, size_t n)
 {
-	char *pdest = vpdest;
-	const char *psource = vpsource;
-
-	while (n--)
-		*pdest++ = *psource++;
-
-	return vpdest;
+    char *pdest = vpdest;
+    const char *psource = vpsource;
+    
+    while (n--)
+        *pdest++ = *psource++;
+    
+    return vpdest;
 }
 
 int main()
 {
-	int a[SIZE];
-	
-	randomize();
-	set_random_array(a, SIZE);
-	display_array(a, SIZE);
-	
-	memcpy(a + 20, a, 60 * sizeof(int)); //ub
+    int a[SIZE];
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    
+    memcpy(a + 20, a, 60 * sizeof(int)); //ub
 
 }
 ```
@@ -277,16 +290,16 @@ int main()
 
 int main()
 {
-	char s1[SIZE];
-	char s2[SIZE];
-
-	printf("yazi girin: ");
-	sgets(s1);
-
-	memcpy(s2, s1, strlen(s1) + 1);
-
-	printf("(%s)\n", s1);
-	printf("(%s)\n", s2);
+    char s1[SIZE];
+    char s2[SIZE];
+    
+    printf("yazi girin: ");
+    sgets(s1);
+    
+    memcpy(s2, s1, strlen(s1) + 1);
+    
+    printf("(%s)\n", s1);
+    printf("(%s)\n", s2);
 
 }
 ```
@@ -298,32 +311,32 @@ int main()
 
 void *memmove_(void *vpdest, const void *vpsource, size_t n)
 {
-	char *pdest = (char *)vpdest;
-	const char *psource = (const char *)vpsource;
-
-	if (pdest < psource) {
-		while (n--)
-			*pdest++ = *psource++;
-	}
-	else {
-		pdest += n;
-		psource += n;
-		while (n--)
-			*--pdest = *--psource;
-	}
-
-	return vpdest;
+    char *pdest = (char *)vpdest;
+    const char *psource = (const char *)vpsource;
+    
+    if (pdest < psource) {
+        while (n--)
+            *pdest++ = *psource++;
+    }
+    else {
+        pdest += n;
+        psource += n;
+        while (n--)
+            *--pdest = *--psource;
+    }
+    
+    return vpdest;
 }
 
 
 int main()
 {
-	char str[100] = "gulden";
-
-	//strcpy(str + 3, str);
-	memmove(str + 3, str, strlen(str) + 1);
-
-	puts(str);
+    char str[100] = "gulden";
+    
+    //strcpy(str + 3, str);
+    memmove(str + 3, str, strlen(str) + 1);
+    
+    puts(str);
 }
 ```
 
@@ -702,8 +715,8 @@ int main()
 }
 ```
 
-void * vs void ** Pointers
----------------------
+(void *) & (void **) Pointers
+-----------------------------
 
 ```text
     void *vp;                       void **p;

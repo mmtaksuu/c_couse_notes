@@ -1,5 +1,4 @@
-Generic Functions and Generic Pointers
---------------------------------------
+# Generic Functions and Generic Pointers
 
 ```text
 <string.h> header file icerisinde 5 adet turden bagimsiz generic fonksiyon bulunmaktadir.
@@ -505,8 +504,7 @@ int main()
 ```
 
 
-Generic Fonksiyonlarin Tasarimi ve Implementasyonu
---------------------------------------------------
+# Generic Fonksiyonlarin Tasarimi ve Implementasyonu
 
 
 ```c
@@ -715,8 +713,7 @@ int main()
 }
 ```
 
-(void *) & (void **) Pointers
------------------------------
+# (void *) & (void **) Pointers
 
 ```text
     void *vp;                       void **p;
@@ -772,8 +769,8 @@ int main()
 ```
 
 
-Function Pointers (Fonksiyon Gostericileri)
--------------------------------------------
+# Function Pointers (Fonksiyon Gostericileri)
+
 
 ```text
 int func(int);

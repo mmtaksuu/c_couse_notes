@@ -1,7 +1,6 @@
-LESSON_32
---------
+# LESSON_32
 
-####Definition of Type of Function Addresses in C
+### Definition of Type of Function Addresses in C
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -76,7 +75,7 @@ int main()
 }
 ```
 
-####Implementation of Qsort Using Standard Library Function
+### Implementation of Qsort Using Standard Library Function
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -146,7 +145,7 @@ siralayacak sekilde bir callback yazip qsort'u cagirin
 ```
 
 
-####Implementation of Bubble Sort Algorithm by Writing a Generic gsort() Function
+### Implementation of Bubble Sort Algorithm by Writing a Generic gsort() Function
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -217,7 +216,7 @@ int main()
 }
 ```
 
-####Implementation of Binary Search Algorithm Using Standard Library Function called bsearch() and our generic gsort() Function
+### Implementation of Binary Search Algorithm Using Standard Library Function called bsearch() and our generic gsort() Function
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -294,7 +293,7 @@ int main()
 ```
 
 
-####Sorting a char Array using standard qsort() Function 
+### Sorting a char Array using standard qsort() Function 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -357,10 +356,10 @@ int main()
 ```
 
 
-Function Pointer Arrays
------------------------
+# Function Pointer Arrays
 
-####Birbirine map edilmis iki look-up table kullanarak girilen karakter ve fonksiyon ismine gore sonucu bulma
+
+### Birbirine map edilmis iki look-up table kullanarak girilen karakter ve fonksiyon ismine gore sonucu bulma
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -476,10 +475,10 @@ int main()
 }
 ```
 
-C / C++ Kütüphanelerinde Sık Kullanılan Bir Yapı
-------------------------------------------------
+# C / C++ Kütüphanelerinde Sık Kullanılan Bir Yapı
 
-#### 1. Kullanim Temasi
+
+### 1. Kullanim Temasi
 ```text
 Global bir function pointer tanimlanarak yapilir.
 ```
@@ -542,7 +541,7 @@ int main()
 }
 ```
 
-#### 2. Kullanim Temasi
+### 2. Kullanim Temasi
 ```text
 Global bir function pointer array tanimlanarak yapilir.
 
@@ -635,8 +634,7 @@ int main()
 
 
 
-Multi-Dimensional Arrays in C
------------------------------
+# Multi-Dimensional Arrays in C
 
 ```c
 #include <stdio.h>

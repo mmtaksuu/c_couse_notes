@@ -48,7 +48,7 @@ float gen_rand_float_nums(int num_of_digits);
  * @param num_of_digits is used for filling the array with n number of digits random numbers
  * @details This function uses the gen_rand_int_nums() function to fill the given array with desired random numbers.
  */
-void set_random_array(int *p, size_t size, int num_of_digits);
+void set_random_array(void *vp, size_t size, int num_of_digits, const char *ptype);
 
 /**
  *

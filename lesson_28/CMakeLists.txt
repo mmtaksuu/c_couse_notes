@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.15)
+project(LESSON_28 C)
+
+set(CMAKE_C_STANDARD 99)
+
+# lots of warnings and all warnings as errors
+add_compile_options(-Wall -Wextra -pedantic-errors -Werror -Wconversion -Wsign-conversion)
+
+add_executable(locale_test src/locale_test_main.c ../src/locale_test.c ../includes/locale_test.h)

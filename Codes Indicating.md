@@ -1,4 +1,4 @@
-## [link](https://github.com/mmtaksuu/c_couse_notes)
+# [link](https://github.com/mmtaksuu/c_couse_notes)
 
 ``` python
 import os

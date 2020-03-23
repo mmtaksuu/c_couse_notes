@@ -350,10 +350,10 @@ int main()
 	int idx_last = SIZE - 1;
 	int idx_mid;
 
-	int cnt = 0;
+	int size = 0;
 
 	while (idx_first <= idx_last) {
-		++cnt;
+		++size;
 		idx_mid = (idx_first + idx_last) / 2;
 		if (a[idx_mid] == x)
 			break;
@@ -371,7 +371,7 @@ int main()
 		printf("bulundu.... a[%d] = %d\n", idx_mid, a[idx_mid]);
 	}
 
-	printf("cnt = %d\n", cnt);
+	printf("size = %d\n", size);
 
 
 }

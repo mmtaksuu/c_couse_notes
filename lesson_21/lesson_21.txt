@@ -170,11 +170,11 @@ int main()
 	ch = getchar();
 
 	//C++ not C
-	//int cnt = 0;  also in C
-	//int cnt(0);
-	//int cnt{ 0 };
-	//int cnt{};
-	//auto cnt = 0;
+	//int size = 0;  also in C
+	//int size(0);
+	//int size{ 0 };
+	//int size{};
+	//auto size = 0;
 
 
 
@@ -201,13 +201,13 @@ int main()
 	printf("sayilacak karakteri girin: ");
 	ch = getchar();
 
-	int cnt = 0;
+	int size = 0;
 	for (int i = 0; str[i] != '\0'; ++i) {
 		if (toupper(str[i]) == toupper(ch))
-			++cnt;
+			++size;
 	}
 
-	printf("toplam %d tane %c karakteri var\n", cnt, ch);
+	printf("toplam %d tane %c karakteri var\n", size, ch);
 
 }
 //----------------------------------------------------------------------------------------------------------

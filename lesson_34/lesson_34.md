@@ -945,7 +945,7 @@ int main()
 	randomize();
 
 	int *pd = NULL;
-	int cnt = 0;
+	int size = 0;
 
 	while (1) {
 		printf("evet mi (e)  hayir mi (h) "); 
@@ -956,22 +956,22 @@ int main()
 		if (c == 'h')
 			break;
 
-		pd = (int *)realloc(pd, (cnt + SIZE) * sizeof(int));
+		pd = (int *)realloc(pd, (size + SIZE) * sizeof(int));
 		if (!pd) {
 			printf(" bellek yetersiz\n");
 			return 1;
 		}
 
-		set_random_array(pd + cnt, SIZE);
-		display_array(pd, cnt + SIZE);
-		cnt += SIZE;
+		set_random_array(pd + size, SIZE);
+		display_array(pd, size + SIZE);
+		size += SIZE;
 		
 		
 	}
 
-	printf("su anda dizinin boyutu: %d\n", cnt);
-	bsort(pd, cnt);
-	display_array(pd, cnt);
+	printf("su anda dizinin boyutu: %d\n", size);
+	bsort(pd, size);
+	display_array(pd, size);
 	free(pd);
 }
 ```

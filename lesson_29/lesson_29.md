@@ -783,14 +783,14 @@ int main()
 {
 	for (int c = 'a'; c <= 'z'; ++c) {
 		printf("icinde %c karakteri olanlar\n", c);
-		int cnt = 0;
+		int size = 0;
 		for (size_t i = 0; i < asize(p); ++i) {
 			if (strchr(p[i], c) != NULL) {
 				printf("%s ", p[i]);
-				++cnt;
+				++size;
 			}
 		}
-		printf("\ntoplam %d tane\n\n", cnt);
+		printf("\ntoplam %d tane\n\n", size);
 	}
 
 }

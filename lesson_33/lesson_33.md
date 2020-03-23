@@ -1,9 +1,9 @@
 # LESSON 33
 
+```c
 #include <stdio.h>
 #include "nutility.h"
 
-```c
 int main()
 {
 	int a[10][64];

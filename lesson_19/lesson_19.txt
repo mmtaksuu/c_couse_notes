@@ -575,16 +575,16 @@ int main()
 	int val;
 	printf("bir sayi giriniz: ");
 	scanf("%d", &val);
-	int cnt = 0;
+	int size = 0;
 
 	for (int i = 0; i < SIZE; ++i) {
 		if (a[i] != val) {
-			b[cnt++] = a[i];
+			b[size++] = a[i];
 		}
 	}
 
 
-	for (int i = 0; i < cnt; ++i) {
+	for (int i = 0; i < size; ++i) {
 		printf("%3d ", b[i]);
 	}
 	printf("\n");
@@ -863,9 +863,9 @@ urand işlevinin implementasyonu
 int urand(void)
 {
 	static int flags[URAND_MAX] = { 0 };
-	static int cnt = 0;
+	static int size = 0;
 
-	if (cnt == URAND_MAX)
+	if (size == URAND_MAX)
 		return - 1;
 
 	int val;
@@ -873,7 +873,7 @@ int urand(void)
 	while (flags[val = rand() % URAND_MAX])
 		;
 
-	++cnt;
+	++size;
 	flags[val] = 1;
 
 	return val;
@@ -908,9 +908,9 @@ int main()
 int urand(void)
 {
 	static int flags[URAND_MAX] = { 0 };
-	static int cnt = 0;
+	static int size = 0;
 
-	if (cnt == URAND_MAX)
+	if (size == URAND_MAX)
 		return - 1;
 
 	int val;
@@ -918,7 +918,7 @@ int urand(void)
 	while (flags[val = rand() % URAND_MAX])
 		;
 
-	++cnt;
+	++size;
 	flags[val] = 1;
 
 	return val;
@@ -953,10 +953,10 @@ int main()
 int urand(void)
 {
 	static int flags[URAND_MAX] = { 0 };
-	static int cnt = 0;
+	static int size = 0;
 
-	if (cnt == URAND_MAX) {
-		cnt = 0;
+	if (size == URAND_MAX) {
+		size = 0;
 
 		/*for (int i = 0; i < URAND_MAX; ++i)
 			flags[i] = 0;*/
@@ -969,7 +969,7 @@ int urand(void)
 	while (flags[val = rand() % URAND_MAX])
 		;
 
-	++cnt;
+	++size;
 	flags[val] = 1;
 
 	return val;

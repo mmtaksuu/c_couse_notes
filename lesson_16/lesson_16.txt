@@ -182,15 +182,15 @@ int main()
 	if (x > y)
 		swap(&x, &y);
 
-	int cnt = 0;
+	int size = 0;
 
 	for (int i = x; i <= y; ++i) {
 		if (isprime(i)) {
 			printf("%d ", i);
-			if (cnt && cnt % 10 == 0)
+			if (size && size % 10 == 0)
 				sl();
 			sleep(0.03);
-			++cnt;
+			++size;
 		}
 	}
 }

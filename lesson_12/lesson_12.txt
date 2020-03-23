@@ -69,16 +69,16 @@ int main()
 	scanf("%d", &n);
 
 	int temp = low;
-	int cnt = 0;
+	int size = 0;
 
 	while (temp <= high) {
 		if (temp % n == 0) {
 			printf("%d ", temp);
-			++cnt;
+			++size;
 		}
 		++temp;
 	}
-	printf("\n[%d %d] araliginda [%d] ile tam bolunen [%d] sayi yazildi\n", low, high, n, cnt);
+	printf("\n[%d %d] araliginda [%d] ile tam bolunen [%d] sayi yazildi\n", low, high, n, size);
 }
 /**********************************************************************************************************************/
 
@@ -664,7 +664,7 @@ int main()
 {
 	int c;
 	int ival;
-	int cnt = 0;
+	int size = 0;
 
 	srand((unsigned)time(0));
 
@@ -687,13 +687,13 @@ int main()
 			max = ival;
 		else if (ival < min)
 			min = ival;
-		++cnt;
+		++size;
 		printf("%d\n", ival);
 
 	}
 
-	if (cnt) {
-		printf("toplam %d sayi girildi\n", cnt);
+	if (size) {
+		printf("toplam %d sayi girildi\n", size);
 		printf("max = %d\n", max);
 		printf("min = %d\n", min);
 	}

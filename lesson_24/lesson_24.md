@@ -1,3 +1,4 @@
+```text
 ptr ismi a olan bir dizinin bir öğesini göstermektedir.
 ptr'nin gösterdiği dizi öğesinin indeksi nedir?
 
@@ -16,8 +17,10 @@ dizilerin fonksiyonlara gönderilmesi
 adresler ve karşılaştırma işlemleri
 adres döndüren fonksiyonlar
 NULL pointer semantiği
+```
 
 
+```c
 #include <stdio.h>
 
 int main()
@@ -31,7 +34,8 @@ int main()
 	//int y = a[5]; //ub
 	int *p3 = NULL;
 }
-/**********************************************************************************************************************/
+```
+```c
 #include <stdio.h>
 
 // dangling pointer
@@ -48,7 +52,9 @@ int main()
 	//ptr burada gecersiz  pointer (dangling)
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #include <stdio.h>
 #include "nutility.h"
 
@@ -66,7 +72,9 @@ int main()
 	display_array(a + 5, 3);
 	display_array(a + SIZE - 5, 5);
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #include <stdio.h>
 #include <math.h>
 #include "nutility.h"
@@ -109,9 +117,10 @@ int main()
 	set_random_array(a, SIZE);
 	display_array(a, SIZE);
 	printf("std. sapma = %f\n", get_std_dev(a, SIZE));
-
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #include <stdio.h>
 #include <math.h>
 #include "nutility.h"
@@ -151,8 +160,10 @@ int main()
 	reverse_array(a, SIZE);
 	display_array(a, SIZE);
 }
+```
 
-/**********************************************************************************************************************/
+
+```c
 #include <stdio.h>
 #include <math.h>
 #include "nutility.h"
@@ -180,10 +191,10 @@ int main()
 	copy_array(b, a, SIZE);
 	display_array(a, SIZE);
 }
+```
 
-/**********************************************************************************************************************/
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 
 #include <stdio.h>
 #include <math.h>
@@ -218,10 +229,10 @@ int main()
 
 	display_array(b, SIZE);
 }
+```
 
-/**********************************************************************************************************************/
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 
 #include <stdio.h>
 #include <math.h>
@@ -265,54 +276,9 @@ int main()
 
 
 }
+```
 
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
-
-
-#include <stdio.h>
-#include <math.h>
-#include "nutility.h"
-
-#define   SIZE      20
-
-void reverse_copy_array(int *pdest, const int *psource, int size)
-{
-	int *pe = psource + size;
-
-	while (size--) {
-		*pdest++ = *--pe;
-	}
-}
-
-void copy_array(int *pdest, const int *psource, int size)
-{
-	while (size--) {
-		*pdest = *psource;
-		++pdest;
-		++psource;
-	}
-}
-
-int main()
-{
-	int a[SIZE];
-	int b[SIZE];
-	int c[SIZE];
-
-	randomize();
-	set_random_array(a, SIZE);
-	copy_array(b, a, SIZE);
-	reverse_copy_array(c, a, SIZE);
-	display_array(a, SIZE);
-	display_array(b, SIZE);
-	display_array(c, SIZE);
-
-
-}
-
-/**********************************************************************************************************************/
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "nutility.h"
@@ -349,42 +315,29 @@ int main()
 	printf("min = %d    max = %d\n", min, max);
 
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
-
-#include "nutility.h"
-#include <stdio.h>
-
-#define   SIZE      20
+```
 
 
 
-int main()
-{
+# adreslerin karşılaştırılması
 
-	display_array((int[]) { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 }, 10);
-
-}
-
-compound literals
-
-{
-func(cmpp lite);
----------
-
-}
-
-adreslerin karşılaştırılması
-
+```text
 ==    !=
 
 < <= > >=
 
-eşit
 
 1) eğer her iki pointer da aynı nesneyi gösteriyor ise
 
+    if (*p1 == *p2)
 
+2) Eğer her iki pointer değişken de aynı dizinin bittiği yeri gösteriyor ise iki pointer eşittir.
+    
+    if (p1 == p2)
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -406,15 +359,10 @@ int main()
 	else
 		printf("hayir esit degil\n");
 }
-/**********************************************************************************************************************/
+```
 
-if (*p1 == *p2)
 
-if (p1 == p2)
-
-Eğer her iki pointer değişken de aynı dizinin bittiği yeri gösteriyor ise
-iki pointer eşittir.
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -432,7 +380,9 @@ int main()
 	}
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -461,11 +411,10 @@ int main()
 	display_array2(a + 3, a + 8);
 
 }
-/**********************************************************************************************************************/
+```
 
 
-if (p1 > p2)
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -500,9 +449,10 @@ int main()
 		printf("yanlis\n");
 	printf("%d  %d\n", *p1, *p2);
 
-
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -531,7 +481,10 @@ int main()
 	display_array(a, SIZE);
 
 }
-/**********************************************************************************************************************/
+```
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -550,9 +503,12 @@ int main()
 	else
 		printf("hayir yanlis\n");
 
-
 }
-/**********************************************************************************************************************/
+```
+
+# Yazilar
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -573,11 +529,10 @@ int main()
 	else
 		printf("yanlis\n");
 
-
-
-
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -598,4 +553,4 @@ int main()
 
 
 }
-/**********************************************************************************************************************/
+```

@@ -13,8 +13,9 @@ x = func();
 
 void func(int i1, int i2, double *p_alpha, double *p_beta, double *p_gamma);
 
-#define _CRT_SECURE_NO_WARNINGS
+/**********************************************************************************************************************/
 
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 
@@ -37,41 +38,48 @@ void func(T x, )
 void func(????);
 
 
+
+
+# const anahtar sözcüğü
+```text
 void func(T *ptr);
 void foo(const T *ptr);
 
---------------------------------------
-const anahtar sözcüğü
+1) Kendinize yardımcı oluyorsunuz.
+
+2) Okuyana yardımcı oluyorsunuz.
+
+3) derleyiciye yardımcı oluyorsunuz.
+```
 
 
-1)
-	Kendinize yardımcı oluyorsunuz.
-
-2)
-	Okuyana yardımcı oluyorsunuz.
-
-3)
-	derleyiciye yardımcı oluyorsunuz.
-
-
+```c
 #include <stdio.h>
 
-void func()
+void func(void)
 {
-	static int x = 0, y = 0, z = 0;
-	printf("%d %d %d\n", x, y, z);
-	++x, ++y, ++z;
+    static int x = 0, y = 0, z = 0;
+    printf("%d %d %d\n", x, y, z);
+    ++x, ++y, ++z;
 }
 
-int main()
+
+int main(void)
 {
-	for (int i = 0; i < 10; ++i) {
-		func();
-	}
+    printf("x y z\n");
+    for (int i = 0; i < 10; ++i) {
+        func();
+    }
+
+    return 0;
 }
-/**********************************************************************************************************************/
+```
+
+
+```text
 
 kendisi const bir nesneyi (ne nedenle olursa olsun) değiştirme girişiminde bulunmayin! (tanımsız davranış)
+```
 
 
 #include <stdio.h>
@@ -85,13 +93,15 @@ int main()
 
 	printf("x = %d\n", x);
 }
-/**********************************************************************************************************************/
+
+
+```text
 sabit ifadesi ile ilk deger verilmiş const nesneler C'de
 sabit ifadesi gereken yerlerde kullanılamazlar. (sentaks hatası)
 C++ dilinde bu kullanım geçerlidir.
 
-
 const anahtar sözcüğünün pointer değişkenlerin bildiriminde kullanılması
+```
 
 #include <stdio.h>
 
@@ -107,21 +117,7 @@ int main()
 	printf("x = %d\n", x);
 
 }
-/**********************************************************************************************************************/
-#include <stdio.h>
 
-int main()
-{
-	int x = 10;
-	int y = 20;
-
-	int *const ptr = &x;	//const pointer
-	//TOP level const
-	//ptr = &y; //gecersiz
-	*ptr = 987; //gecerli
-	printf("x = %d\n", x);
-
-}
 /**********************************************************************************************************************/
 #include <stdio.h>
 
@@ -141,6 +137,7 @@ int main()
 /**********************************************************************************************************************/
 
 
+```text
 func is a setter
 func is a set function
 func is a mutator
@@ -151,14 +148,17 @@ get function
 getter
 accessor
 observer
-
+--------------------
 void foo(const T *ptr); //input parameter
+```
 
-adres türleri ve tür dönüşümleri
+# adres türleri ve tür dönüşümleri
 
-
+```text
 T *
 const T *
+```
+
 
 int main()
 {
@@ -207,8 +207,9 @@ int main()
 }
 /**********************************************************************************************************************/
 
-pointer aritmetiği
+# pointer aritmetiği
 --------------------
+```text
 C dilinde
 	bir adres ile bir tamsayı toplanabilir
 		adres + n
@@ -220,9 +221,10 @@ bu işlemler geçerli işlemlerdir. Her birinden elde edilen değer adrestir.
 aşağıdaki işlemler geçersizdir
 	adres + adres
 	tamsayı - adres
+```
 
 
-x + y
+
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -269,19 +271,6 @@ int main()
 
 int main()
 {
-	int a[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-	for (int i = 0; i < 10; ++i) {
-		printf("%d %d %d %d\n", a[i], i[a], *(a + i), *(i + a));
-	}
-}
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-
-int main()
-{
 	double a[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 	for (int i = 0; i < 10; ++i) {
@@ -313,9 +302,9 @@ int main()
 }
 /**********************************************************************************************************************/
 
-indeks operatörü
+# indeks operatörü
 
-
+```text
 -------------------------------------------------
 1       [ ]   ()    .   ->     soldan sağa
 -------------------------------------------------
@@ -330,6 +319,7 @@ a[5]     5[a]
 a[n]   *(a + n)
 
 &a[n]   a + n
+```
 
 #define _CRT_SECURE_NO_WARNINGS
 

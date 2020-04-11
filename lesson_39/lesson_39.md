@@ -1,4 +1,4 @@
-# Lesson 38
+# Lesson 39
 
 ```text
 Konu Basliklari
@@ -421,7 +421,7 @@ Operator Oncelik Tablosu
 
 
 ```text
-Bitwise Operatorlerin Onceliklerinin Inclenmesi
+Bitwise Operatorlerin Onceliklerinin Incelenmesi
 
 ---------------------------------------------------------------------
 2   ~									sağdan sola
@@ -878,6 +878,37 @@ int main()
 	x ^= y;
 
 	printf("x = %d\n", x);
+
+}
+```
+
+
+```c
+// xorswap
+#define _CRT_SECURE_NO_WARNINGS
+
+#include "nutility.h"
+#include <stdio.h>
+
+int main()
+{
+	int x, y;
+	printf("iki tamsayi girin: ");
+	scanf("%d%d", &x, &y); 
+
+	x ^= y, y ^= x, x ^= y;
+
+	/*x ^= y;
+	y ^= x;
+	x ^= y;*/
+
+
+
+	printf("x = %d\n", x);
+	printf("y = %d\n", y);
+
+
+
 
 }
 ```

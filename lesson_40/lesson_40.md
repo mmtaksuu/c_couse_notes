@@ -21,31 +21,41 @@ d) Bir tam sayının belirli bir bitinin değerini öğrenmek
 ```
 
 
-```text
-100?0101	x
-00010000
-
-1 << 4
-
-10010101
-```
-
-
 # Bitmask (Bitsel Maske)
 
 ```text
-x biti set edilecek tam sayı ve n set edilecek bitin indeksi olsun
+x biti set edilecek tam sayı ve n set edilecek bitin indeksi olsun.
 
 x'in n. bitini set eden ifade
 
-x | 1 << n
+    x | 1 << n
 
-x | (1 << n)
-x |= (1 << n)
+x | (1 << n)     Bu ifade x'in degerini degistirmez.
+x |= (1 << n)    Bu ifade x'in degerini degistirir.
+
+Not: Bitsel kaydirma operatoru "<<", bitsel veya "|" operatorunden daha onceliklidir.
 ```
 
-
+## To Set the Bit
 ```text
+Bir tam sayinin belirli bir bitini set etmek icin "bitmask" ile "bitwise or" operatoru kullanilir.
+
+100?0101	x 8 bitlik isaretsiz bir tam sayi
+00010000    x'in 4.uncu bitini set edecek olan bitmask (1 << 4)
+
+    x |= (1 << 4)  ---> x = 10010101
+
+   ?
+10010101   x'in 4.uncu biti set edildi.
+```
+
+## To Reset the Bit
+```text
+Bir tam sayinin belirli bir bitini resetlemek icin: "setlemek icin kullanilan maskenin bitsel degili" ile "bitwise and" operatoru kullanilir.
+
+    x & ~(1 << n)     Bu ifade x'in degerini degistirmez.
+    x &= ~(1 << n)    Bu ifade x'in degerini degistirir.
+
 100100?0011   x
 11111101111   bitmask
 
@@ -54,48 +64,180 @@ x |= (1 << n)
 x & ~(1 << n)
 ```
 
+```text
+* x | (1 << n)    Bir tam sayinin n. bitini set etmek icin kullanilan ifade
+
+* x & ~(1 << n)   Bir tam sayinin n. bitini reset etmek icin kullanilan ifade
+
+* x ^ (1 << n)    Bir tam sayinin n. bitini flip etmek icin kullanilan ifade
+
+* x & (1 << n)    Bir tam sayinin n. bitinin 1 olup olmadigini check etmek icin kullanilan ifade
+```
+
+## Uygulama
+
+
 ```c
-#include "nutility.h"
-#include <Windows.h>
+// 16 Bitlik bir tam sayinin bit degerlerinin yazdirilmasi.
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <basetsd.h>
 
-int main()
+void print_bits(UINT16 val)
 {
-	randomize();
-	int x = 0;
+    char str[20];
+    _itoa(val, str, 2);
+    printf("%016s", str);
+}
 
-	for (;;) {
-		do {
-			bprint(x);
-			x |= 1 << (rand() % (sizeof(int) * 8));
-			Sleep(15);
-		} while (x != -1);
-		Sleep(35);
-		do {
-			bprint(x);
-			x &= ~(1 << (rand() % (sizeof(int) * 8)));
-			Sleep(15);
-		} while (x);
-	}
-	
+
+int main(void)
+{
+    UINT16 uval;
+    printf("Enter a value : ");
+    scanf("%hd", &uval);
+    
+    printf("\n");
+    print_bits(uval);
+    printf("\n");
+    
+    
+    for (int i = 0; i < 16; ++i)
+    {
+        if ( uval & (1 << i) )
+        {
+            printf("%d sayisinin %d.inci bit 1 dir.\n", uval, i);
+    
+        }
+    }
+    
+    return 0;
+}
+```
+
+```c
+// Hex olarak girilen sayinin bit degerlerinin yazdirilmasi
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void get_hex(int * val)
+{
+    printf("Hex deger girin : ");
+    scanf("%X", val);
+}
+
+
+void print_hex_bits(const int * val)
+{
+    char str[40];
+    _itoa(*val, str, 2);
+    printf("%016s\n", str);
+}
+
+
+int main(void)
+{
+    int val;
+    get_hex(&val);
+    print_hex_bits(&val);
+    
+    return 0;
 }
 ```
 
 
-```text
-x | (1 << n)
-x & ~(1 << n)
-
-10101?0011
-0000010000
-
-x ^ (1 << n)
-```
-
 ```c
 #include "nutility.h"
 #include <Windows.h>
 
+// Isaretli bir tam sayinin tum bitlerinin once 1 ardindan 0 yapilmasi.
+// Dikkat : Donguden cikmak icin kullanilan ifadelere dikkat ediniz.
+
+int main()
+{
+    randomize();
+    int x = 0;
+    
+    for (;;) {
+        do {
+            bprint(x);
+            x |= 1 << (rand() % (sizeof(int) * 8));  // Random olarak bitlerin set edilmesi
+            Sleep(15);
+        } while (x != -1); // Isaretli bir tamsayinin tum bitleri bir ise degeri -1 olur.
+        Sleep(35);
+        do {
+            bprint(x);
+            x &= ~(1 << (rand() % (sizeof(int) * 8)));  // Random olarak bitlerin reset edilmesi
+            Sleep(15);
+        } while (x);   // Isaretli bir tamsayinin tum bitleri 0 ise degeri 0 olur.
+    }
+	
+}
+```
+
+```c
+// Random set - reset - toggle Islemi
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <basetsd.h>
+#include <winbase.h>
+
+void print_bits(int val)
+{
+    char str[40];
+    _itoa(val, str, 2);
+    printf("%032s\r", str);
+}
+
+
+int main(void)
+{
+    INT32 ival = 0;
+    
+    printf("\n");
+    print_bits(ival);
+    printf("\n");
+    printf("Tum bitler set ediliyor...\n");
+    while (ival != -1)
+    {
+        ival |= (1 << ((UINT32)rand() % (sizeof(INT32) * 8)));
+        print_bits(ival);
+        Sleep(35);
+    }
+    
+    printf("\n");
+    printf("Tum bitler reset yapiliyor...\n");
+    while (ival != 0)
+    {
+        ival &= ~(1 << (rand() % (sizeof(INT32) * 8)));
+        print_bits(ival);
+        Sleep(35);
+    }
+    
+    printf("\n");
+    printf("Tum bitler flip yapiliyor...\n");
+    while (ival != -1)
+    {
+        ival ^= (1 << (rand() % (sizeof(INT32) * 8)));
+        print_bits(ival);
+        Sleep(35);
+    }
+    
+    printf("\n");
+    
+    return 0;
+}
+```
+
+## To Toggle the Bit
+```c
+#include "nutility.h"
+#include <Windows.h>
+
+// Isaretli bir tam sayinin bitlerinin random olarak flip edilmesi
 
 int main()
 {
@@ -109,7 +251,43 @@ int main()
 }
 ```
 
+```c
+// Girilen sayi negatif-pozitif ve tek-cift kontrolunun yapilmasi
+#include <stdio.h>
+#include <stdlib.h>
 
+void print_bits(int val)
+{
+    char str[40];
+    _itoa(val, str, 2);
+    printf("%032s\n", str);
+}
+
+
+int main(void)
+{
+    int ival;
+    printf("Enter a value : ");
+    scanf("%d", &ival);
+    
+    print_bits(ival);
+    
+    if (ival & (1 << 0))    // Checks the first bit of the given number
+        printf("Given number is an odd number.\n");
+    else
+        printf("Given number is an even number.\n");
+    
+    
+    if (ival & (1 << ((sizeof(int)*8)-1)))     // Checks the last bit of the given number
+        printf("Given number is a negative number.\n");
+    else
+        printf("Given number is a positive number.\n");
+    
+    return 0;
+}
+```
+
+## To Get the Bit
 ```text
 10001001
 00001000
@@ -125,6 +303,7 @@ else
 1001010100010101
 1000000000000000
 ```
+
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -198,108 +377,206 @@ int main()
 }
 ```
 
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+
+void print_bits_1(int val)
+{
+    char str[40];
+    _itoa(val, str, 2);
+    printf("%032s\n", str);
+}
+
+void print_bits_2(int val)
+{
+    unsigned mask = ~(~0u >> 1);
+    
+    while (mask)
+    {
+        putchar(val & mask ? '1' : '0');
+        mask >>= 1;
+    }
+    putchar('\n');
+}
+
+void print_bits_3(int val)
+{
+    for (int i = (int)(sizeof(int) * 8 - 1); i >= 0; --i)
+        putchar((val >> i) & 1 ? '1' : '0');
+    
+    putchar('\n');
+}
+
+int main(void)
+{
+    int ival;
+    printf("Enter a value : ");
+    scanf("%d", &ival);
+    
+    printf("\n");
+    print_bits_1(ival);
+    print_bits_2(ival);
+    print_bits_3(ival);
+    
+    return 0;
+}
+```
+
 
 # Hem üretimde gereken hem de programcılara mülakatlarda sorulan bazı bitsel işlemler
 
+## Uretim Kritik Uygulama 1
 ```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-#include "nutility.h"
 
-int main()
+int main(void)
 {
-	int x;
-	printf("bir tamsayi girin: ");
-	scanf("%d", &x);
-
-	//x = ~-x;
-	x = -~x;
-
-	printf("x = %d\n", x);
+    unsigned int x;
+    printf("bir tamsayi girin: ");
+    scanf("%u", &x);
+    
+    x = ~-x;     // x'in degerini bir azaltir.
+    printf("x = %d\n", x);
+    
+    x = -~x;    // x'in degerini bir artirir.
+    printf("x = %d\n", x);
+    
+    return 0;
 }
 ```
 
+## Uretim Kritik Uygulama 2
 ```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-#include "nutility.h"
 
-//100100100101001
-//010010010000100
-//1
-
-int main()
+int main(void)
 {
-	int x, y;
-	printf("iki tamsayi girin: ");
-	scanf("%d%d", &x, &y);
-
-	if ((x ^ y) < 0) {
-		printf("zit isaretliler\n");
-	}
-	else {
-		printf("ayni isaretliler\n");
-	}
+    int x, y;
+    printf("Enter two value : ");
+    scanf("%d%d", &x, &y);
+    
+    if ((x ^ y) < 0)  ///* Iki sayinin isaret bitlerinin ayni olup olmadiginin kontrolu */
+    {
+        printf("Zit isaretliler\n");
+    }
+    else
+    {
+        printf("Ayni isaretliler.\n");
+    }
+    
+    return 0;
 }
 ```
 
-
+## Uretim Kritik Uygulama 3
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-#include "nutility.h"
 
-//100100100101001
-//010010010000100
-//1
-
-int main()
+int main(void)
 {
-	int x;
-	printf("bir tamsayi girin: ");
-	scanf("%d", &x);
+    int x;
+    printf("Enter a value : ");
+    scanf("%d", &x);
 
-	if (x & 1) {
-		//tek sayi
-	}
+    if ( x & 1 )          /// Girilen sayinin 0.inci bitinin lojik 1 ile kontrolu dogruysa sayi tektir, degilse cift.  
+        printf("Tek sayi\n");
+    else
+        printf("Cift sayi\n");
+
+    return 0;
 }
 ```
 
+## Uretim Kritik Uygulama 4
 ```c
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
+#include <basetsd.h>
 #include <stdint.h>
-#include "nutility.h"
+#include <stdlib.h>
+
+// 16 Bitlik bir tam sayinin ortasindaki 8 bitlik degerin get edilmesi
+
+// 0000 0000 1111 1111     255  0X00FF
+// 0000 1111 1111 0000    4080  0X0FF0  x <<= 4
+// 0000 0000 0000 1111      15  0X000F  x >>= 8
+//-----------------------------------------------
+
+// 1111 1111 1111 1111    65535  0XFFFF
+// 1111 1111 1111 0000    65520  0XFFF0  x <<= 4
+// 0000 0000 1111 1111      255  0X00FF  x >>= 8
+//-----------------------------------------------
 
 
-// 1010 1001 1010 0110
-// 1001 1010 0110 0000
-// 0000 0000 1001 1010 
+void print_bits(int val)
+{
+    char str[20];
+    _itoa(val, str, 2);
+    printf("%016s\n", str);
+}
 
-
-// 1010 1001 1010 0110
-// A    9    A    6         x
-
-// 0000 0000 1001 1010      
 
 int main()
 {
-	uint16_t x;
-	///cop degerde degil
+    UINT16 x = 255;
 
-	x << 4 >> 8
+    printf("%hu %X\n", x, x);
+    print_bits(x);
+
+    x <<= 4;
+    printf("%hu %X\n", x, x);
+    print_bits(x);
+
+    x >>= 8;
+    printf("%hu %X\n", x, x);
+    print_bits(x);
+
+    /*x = x << 4 >> 8;
+    printf("%hu %X\n", x, x);
+    print_bits(x);*/
+
+    return 0;
 }
 ```
 
-
-
+## Uretim Kritik Uygulama 5
 ```text
-x && !(x & (x - 1))
+Girilen bir sayinin ikinin kuvveti olup olmadiginin kontrolunu saglayan powof2 makrosu
+    x && !(x & (x - 1))
 ```
+
+```c
+#include <stdio.h>
+
+#define     powof2(x)    ((x) && !((x) & ((x) - 1)))
+
+// Girilen bir sayinin ikinin kuvveti olup olmadiginin kontrolu
+
+int main(void)
+{
+    int ival;
+    printf("Enter a value : ");
+    scanf("%d", &ival);
+
+    if powof2(ival)
+    {
+        printf("Girilen deger 2.inin kuvveti\n");
+    }
+    else
+    {
+        printf("Girilen deger 2.inin kuvveti degil\n");
+    }
+
+    return 0;
+}
+```
+
+## Uretim Kritik Uygulama 6
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS

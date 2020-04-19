@@ -46,7 +46,6 @@ typedef struct {
 } TOPLU_VERILER_t;
 
 
-char* generate_log_file_name(void);
 void set_random_struct(FILE *f, TOPLU_VERILER_t *);
 void save_log_file(FILE *, TOPLU_VERILER_t *);
 void write_log(TOPLU_VERILER_t *);

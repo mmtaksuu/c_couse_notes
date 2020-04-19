@@ -8,15 +8,16 @@ set(CMAKE_C_STANDARD 99)
 
 
 #For the shared library:
-#set ( PROJECT_LINK_LIBS libmersenne_twister.so )
-#link_directories( ../libs/mersenne_twister/build )
+#set ( MERSENNE_LIBS libmersenne_twister.dll )  # .dll or .so
 
 #For the static library:
-set ( PROJECT_LINK_LIBS libmersenne_twister.a )
-link_directories( ../libs/mersenne_twister/build )
+set ( MERSENNE_LIBS libmersenne_twister.a )
 
+set( LIBRARY_BUILD_DIR ../libs/mersenne_twister/build)
+link_directories( ${LIBRARY_BUILD_DIR} )
 
-include_directories( ../libs/mersenne_twister/includes)
+set( LIBRARY_INCLUDE_DIR ../libs/mersenne_twister/includes)
+include_directories(${LIBRARY_INCLUDE_DIR})
 
 add_executable(libtest src/mt_impl_01.c)
-target_link_libraries(libtest ${PROJECT_LINK_LIBS} )
+target_link_libraries(libtest ${MERSENNE_LIBS} )

@@ -11,6 +11,8 @@
 #include <stddef.h>
 #include <string.h>
 #include "../includes/locale_test.h"
+#include "log_file_name_generator.h"
+
 
 
 int main(void)
@@ -19,7 +21,7 @@ int main(void)
     TOPLU_VERILER_t toplu_veriler_t = {0};
 
     char log_file_name[SIZE] = {0};
-    strcpy(log_file_name, generate_log_file_name());
+    strcpy(log_file_name, generate_log_file_name(log_file_name, ".csv"));
 
     char path[SIZE] = "../";
     strcat(path, log_file_name);

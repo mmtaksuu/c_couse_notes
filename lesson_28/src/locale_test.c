@@ -16,31 +16,6 @@
 #include "../includes/locale_test.h"
 
 
-char* generate_log_file_name(void)
-{
-    setlocale(LC_TIME, "turkish");
-    //printf("locale degistirildi yeni locale: (%s)\n", p);
-
-    char FILE_LABEL[SIZE] = "Kayit_Log_";
-
-    /** Deifines time label */
-    char TIME_LABEL[40];
-    time_t timer;
-    time(&timer);
-    strftime(TIME_LABEL, sizeof(TIME_LABEL), "%d_%b_%Y_%a_%H_%M_%S", localtime(&timer));
-//    printf("TIME : (%s)\n", TIME_LABEL);
-
-    /** Deifines file extension and binds with time label */
-    char FILE_EXTENSION[] = ".tab";
-    char *fname = strcat(TIME_LABEL, FILE_EXTENSION);
-
-    char *full_name = strcat(FILE_LABEL, fname);
-//    printf("Log File Name : (%s)\n", full_name);
-
-    return full_name;
-}
-
-
 void set_random_struct(FILE *f, TOPLU_VERILER_t *toplu_veri_t)
 {
     randomize();

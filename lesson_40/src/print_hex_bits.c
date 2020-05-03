@@ -3,7 +3,7 @@
  * @author  : MEHMET AKSU
  * @note    : mmtaksu.25@gmail.com
  * @date    : 12 / April / 2020
- * @code    : random_set_reset_2.c file
+ * @code    : print_hex_bits.c file
  * @details : 
  */
 

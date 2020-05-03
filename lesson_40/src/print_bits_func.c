@@ -3,40 +3,54 @@
  * @author  : MEHMET AKSU
  * @note    : mmtaksu.25@gmail.com
  * @date    : 12 / April / 2020
- * @code    : random_set_reset_2.c file
+ * @code    : print_bits_func.c file
  * @details : 
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <basetsd.h>
-
-void print_bits(UINT16 val)
-{
-    char str[20];
-    _itoa(val, str, 2);
-    printf("%016s", str);
-}
+#include "helper.h"
 
 
 int main(void)
 {
-    UINT16 uval;
+    UINT8 uval;
     printf("Enter a value : ");
-    scanf("%hd", &uval);
+    scanf("%hhd", &uval);
 
-    printf("\n");
-    print_bits(uval);
-    printf("\n");
+    bit_print(uval);
 
-
-    for (int i = 0; i < 16; ++i)
+    for (size_t i = 0; i < 8; ++i)
     {
-        if ( uval & (1 << i) )
+        printf("%d sayisinin %d.inci bit degeri %d dir.\n", uval, i, GET_BIT(uval, i));
+    }
+    printf("\n\n");
+
+    printf("Sets all of the bits\n");
+    for (size_t i = 0; i < 8; ++i)
+    {
+        SET_BIT(uval, i);
+    }
+
+    printf("Prints only setted bits\n");
+    bit_print(uval);
+    for (size_t i = 0; i < 8; ++i)
+    {
+        if (GET_BIT(uval, i))
         {
             printf("%d sayisinin %d.inci bit 1 dir.\n", uval, i);
-
         }
+    }
+    printf("\n\n");
+
+    printf("Toggles all of the bits\n");
+    for (size_t i = 0; i < 8; ++i)
+    {
+        FLIP_BIT(uval, i);
+    }
+
+    for (size_t i = 0; i < 8; ++i)
+    {
+        printf("%d sayisinin %d.inci bit degeri %d dir.\n", uval, i, GET_BIT(uval, i));
     }
 
     return 0;

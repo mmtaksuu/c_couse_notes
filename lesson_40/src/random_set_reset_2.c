@@ -11,26 +11,21 @@
 #include <stdlib.h>
 #include <basetsd.h>
 #include <winbase.h>
+#include "helper.h"
 
-void print_bits(int val)
-{
-    char str[40];
-    _itoa(val, str, 2);
-    printf("%032s\r", str);
-}
 
 int main(void)
 {
     INT32 ival = 0;
 
     printf("\n");
-    print_bits(ival);
+    bit_print(ival);
     printf("\n");
     printf("Tum bitler set ediliyor...\n");
     while (ival != -1)
     {
         ival |= (1 << ((UINT32)rand() % (sizeof(INT32) * 8)));
-        print_bits(ival);
+        bit_print(ival);
         Sleep(35);
     }
 
@@ -39,7 +34,7 @@ int main(void)
     while (ival != 0)
     {
         ival &= ~(1 << (rand() % (sizeof(INT32) * 8)));
-        print_bits(ival);
+        bit_print(ival);
         Sleep(35);
     }
 
@@ -48,7 +43,7 @@ int main(void)
     while (ival != -1)
     {
         ival ^= (1 << (rand() % (sizeof(INT32) * 8)));
-        print_bits(ival);
+        bit_print(ival);
         Sleep(35);
     }
 

@@ -7,60 +7,70 @@
  * @details : 
  */
 
-
+#include <ctype.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include <Windows.h>
+#include <conio.h>
+#include <stdint.h>
+#include "helper.h"
 
-#define     randomize()       (srand((unsigned)time(NULL)))
 
-void sleep(double sec)
+#define     EXIT        'Q'
+
+void set_bit(UINT16 uval_u16)
 {
-    clock_t start = clock();
-
-    while ((double)(clock() - start) / CLOCKS_PER_SEC < sec)
-        ;
+    do {
+        bit_print(uval_u16);
+        SET_RAND_BIT(uval_u16, int);
+        Sleep(35);
+    } while (uval_u16 != UINT16_MAX && !kbhit());
 }
 
-void print_bits(int val)
-{
-    char str[40];
 
-    _itoa(val, str, 2);
-    printf("%032s\r", str);
+void reset_bit(UINT16 uval_u16)
+{
+    do {
+        bit_print(uval_u16);
+        RESET_RAND_BIT(uval_u16, int);
+        Sleep(35);
+    } while (uval_u16 != 0 && !kbhit());
 }
 
-int main()
+
+void flip_bit(UINT16 uval_u16)
 {
+    do {
+        bit_print(uval_u16);
+        FLIP_RAND_BIT(uval_u16, int);
+        Sleep(35);
+    } while (!kbhit());
+}
+
+void get_bit(UINT16 uval_u16)
+{
+    do {
+        bit_print(uval_u16);
+        printf("%d sayisinin bit degeri %d dir.\n", uval_u16, GET_RAND_BIT(uval_u16, int));
+        Sleep(35);
+    } while (!kbhit());
+}
+
+
+int main(void)
+{
+    UINT16 uval_u16 = 0;
+
+    printf("The beginning bit status is : ");
+    bit_print(uval_u16);
+
     randomize();
-    int x = 0;
-
-    do
+    while (!kbhit() || toupper(_getch() )!= EXIT )
     {
-        print_bits(x);
-        x |= 1 << ((unsigned int) rand() % (sizeof(int) * 8));  // Random olarak bitlerin set edilmesi
-        Sleep(35);
-    } while (x != -1); // Isaretli bir tamsayinin tum bitleri bir ise degeri -1 olur.
-
-    print_bits(x);
-    Sleep(35);
-    printf("\n\n");
-
-    do
-    {
-        print_bits(x);
-        x &= ~(1 << ((unsigned int) rand() % (sizeof(int) * 8)));  // Random olarak bitlerin reset edilmesi
-        Sleep(35);
-    } while (x);   // Isaretli bir tamsayinin tum bitleri 0 ise degeri 0 olur.
-
-    print_bits(x);
-    printf("\n\n");
-
-    // Hepsi resetlenen bitlerin 1 tanesi flip yapar.
-    x ^= 1 << (rand() % 32);
-    Sleep(35);
-    print_bits(x);
+        set_bit(uval_u16);
+        reset_bit(uval_u16);
+        flip_bit(uval_u16);
+    }
 
     return 0;
 }
+

@@ -6,27 +6,26 @@ set(CMAKE_C_STANDARD 99)
 # lots of warnings and all warnings as errors
 #add_compile_options(-Wall -Wextra -pedantic-errors -Werror -Wconversion -Wsign-conversion)
 
-#For the shared library:
-set ( CURL_LIBS  C:/MinGW/CURL_LIB/lib/libcurl.a )
+option(lib_type "Build static library" ON)
 
-#For the static library:
-#set ( CURL_LIBS libcurl.a )
+if(lib_type)
+    set ( CURL_LIB libcurl.a ) # STATIC
+else()
+    set ( CURL_LIB libcurl.dll.a ) # SHARED
+endif()
 
-add_compile_options(-DCURL_STATICLIB)
 
+set( LIBRARY_LINK_DIR C:/curl-7.69.1-win64-mingw/lib/)
+link_directories( ${LIBRARY_LINK_DIR} )
 
-
-set( LIBRARY_INCLUDE_DIR C:/MinGW/CURL_LIB/include/)
+set( LIBRARY_INCLUDE_DIR C:/curl-7.69.1-win64-mingw/include/curl/)
 include_directories(${LIBRARY_INCLUDE_DIR})
 
-#However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.c" )
-
-add_executable(test_curl ${SOURCES} )
-target_link_libraries(test_curl ${CURL_LIBS} )
+add_executable(curl_test_client src/curl_test01.c)
+target_link_libraries(curl_test_client PUBLIC ${CURL_LIB})
 
 
-set_target_properties(curl
-        PROPERTIES
-        IMPORTED_LOCATION ${CURL_LIBS}
-        )
+#find_library(CURL_LIB curl_library lib)
+#target_link_libraries(curl_test_client LINK_PUBLIC libcurl)
+
+

@@ -1,44 +1,48 @@
+# Introduction to Pointers in C
+```text
+1) object pointers
+2) function pointers
+```
+
+```c
 int main()
 {
-	//int *p1, p2;
-	int *p1;
-	int p2;
+	int *p1, p2;
+	int *p1;     // p1 is a pointer to int
+	int p2;     // p2 is an object of int
 }
-/**********************************************************************************************************************/
+```
 
-
+```c
 int main()
 {
 	int *p1, *p2;
-	//int *p1;
-	//int *p2;
+	int *p1;    // p1 is a pointer to int
+	int *p2;   // p2 is a pointer to int
 }
-/**********************************************************************************************************************/
+```
 
-
+```c
 int main()
 {
-	/*int x, *y, z[5];*/
-	int x;
-	int *y;
-	int z[5];
+	int x, *y, z[5];
+	int x;           // x is an object of int
+	int *y;          // y is a pointer to int
+	int z[5];       // z is an array of int[5]
 }
-/**********************************************************************************************************************/
+```
 
-int x, func(int), *ptr;
-
+```c
 int main()
 {
+    int x, func(int), *ptr;
+    int x;                  // x is an object of int
+    int func(int);          // func's return type is int 
+    int *ptr;               // ptr is a pointer to int
 }
-/**********************************************************************************************************************/
+```
 
-
-pointer
-	object pointers
-	function pointers
-
-
-
+```c
 #include <stdio.h>
 
 int main()
@@ -56,26 +60,27 @@ int main()
 	printf("sizeof(double *) = %zu\n", sizeof(double *));
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #include <stdio.h>
 
-int *gp;
+int *gp;  // Global pointer decleration default value is NULL ptr
 
 void func(int *p)
 {
-	int *ptr;
-	static int *sptr;
-	//
+	int *ptr;          // Local pointer decl. default value is garbage
+	static int *sptr;  // Local static pointer decl. default value is NULL ptr
 }
 
 int main()
 {
 
-
 }
-/**********************************************************************************************************************/
-#include <stdio.h>
+```
 
+```c
+#include <stdio.h>
 
 int foo();
 
@@ -90,9 +95,10 @@ int main()
 	//a[2]   ----> int Lval
 	//foo()  ----> int Rval
 }
-/**********************************************************************************************************************/
-#include <stdio.h>
+```
 
+```c
+#include <stdio.h>
 
 int *foo();
 
@@ -110,21 +116,26 @@ int main()
 	// ptr
 	// p[3]
 }
-/**********************************************************************************************************************/
+```
 
+# Operators used for Pointers
 
+```text
 --------------------------------------------------
 1         [ ]       ->
 --------------------------------------------------
 2          &      *
 --------------------------------------------------
 
-
-
 &     address of					(adres operatörü)
 *     dereferencing /indirection	(içerik operatörü)
 []    index / subscript             (köşeli parantez)
 ->    member selection (arrow op)    (ok operatörü)
+```
+
+
+
+
 
 
 ptr[-5]

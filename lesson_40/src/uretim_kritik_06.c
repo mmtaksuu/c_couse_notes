@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <stdint.h>
 
-
 // 1111 1010 1011 1100 0011 1101 1110 1010
 
 //little endian

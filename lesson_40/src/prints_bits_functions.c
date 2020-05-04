@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 void print_bits_1(int val)
 {
     char str[40];
@@ -20,7 +19,7 @@ void print_bits_1(int val)
 
 void print_bits_2(int val)
 {
-    unsigned mask = ~(~0u >> 1);
+    unsigned mask = ~(~0u >> 1u);  // 10000000 00000000 00000000 00000000 = 2147483648
 
     while (mask)
     {

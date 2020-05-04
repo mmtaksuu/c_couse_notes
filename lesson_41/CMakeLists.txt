@@ -20,6 +20,11 @@ link_directories( ${LIBRARY_LINK_DIR} )
 
 set( LIBRARY_INCLUDE_DIR C:/curl-7.69.1-win64-mingw/include/curl/)
 include_directories(${LIBRARY_INCLUDE_DIR})
+add_executable(babil_algorithm src/babil_algorithm.c)
+add_executable(randomize src/randomize.c)
+add_executable(path_splitting src/path_splitting.c)
+add_executable(find_dist_on_the_earth src/find_dist_on_the_earth.c)
+
 
 add_executable(curl_test_client src/curl_test01.c)
 target_link_libraries(curl_test_client PUBLIC ${CURL_LIB})

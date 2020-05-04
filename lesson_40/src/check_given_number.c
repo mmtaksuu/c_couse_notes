@@ -10,15 +10,10 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
+#include "helper.h"
 
-void print_bits(int val)
-{
-    char str[40];
-    _itoa(val, str, 2);
-    printf("%032s\n", str);
-}
-
+#define     LSB_BIT     (1u << 0)
+#define     MSB_BIT     (1u << ((sizeof(int)*8)-1))
 
 int main(void)
 {
@@ -26,15 +21,15 @@ int main(void)
     printf("Enter a value : ");
     scanf("%d", &ival);
 
-    print_bits(ival);
+    bit_print(ival);
 
-    if (ival & (1 << 0))   // Checks the first bit of the given number
+    if (ival & LSB_BIT)   // Checks the first bit of the given number
         printf("Given number is an odd number.\n");
     else
         printf("Given number is an even number.\n");
 
 
-    if (ival & (1 << ((sizeof(int)*8)-1)))    // Checks the last bit of the given number
+    if (ival & MSB_BIT)    // Checks the last bit of the given number
         printf("Given number is a negative number.\n");
     else
         printf("Given number is a positive number.\n");

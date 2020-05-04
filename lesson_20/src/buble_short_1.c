@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../../helper.h"
+#include "../../libs/my_lib/include/helper.h"
 
 #define     SIZE            40
 

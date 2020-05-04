@@ -24,7 +24,7 @@ d) Bir tam sayının belirli bir bitinin değerini öğrenmek
 # Bitmask (Bitsel Maske)
 
 ```text
-x biti set edilecek tam sayı ve n set edilecek bitin indeksi olsun.
+x, biti set edilecek tam sayı ve n set edilecek bitin indeksi olsun.
 
 x'in n. bitini set eden ifade
 
@@ -40,7 +40,7 @@ Not: Bitsel kaydirma operatoru "<<", bitsel veya "|" operatorunden daha oncelikl
 ```text
 Bir tam sayinin belirli bir bitini set etmek icin "bitmask" ile "bitwise or" operatoru kullanilir.
 
-100?0101	x 8 bitlik isaretsiz bir tam sayi
+100?0101	x, 8 bitlik isaretsiz bir tam sayi olsun
 00010000    x'in 4.uncu bitini set edecek olan bitmask (1 << 4)
 
     x |= (1 << 4)  ---> x = 10010101
@@ -56,62 +56,105 @@ Bir tam sayinin belirli bir bitini resetlemek icin: "setlemek icin kullanilan ma
     x & ~(1 << n)     Bu ifade x'in degerini degistirmez.
     x &= ~(1 << n)    Bu ifade x'in degerini degistirir.
 
-100100?0011   x
-11111101111   bitmask
+100?0011   x,  8 bitlik isaretsiz bir tam sayi olsun
+00000000   x'in 4.uncu bitini reset edecek olan bitmask ~(1 << 4)
 
-10010000011   x
+    x &= ~(1 << 4)  ---> x = 10000011 
 
-x & ~(1 << n)
+   ?    
+10000011   x'in 4.uncu biti reset edildi.
 ```
 
 ```text
-* x | (1 << n)    Bir tam sayinin n. bitini set etmek icin kullanilan ifade
+* x |= (1 << n)    Bir tam sayinin n. bitini set etmek icin kullanilan ifade
 
-* x & ~(1 << n)   Bir tam sayinin n. bitini reset etmek icin kullanilan ifade
+* x &= ~(1 << n)   Bir tam sayinin n. bitini reset etmek icin kullanilan ifade
 
-* x ^ (1 << n)    Bir tam sayinin n. bitini flip etmek icin kullanilan ifade
+* x ^= (1 << n)    Bir tam sayinin n. bitini flip etmek icin kullanilan ifade
 
-* x & (1 << n)    Bir tam sayinin n. bitinin 1 olup olmadigini check etmek icin kullanilan ifade
+* x &= (1 << n)    Bir tam sayinin n. bitinin 1 olup olmadigini check etmek icin kullanilan ifade
 ```
 
-## Uygulama
+```c
+#define     MASK(n)                     (1u << (n))
+#define     SET_BIT(val, n)             ((val) |= MASK(n))
+#define     RESET_BIT(val, n)           ((val) &= ~MASK(n))
+#define     FLIP_BIT(val, n)            ((val) ^= MASK(n))
+#define     GET_BIT(val, n)             (((val) & MASK(n)) > 0 ? 1 : 0)
 
+#define     SET_RAND_BIT(val, type)     ((val) |=  (1u << ((unsigned int)rand() % (sizeof(type) * 8))))
+#define     RESET_RAND_BIT(val, type)   ((val) &= ~(1u << ((unsigned int)rand() % (sizeof(type) * 8))))
+#define     FLIP_RAND_BIT(val, type)    ((val) ^=  (1u << ((unsigned int)rand() % (sizeof(type) * 8))))
+#define     GET_RAND_BIT(val, type)     (((val) &  (1u << ((unsigned int)rand() % (sizeof(type) * 8)))) > 0 ? 1 : 0)
+```
+
+
+## Uygulamalar
 
 ```c
-// 16 Bitlik bir tam sayinin bit degerlerinin yazdirilmasi.
+// print_bits_func.c 
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <basetsd.h>
 
-void print_bits(UINT16 val)
+#define     MASK(n)                 (1u << (n))
+#define     SET_BIT(val, n)         ((val) |= MASK(n))
+#define     RESET_BIT(val, n)       ((val) &= ~MASK(n))
+#define     FLIP_BIT(val, n)        ((val) ^= MASK(n))
+#define     GET_BIT(val, n)         (((val) & MASK(n)) > 0 ? 1 : 0)
+
+
+void print_bits(UINT8 val)
 {
     char str[20];
     _itoa(val, str, 2);
-    printf("%016s", str);
+    printf("%08s\n", str);
 }
 
 
 int main(void)
 {
-    UINT16 uval;
+    UINT8 uval;
     printf("Enter a value : ");
-    scanf("%hd", &uval);
-    
-    printf("\n");
+    scanf("%hhd", &uval);
+
     print_bits(uval);
-    printf("\n");
-    
-    
-    for (int i = 0; i < 16; ++i)
+
+    for (size_t i = 0; i < 8; ++i)
     {
-        if ( uval & (1 << i) )
+        printf("%d sayisinin %d.inci bit degeri %d dir.\n", uval, i, GET_BIT(uval, i));
+    }
+    printf("\n\n");
+
+    printf("Sets all of the bits\n");
+    for (size_t i = 0; i < 8; ++i)
+    {
+        SET_BIT(uval, i);
+    }
+
+    printf("Prints only setted bits\n");
+    print_bits(uval);
+    for (size_t i = 0; i < 8; ++i)
+    {
+        if (GET_BIT(uval, i))
         {
             printf("%d sayisinin %d.inci bit 1 dir.\n", uval, i);
-    
         }
     }
+    printf("\n\n");
+
+    printf("Toggles all of the bits\n");
+    for (size_t i = 0; i < 8; ++i)
+    {
+        FLIP_BIT(uval, i);
+    }
     
+    for (size_t i = 0; i < 8; ++i)
+    {
+        printf("%d sayisinin %d.inci bit degeri %d dir.\n", uval, i, GET_BIT(uval, i));
+    }
+
     return 0;
 }
 ```
@@ -149,7 +192,7 @@ int main(void)
 
 
 ```c
-#include "nutility.h"
+
 #include <Windows.h>
 
 // Isaretli bir tam sayinin tum bitlerinin once 1 ardindan 0 yapilmasi.
@@ -253,36 +296,32 @@ int main()
 
 ```c
 // Girilen sayi negatif-pozitif ve tek-cift kontrolunun yapilmasi
+
 #include <stdio.h>
-#include <stdlib.h>
+#include "helper.h"
 
-void print_bits(int val)
-{
-    char str[40];
-    _itoa(val, str, 2);
-    printf("%032s\n", str);
-}
-
+#define     LSB_BIT     (1u << 0)
+#define     MSB_BIT     (1u << ((sizeof(int)*8)-1))
 
 int main(void)
 {
     int ival;
     printf("Enter a value : ");
     scanf("%d", &ival);
-    
-    print_bits(ival);
-    
-    if (ival & (1 << 0))    // Checks the first bit of the given number
+
+    bit_print(ival);
+
+    if (ival & LSB_BIT)   // Checks the first bit of the given number
         printf("Given number is an odd number.\n");
     else
         printf("Given number is an even number.\n");
-    
-    
-    if (ival & (1 << ((sizeof(int)*8)-1)))     // Checks the last bit of the given number
+
+
+    if (ival & MSB_BIT)    // Checks the last bit of the given number
         printf("Given number is a negative number.\n");
     else
         printf("Given number is a positive number.\n");
-    
+
     return 0;
 }
 ```

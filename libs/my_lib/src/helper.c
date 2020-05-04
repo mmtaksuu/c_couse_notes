@@ -1,5 +1,5 @@
 /**
- * @file    : LESSON_20 project file
+ * @file    : MY_LIB project file
  * @author  : MEHMET AKSU
  * @note    : mmtaksu.25@gmail.com
  * @date    : 23 / February / 2020
@@ -8,60 +8,27 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+#include "helper.h"
 
 
-int gen_rand_int_nums(int num_of_digits)
+int gen_rand_int_nums(void)
 {
-    switch (num_of_digits){
-        case 1:
-            return rand() % 10;
-        case 2:
-            return rand() % 100;
-        case 3:
-            return rand() % 1000;
-        case 4:
-            return rand() % 10000;
-        default:
-            return rand();
-    }
+    return rand() % 10;
 }
 
 
-float gen_rand_float_nums(int num_of_digits)
+float gen_rand_float_nums(void)
 {
-    switch (num_of_digits){
-        case 1:
-            return (float)rand()/(float)(RAND_MAX/10.0);
-        case 2:
-            return (float)rand()/(float)(RAND_MAX/100.0);
-        case 3:
-            return (float)rand()/(float)(RAND_MAX/1000.0);
-        case 4:
-            return (float)rand()/(float)(RAND_MAX/10000.0);
-        default:
-            return (float)rand()/(float)(RAND_MAX/1.0);
-    }
+    return (float)rand()/(float)(RAND_MAX/10.0);
 }
 
 
-void set_random_array(void *vp, size_t size, int num_of_digits, const char *ptype)
+void set_random_array(int *p, size_t size)
 {
-    if (!strcmp(ptype, "int"))
-    {
-        int *p = (int *)vp;
-
-        while (size --)
-            *p++ = gen_rand_int_nums(num_of_digits);
-    }
-    else if (!strcmp(ptype, "double"))
-    {
-        double *p = (double *)vp;
-
-        while (size --)
-            *p++ = gen_rand_float_nums(num_of_digits);
-    }
+    while (size --)
+        *p++ = gen_rand_int_nums();
 }
 
 
@@ -137,6 +104,24 @@ int gcmp(const void *vp1, const void *vp2, size_t width)
 }
 
 
+void sleep(double sec)
+{
+    clock_t start = clock();
+
+    while ((double)(clock() - start) / CLOCKS_PER_SEC < sec)
+        ;
+}
+
+int is_hit_button(char ch)
+{
+    return (!kbhit() || toupper(_getch() )!= ch);
+}
 
 
+void bit_print(UINT16 val)
+{
+    char str[20];
+    _itoa(val, str, 2);
+    printf("%016s\n", str);
+}
 

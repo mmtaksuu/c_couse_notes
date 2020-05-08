@@ -70,12 +70,14 @@ char *sgets(char *p)
     return ptemp;
 }
 
+
 void swap_arr_items(int *p1, int *p2)
 {
     int ptemp = *p1;
     *p1 = *p2;
     *p2 = ptemp;
 }
+
 
 void gswap(void *vp1, void *vp2, size_t width)
 {
@@ -89,12 +91,13 @@ void gswap(void *vp1, void *vp2, size_t width)
     }
 }
 
-void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *, size_t))
+
+void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *))
 {
     char *p = vpa;
     for (size_t i = 0; i < size - 1; ++i) {
         for (size_t k = 0; k < size - 1 - i; ++k) {
-            if (fp(p + k * width, p + (k + 1) * width, width) > 0) {
+            if (fp(p + k * width, p + (k + 1) * width) > 0) {
                 gswap(p + k * width, p + (k + 1) * width, width);
             }
         }
@@ -104,7 +107,6 @@ void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const vo
 
 void bsort(int *p, int size)
 {
-
     for (int i = 0; i < size - 1; ++i) {
         for (int j = 0; j < size - i - 1; ++j) {
             if (p[j] > p[j+1])

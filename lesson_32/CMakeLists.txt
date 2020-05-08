@@ -18,10 +18,12 @@ link_directories( ${LIBRARY_BUILD_DIR} )
 set( LIBRARY_INCLUDE_DIR ../libs/my_lib/include)
 include_directories(${LIBRARY_INCLUDE_DIR})
 
-add_executable(qsort_impl_01 src/qsort_impl_01.c)
+add_executable(qsort_impl_01 src/qsort_impl.c)
 target_link_libraries(qsort_impl_01 ${MY_LIB} )
 
-add_executable(generic_sort_01 src/generic_sort_01.c)
+add_executable(generic_sort_01 src/generic_sort.c)
 target_link_libraries(generic_sort_01 ${MY_LIB} )
 
-#add_executable(generic_sort_02 src/generic_sort_02.c)
+add_executable(bsearch_impl src/bsearch_impl.c)
+target_link_libraries(bsearch_impl ${MY_LIB} )
+

@@ -95,7 +95,7 @@ void swap_arr_items(int *p1, int *p2);
 void gswap(void *vp1, void *vp2, size_t n);
 
 
-void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *, size_t));
+void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *));
 /**
  * @brief Bubble sort algorithm
  * @param p is the address of the given array

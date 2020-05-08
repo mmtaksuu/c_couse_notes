@@ -20,17 +20,14 @@ int main(void)
     int a[SIZE] = {0};
     set_random_array(a, SIZE);
     display_array(a, SIZE);
-    gsort(a, SIZE, sizeof(*a), &gcmp);
+    gsort(a, SIZE, sizeof(*a), &icmp);
     display_array(a, SIZE);
 
     double da[SIZE] = {0};
     set_random_array_d(da, SIZE);
     display_array_d(da, SIZE);
-    qsort(da, asize(da), sizeof(*da), &dcmp);
+    gsort(da, asize(da), sizeof(*da), &dcmp);
     display_array_d(da, asize(da));
-    // TODO: double turundeki verileri sort etmek icin gsort() kullanamadik.
-    //  Cunku karsilastirma islemini yapan gcmp() fonksiyonu char * turune
-    //  donusum yaptigi icin virgulden sonraki kisim yanlis karsilastiriliyor.
 
     printf("Sizeof (int *) is %u Byte\n", sizeof(int *));
     printf("Sizeof (double *) is %u Byte\n", sizeof(double *));

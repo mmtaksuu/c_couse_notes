@@ -57,13 +57,12 @@ int gen_rand_int_nums(void);
  * @details Generates random numbers type of floating-point for the given number of digits
  * @return Generated random number of type float
  */
-float gen_rand_float_nums(void);
+double gen_rand_real_nums(void);
 
 /**
  * @brief Fills the given array
  * @param p is the address of the given array
  * @param size is the size of the given array
- * @param num_of_digits is used for filling the array with n number of digits random numbers
  * @details This function uses the gen_rand_int_nums() function to fill the given array with desired random numbers.
  */
 void set_random_array(int *p, size_t size);
@@ -72,6 +71,12 @@ void set_random_array(int *p, size_t size);
  *
  */
 void display_array(const int *p, size_t size);
+
+
+void display_array_d(const double *p, size_t size);
+
+
+void set_random_array_d(double *p, size_t size);
 
 /**
  *
@@ -87,6 +92,10 @@ char *sgets(char *p);
  */
 void swap_arr_items(int *p1, int *p2);
 
+void gswap(void *vp1, void *vp2, size_t n);
+
+
+void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *, size_t));
 /**
  * @brief Bubble sort algorithm
  * @param p is the address of the given array
@@ -96,11 +105,15 @@ void swap_arr_items(int *p1, int *p2);
 void bsort(int *arr, int size);
 
 
+int icmp(const void *vp1, const void *vp2);
+
+int dcmp(const void *vp1, const void *vp2);
+
 /**
- *
+ * @brief Generic Compairing Function that is used for all of the types
  * @param vp1
  * @param vp2
- * @param width
+ * @param width total sizeof of the compairing blocks
  * @return
  */
 int gcmp(const void *vp1, const void *vp2, size_t width);

@@ -24,7 +24,7 @@ void	set_random_array(int *p, size_t size);
 void	display_array(const int *p, size_t size);
 void	sort(int *p, size_t size);
 void    swap(int *p, int *p2);
-void	gswap(void *vp1, void *vp2, size_t n);
+//void	gswap(void *vp1, void *vp2, size_t n);
 void    bprint(int val);
 char*   sgets(char *p);
 

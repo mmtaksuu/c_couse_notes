@@ -9,9 +9,14 @@
 #include <string.h>
 
 
-//geri dönüş değeri olmayan patametresi strcmp gibi bir fonksiyon adresi isteyen ismi foo olan fonksiyonu bildirin
+//geri dönüş değeri olmayan, parametresi strcmp gibi bir fonksiyon adresini isteyen ve ismi foo olan fonksiyonu bildirin
+Note : int strcmp(const char *, const char *);
 void foo(int(*fp)(const char *, const char *));
+
+//geri dönüş değeri olmayan, parametre olarak strcmp gibi iki fonksiyon adresini isteyen ve ismi func olan fonksiyonu bildirin
 void func(int(*fp1)(const char *, const char *), int(*fp2)(const char *, const char *));
+
+//geri dönüş değeri strcmp gibi bir fonksiyonun adresi olan, parametre olarak strcmp gibi iki fonksiyonun adresini isteyen ve ismi f olan fonksiyonu bildirin
 int(*f(int(*fp1)(const char *, const char *), int(*fp2)(const char *, const char *)))(const char *, const char *);
 
 
@@ -207,19 +212,6 @@ siralayacak sekilde bir callback yazip qsort'u cagirin
 #define			SIZE		100
 
 
-void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *))
-{
-    char *p = vpa;
-    for (size_t i = 0; i < size - 1; ++i) {
-        for (size_t k = 0; k < size - 1 - i; ++k) {
-            if (fp(p + k * width, p + (k + 1) * width) > 0) {
-                gswap(p + k * width, p + (k + 1) * width, width);
-            }
-        }
-    }
-}
-
-
 int icmp(const void *vp1, const void *vp2)
 {
     if (*(const int *)vp1 > *(const int *)vp2)
@@ -241,6 +233,20 @@ int dcmp(const void *vp1, const void *vp2)
         return -1;
     
     return 0;
+}
+
+
+
+void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *))
+{
+    char *p = vpa;
+    for (size_t i = 0; i < size - 1; ++i) {
+        for (size_t k = 0; k < size - 1 - i; ++k) {
+            if (fp(p + k * width, p + (k + 1) * width) > 0) {
+                gswap(p + k * width, p + (k + 1) * width, width);
+            }
+        }
+    }
 }
 
 

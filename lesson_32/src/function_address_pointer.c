@@ -14,6 +14,7 @@
 // strcmp gibi bir fonksiyonun adresini tutan degisken turunun typedef bildiriminin yapilmasi
 typedef int(*FCMP)(const char *, const char *);
 
+
 //geri dönüş değeri olmayan parametresi strcmp gibi bir fonksiyonun adresini isteyen ismi foo olan fonksiyonu bildirin
 void foo1(int(*fp)(const char *, const char *));
 void foo2(FCMP fp);
@@ -26,7 +27,7 @@ void func2(FCMP fp1, FCMP fp2);
 
 //geri dönüş değeri strcmp gibi bir foksiyonun adresi olan ve parametre olarak strcmp gibi bir fonksiyonun adresini isteyen iki parametre alan ve ismi f olan fonksiyonu bildirin
 int(*f1(int(*fp1)(const char *, const char *), int(*fp2)(const char *, const char *)))(const char *, const char *);
-FCMP f2(FCMP, FCMP);
+FCMP f2(FCMP fp1, FCMP fp2);
 
 
 int main(void)

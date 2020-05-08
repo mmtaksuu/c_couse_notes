@@ -161,17 +161,17 @@ PUBLIC void swap(int *p1, int *p2)
 
 //----------------------------------------------------------------------------------------------------------
 
-void gswap(void *vp1, void *vp2, size_t n)
-{
-	char *p1 = (char *)vp1;
-	char *p2 = (char *)vp2;
-
-	while (n--) {
-		char temp = *p1;
-		*p1++ = *p2;
-		*p2++ = temp;
-	}
-}
+//void gswap(void *vp1, void *vp2, size_t n)
+//{
+//	char *p1 = (char *)vp1;
+//	char *p2 = (char *)vp2;
+//
+//	while (n--) {
+//		char temp = *p1;
+//		*p1++ = *p2;
+//		*p2++ = temp;
+//	}
+//}
 
 //----------------------------------------------------------------------------------------------------------
 
@@ -253,7 +253,7 @@ const char* random_town(void)
 "izmir", "afyonkarahisar", "kilis", "bolu", "yalova", "giresun", "tunceli", "manisa", "cankiri", "canakkale",
 "mugla", "isparta", "ankara", "kahramanmaras", "nigde", "kirklareli", "artvin", "kirikkale", "bursa", "bingol",
 "sirnak", "erzincan", "gaziantep", "bayburt", "tekirdag", "kocaeli", "trabzon", "ardahan", "elazig", "karabuk",
-"samsun", "malatya", "aksaray", "van", "kars", "amasya", "kirsehir", "balýkesir", "eskisehir", "sanliurfa",
+"samsun", "malatya", "aksaray", "van", "kars", "amasya", "kirsehir", "balï¿½kesir", "eskisehir", "sanliurfa",
 "adiyaman", "mardin", "bilecik", "hakkari", "mus", "kayseri", "agri", "sinop", "istanbul", "mersin",
 "aydin", "sivas", "yozgat", "igdir", "sakarya", "burdur", "antalya", "osmaniye", "konya", "tokat",
 "zonguldak", "corum", "batman", "adana", "usak", "denizli", "edirne", "karaman", "ordu", "diyarbakir",

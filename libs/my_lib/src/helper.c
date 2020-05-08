@@ -15,13 +15,13 @@
 
 int gen_rand_int_nums(void)
 {
-    return rand() % 10;
+    return rand() % 100;
 }
 
 
-float gen_rand_float_nums(void)
+double gen_rand_real_nums(void)
 {
-    return (float)rand()/(float)(RAND_MAX/10.0);
+    return rand()/(RAND_MAX/100.0);
 }
 
 
@@ -36,6 +36,22 @@ void display_array(const int *p, size_t size)
 {
     for (size_t i = 0; i < size; ++i) {
         printf("%3d%c", p[i], i % 20 == 19 ? '\n' : ' ');
+    }
+    printf("\n-------------------------------------------------------------------------------\n");
+}
+
+
+void set_random_array_d(double *p, size_t size)
+{
+    while (size--)
+        *p++ = gen_rand_real_nums();
+}
+
+
+void display_array_d(const double *p, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        printf("%.3f%c", p[i], i % 10 == 9 ? '\n' : ' ');
     }
     printf("\n-------------------------------------------------------------------------------\n");
 }
@@ -61,6 +77,30 @@ void swap_arr_items(int *p1, int *p2)
     *p2 = ptemp;
 }
 
+void gswap(void *vp1, void *vp2, size_t width)
+{
+    char *p1 = (char *)vp1;
+    char *p2 = (char *)vp2;
+
+    while (width--) {
+        char temp = *p1;
+        *p1++ = *p2;
+        *p2++ = temp;
+    }
+}
+
+void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *, size_t))
+{
+    char *p = vpa;
+    for (size_t i = 0; i < size - 1; ++i) {
+        for (size_t k = 0; k < size - 1 - i; ++k) {
+            if (fp(p + k * width, p + (k + 1) * width, width) > 0) {
+                gswap(p + k * width, p + (k + 1) * width, width);
+            }
+        }
+    }
+}
+
 
 void bsort(int *p, int size)
 {
@@ -71,6 +111,36 @@ void bsort(int *p, int size)
                 swap_arr_items(&p[j], &p[j+1]);
         }
     }
+}
+
+
+int icmp(const void *vp1, const void *vp2)
+{
+    const int *p1 = (const int *)vp1;
+    const int *p2 = (const int *)vp2;
+
+    if (*p1 > *p2)
+        return 1;
+
+    if (*p1 < *p2)
+        return -1;
+
+    return 0;
+}
+
+
+int dcmp(const void *vp1, const void *vp2)
+{
+    const double *p1 = (const double *)vp1;
+    const double *p2 = (const double *)vp2;
+
+    if (*p1 > *p2)
+        return 1;
+
+    if (*p1 < *p2)
+        return -1;
+
+    return 0;
 }
 
 

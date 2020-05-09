@@ -21,10 +21,8 @@ static int is_all_unique(const char * p)
 
     int char_set[256] = {0};
 
-    for (size_t i = 0; p[i] != '\0' ; ++i) {
-        int ch = tolower(p[i]);
-        ++char_set[ch];
-    }
+    for (size_t i = 0; p[i] != '\0' ; ++i)
+        ++char_set[tolower(p[i])];
 
     size_t i;
     for (i = 0; p[i] != '\0' ; ++i) {
@@ -36,7 +34,6 @@ static int is_all_unique(const char * p)
         return 1;
 
     return 0;
-
 }
 
 int main(void)

@@ -1,5 +1,5 @@
 /**
- * @file    : c_programing_course project file
+ * @file    : LESSON_31 project file
  * @author  : MEHMET AKSU
  * @note    : mmtaksu.25@gmail.com
  * @date    : 01 / March / 2020
@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "../../libs/my_lib/include/helper.h"
+#include "helper.h"
 
 #define     SIZE              100
 
@@ -19,7 +19,7 @@ int main(void)
     int a[SIZE];
 
     randomize();
-    set_random_array(a, SIZE, 3);
+    set_random_array(a, SIZE);
     display_array(a, SIZE);
 
     size_t idx, n;

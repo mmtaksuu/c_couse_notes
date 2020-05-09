@@ -6,5 +6,17 @@ set(CMAKE_C_STANDARD 99)
 # lots of warnings and all warnings as errors
 add_compile_options(-Wall -Wextra -pedantic-errors -Werror -Wconversion -Wsign-conversion)
 
-add_executable(memset_fill_array src/memset_fill_array.c ../../helper.c ../../helper.h)
-add_executable(memset_func src/memset_func.c ../../helper.c ../../helper.h)
+##For the static library:
+set ( MY_LIB libmy_lib.a )
+
+set( LIBRARY_BUILD_DIR ../libs/my_lib/build)
+link_directories( ${LIBRARY_BUILD_DIR} )
+
+set( LIBRARY_INCLUDE_DIR ../libs/my_lib/include)
+include_directories(${LIBRARY_INCLUDE_DIR})
+
+add_executable(memset_fill_array src/memset_fill_array.c )
+target_link_libraries(memset_fill_array ${MY_LIB})
+
+add_executable(memset_func src/memset_func.c )
+target_link_libraries(memset_func ${MY_LIB})

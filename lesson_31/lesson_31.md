@@ -1,4 +1,6 @@
-# Generic Functions and Generic Pointers
+# LESSON 31
+
+## Generic Functions and Generic Pointers
 
 ```text
 <string.h> header file icerisinde 5 adet turden bagimsiz generic fonksiyon bulunmaktadir.

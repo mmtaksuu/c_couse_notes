@@ -112,12 +112,9 @@ int main()
 #include <string.h>
 #include "nutility.h"
 
-#define   SIZE      100
-
 
 int main()
 {
-
     int x;
     
     memset(&x, 255, sizeof x);
@@ -137,7 +134,7 @@ memset(&x, 255, sizeof x);
 int x;
 memset(&x, 1, sizeof x);
 
-0000 0001 0000 0001 0000 0001 0000 0001
+00000001 00000001 00000001 00000001
 ```
 
 ```c

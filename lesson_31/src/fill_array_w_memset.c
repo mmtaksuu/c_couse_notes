@@ -3,7 +3,7 @@
  * @author  : MEHMET AKSU
  * @note    : mmtaksu.25@gmail.com
  * @date    : 01 / March / 2020
- * @code    : memset_fill_array.c file
+ * @code    : fill_array_w_memset.c file
  * @details : void *memset(void *vp, int val, size_t n);
  */
 
@@ -22,12 +22,14 @@ int main(void)
     set_random_array(a, SIZE);
     display_array(a, SIZE);
 
-    size_t idx, n;
-    printf("Enter index and number: ");
-    scanf("%u%u", &idx, &n);
+    size_t start_idx, n_of_items;
+    int set_val;
+    printf("Enter start_idx, n_of_items and set_val: ");
+    scanf("%u%u%d", &start_idx, &n_of_items, &set_val);
 
+    memset(a + start_idx, set_val, n_of_items * sizeof(*a));
 
-    memset(a+idx, 0, n*sizeof(int));
+    printf("\n");
     display_array(a, SIZE);
 
     return 0;

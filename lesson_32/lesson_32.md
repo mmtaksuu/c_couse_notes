@@ -544,7 +544,7 @@ Global bir function pointer tanimlanarak yapilir.
 
 typedef void(*Fptr)(void);
 
-//bfunc islevinin varsayilan davranisi fneco islevini cagirmak
+//bfunc islevinin varsayilan davranisi, fneco islevini cagirmak
 void bfunc(void);
 Fptr setbfunc(Fptr);
 //------------------------------------------------------------------

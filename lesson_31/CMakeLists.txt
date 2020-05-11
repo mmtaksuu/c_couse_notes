@@ -50,3 +50,7 @@ add_executable(strtok_with_files src/strtok_with_files.c)
 target_link_libraries(strtok_with_files ${MY_LIB})
 
 add_executable(error_test src/error_test.c)
+
+
+add_executable(test_matrix src/test_matrix.c)
+target_link_libraries(test_matrix ${MY_LIB})

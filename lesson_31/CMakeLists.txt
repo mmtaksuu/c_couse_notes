@@ -48,3 +48,5 @@ target_link_libraries(my_strtok_func ${MY_LIB})
 
 add_executable(strtok_with_files src/strtok_with_files.c)
 target_link_libraries(strtok_with_files ${MY_LIB})
+
+add_executable(error_test src/error_test.c)

@@ -42,3 +42,6 @@ add_executable(memmove_str_prepend_exp src/memmove_str_prepend_exp.c)
 
 add_executable(memchr_exp src/memchr_exp.c)
 target_link_libraries(memchr_exp ${MY_LIB})
+
+add_executable(my_strtok_func src/my_strtok_func.c)
+target_link_libraries(my_strtok_func ${MY_LIB})

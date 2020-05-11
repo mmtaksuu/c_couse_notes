@@ -46,20 +46,23 @@ char * my_strtok(const char * str, const char * delim)
 }
 
 
-
-int main(void)
+void get_input_stream(void)
 {
     char str[100];
     printf("Enter a text : ");
     sgets(str);
 
-    char *token = my_strtok(str, " ");
-
-    while (token != NULL){
+    char * token = NULL;
+    for (token = my_strtok(str, ","); token != NULL; token = my_strtok(NULL, ","))
         printf("%s\n", token);
-        token = my_strtok(NULL, " ");
-    }
 
+    free(token);
+}
+
+
+int main(void)
+{
+    get_input_stream();
 
     return 0;
 }

@@ -1,5 +1,5 @@
-Lesson 30
----------
+# Lesson 30
+
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -61,34 +61,6 @@ int main()
 int main()
 {
 	char str[100];
-	int day, mon, year;
-
-	printf("bir tarih girin gg-aa-yyyy: "); //05-02-1987
-	scanf("%s", str); 
-	printf("(%s)\n", str);
-
-	day = atoi(str);
-	mon = atoi(str + 3);
-	year = atoi(str + 6);
-
-	printf("%d yilinin %d. ayinin %d.gunu\n", year, mon, day);
-
-}
-```
-
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "nutility.h"
-
-
-int main()
-{
-	char str[100];
-	
 	printf("bir yazi girin: ");
 	scanf("%s", str);
 
@@ -97,7 +69,6 @@ int main()
 
 	printf("ival = %d\n", ival);
 	printf("dval = %f\n", dval);
-
 }
 ```
 
@@ -120,13 +91,13 @@ int main()
 	int ival = atoi(str);
 
 	printf("ival = %d\n", ival);
-
 }
 ```
 
 
 
 ```c
+// Standart inputtan tam sayi olarak alinan verinin yazi turune donusturulmesi
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -160,6 +131,7 @@ int main()
 
 
 ```c
+// Standart inputtan tam sayi olarak alinan veriyi recursive bir fonksiyon yazarak yaziya donusturulmesi
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -234,8 +206,8 @@ int main()
 
 
 
-Pointer to Pointer 
-------------------
+## Pointer to Pointer 
+
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -243,8 +215,6 @@ Pointer to Pointer
 #include <stdio.h>
 #include <stdlib.h>
 #include "nutility.h"
-
-#define   SIZE      100
 
 int main()
 {
@@ -258,7 +228,6 @@ int main()
 	printf("&ptr = %p\n", &ptr);
 	printf("p    = %p\n", p);
 
-
 }
 ```
 
@@ -269,8 +238,6 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 #include "nutility.h"
-
-#define   SIZE      100
 
 int main()
 {
@@ -283,7 +250,6 @@ int main()
 	*p = &y; //ptr = &y;
 	printf("*ptr = %d\n", *ptr);
 
-
 }
 ```
 
@@ -294,8 +260,6 @@ int main()
 #include <stdio.h>
 #include <stdlib.h>
 #include "nutility.h"
-
-#define   SIZE      100
 
 int main()
 {
@@ -413,41 +377,44 @@ int main()
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-#include <stdlib.h>
-#include "nutility.h"
 
-
-void pswap(int **ptr1, int **ptr2)
+void pswap(int **p1, int **p2)
 {
-	int *ptemp = *ptr1;
-	*ptr1 = *ptr2;
-	*ptr2 = ptemp;
+    int *ptemp = *p1;
+    *p1 = *p2;
+    *p2 = ptemp;
 }
 
-
-int main()
+void swap(int *p1, int *p2)
 {
-	int x = 10;
-	int y = 97;
-	int *p1 = &x;
-	int *p2 = &y;
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
 
-	printf("%d   %d\n", *p1, *p2);
-	
-	/*int *ptemp = p1;
-	p1 = p2;
-	p2 = ptemp;*/
+int main(void)
+{
+    int x = 10;
+    int y = 20;
 
-	pswap(&p1, &p2);
-	swap(p1, p2);
-	
-	printf("%d   %d\n", *p1, *p2);
+    int *ptr1 = &x;
+    int *ptr2 = &y;
 
+    printf("x = %d | y = %d \n", *ptr1, *ptr2);
+
+    swap(ptr1, ptr2);
+    printf("x = %d | y = %d \n", *ptr1, *ptr2);
+
+    pswap(&ptr1, &ptr2);
+    printf("x = %d | y = %d \n", *ptr1, *ptr2);
+    
+    return 0;
 }
 ```
 
 
 ```c
+// Yazi olarak alinan gercek bir sayiyi gercek sayi turunde ekrana yazdiran program
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -540,6 +507,8 @@ int main()
 }
 ```
 
+## Pointer to Pointer & const Correctness
+
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -550,22 +519,20 @@ int main()
 {
 	int x = 10;
 	int y = 20;
+
 	int *p1 = &x;
 	int *p2 = &y;
 
+    /**  **ptr ve *ptr degistirilebilir ama ptr degistirilemez   */
 	int ** const ptr = &p1;
 
-	//ptr = &p2; //gecersiz
+	ptr = &p2; //gecersiz
 	*ptr = &y;
 	**ptr = 876;
-
 }
 ```
 
 
-Pointer to Pointer & const Correctness
---------------------------------------
-
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -575,14 +542,16 @@ int main()
 {
 	int x = 10;
 	int y = 20;
+
 	int *p1 = &x;
 	int *p2 = &y;
 
+    /**  *ptr degistirilemez ama **ptr ve ptr degistirilebilir   */
 	int *const*  ptr = &p1;
 
 	ptr = &p2; 
-	*ptr = &y; //gecersiz
-	**ptr = 876;
+	*ptr = &y;    //gecersiz
+	**ptr = 876;  
 
 }
 ```
@@ -593,19 +562,22 @@ int main()
 
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-	int x = 10;
-	int y = 20;
-	int *p1 = &x;
-	int *p2 = &y;
+    int x = 10;
+    int y = 20;
 
-	const int *const*  const ptr = &p1;
+    int *p1 = &x;
+    int *p2 = &y;
 
-	ptr = &p2; 
-	*ptr = &y; //gecersiz
-	**ptr = 876;
+    /**  **ptr, *ptr ve ptr degistirilemez.    */
+    const int *const* const ptr = &p1;
 
+    ptr   = &p2;  //gecersiz
+    *ptr  = &y;   //gecersiz
+    **ptr = 876;  //gecersiz
+
+    return 0;
 }
 ```
 
@@ -674,11 +646,10 @@ int main()
 }
 ```
 
-void Pointers
--------------
+## void Pointers
 
 ```text
-void is a "type";
+void is a "type"
 
 Bir değişkenin türü void olamaz.
 Ancak, bir ifadenin (expression) türü void olabilir
@@ -698,7 +669,7 @@ int func(void);
 
 int main()
 {
-	//func() //ifadesinin türü int
+	func()   //ifadesinin türü int
 	foo(12) // ifadesinin türü void
 }
 ```
@@ -750,12 +721,12 @@ int main()
 
 ```text
 T void olmayan herhangi bir tür olsun
-Hem C'de hem C++'da :
 
+* Hem C'de hem C++'da T * türünden void * türüne otomatik tür dönüşümü vardir.
 
-T * türünden void * türüne otomatik tür dönüşümü var
-void * türünden T * türüne C' otomatik tör dönüşümü var C++ da sentaks hatası
-void pointer'lar  tür bilgisi gereken hiçbir yerde kullanilamazlar
+* void * türünden T * türüne C'de otomatik tür dönüşümü var iken, C++'da bu durum doğrudan sentaks hatasıdır.
+
+* void pointer'lar  tür bilgisi gereken hiçbir yerde kullanilamazlar.
 
 
 void *vp1 = &x;
@@ -772,30 +743,10 @@ int main()
 {
 	int x = 10;
 	void *vp = &x;
-	//int *iptr = vp;  //C'de gecerli ve dogru
-	//C++'da gecersiz
 
-	int *iptr = (int*) vp;
+	int *iptr = vp;  //C'de gecerli ve dogru ancak C++'da gecersiz
 
-}
-```
-
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-
-int main()
-{
-	int x = 10;
-	void *vp = &x;
-	int *iptr = vp;  //C'de gecerli ve dogru
-	                //C++'da gecersiz
-
-	int *iptr = (int*) vp;
+	int *iptr = (int*) vp; //Hem C'de hem C++'da gecerli ve dogru 
 
 }
 ```
-
-

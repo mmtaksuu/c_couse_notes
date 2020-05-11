@@ -11,7 +11,7 @@ set(CMAKE_C_STANDARD 99)
 include_directories(include)
 
 #However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.c")
+file(GLOB SOURCES "src/*.c" "include/*.h")
 
 #Generate the shared library from the sources
 add_library(my_lib STATIC ${SOURCES}) # STATIC or SHARED

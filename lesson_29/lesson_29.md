@@ -1,21 +1,4 @@
-Lesson 29
----------
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-	//puts("\x42URS\x41");
-	//puts("\x42abadede");
-	//puts("\1015233212");
-	puts("\10220\101231\103");
-
-}
-```
+# Lesson 29
 
 
 ```c
@@ -26,15 +9,16 @@ int main()
 
 int main()
 {
-	//puts("\x42URS\x41");
-	//puts("\x42abadede");
-	//puts("\1015233212");
+	puts("\x42URS\x41");
+	puts("\x42abadede");
+	puts("\1015233212");
 	puts("\10220\101231\103");
 
 }
 ```
 
-```c
+
+```c++
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -60,8 +44,8 @@ The schools were reorganized in 1917 as a result of a " survey."
 
 int main()
 {
-	int a[sizeof "ali"];
-	int a[strlen("ali")];
+	int a[sizeof "ali"];  // 4
+	int a[strlen("ali")]; // 3
 
 }
 ```
@@ -84,8 +68,8 @@ int main()
 
 
 
-Endianness
-----------
+## Endianness
+
 
 ```text
 
@@ -147,12 +131,16 @@ Little endian
 
 int main()
 {
-	int x = 1;
-
-	if (*(char*)&x)
-		printf("little endian\n");
-	else
-		printf("big endian\n");
+	UINT32 uval = 1;
+    
+    unsigned char * p = (unsigned char *)&uval;
+    
+    if (*p)
+        printf("Your system is little endian\n"); // 0000 0000 0000 0000 0000 0000 0000 0001
+    else
+        printf("Your system is big endian\n");    // 0001 0000 0000 0000 0000 0000 0000 0000
+    
+    return 0;
 }
 ```
 
@@ -161,40 +149,24 @@ int main()
 
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-	unsigned int x = 0x12AE23BF;
-	unsigned char* p = (unsigned char *)&x;
+    unsigned int x = 0x12AE23BF;  // 4 Bytes
+    unsigned char* p = (unsigned char *)&x;
 
-	printf("%X\n", *p++);
-	printf("%X\n", *p++);
-	printf("%X\n", *p++);
-	printf("%X\n", *p);
-}
-```
+    size_t size = sizeof(x);
+    printf("%u Bytes\n", size);  // 4 Bytes (32 Bits)
 
-```c
-#define _CRT_SECURE_NO_WARNINGS
+    while (size--)
+        printf("%X\n", *p++);
 
-#include <stdio.h>
-
-int main()
-{
-	unsigned int x = 0x12AE23BF;
-	unsigned char* p = (unsigned char *)&x;
-
-	printf("%X\n", *p++);
-	printf("%X\n", *p++);
-	printf("%X\n", *p++);
-	printf("%X\n", *p);
+    return 0;
 }
 ```
 
 
+## Pointer Arrays 
 
-
-Pointer Arrays 
---------------
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -235,31 +207,10 @@ int main()
 	//ismi p olan diziye x, y, z nesnelerinin adresleri ile ilk değer verin
 	double *p[] = { &x, &y, &z };
 
-	printf("%zu\n", sizeof(p));  //12
-	printf("%zu\n", sizeof(*p));  //4
-	printf("%zu\n", sizeof(**p));  //8
-}
-```
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include "nutility.h"
-
-double x = 2.0;
-double y = 3.0;
-double z = 5.0;
-
-int main()
-{
-	//ismi p olan diziye x, y, z nesnelerinin adresleri ile ilk değer verin
-	double *p[] = { &x, &y, &z };
-
-	printf("%zu\n", sizeof(p));  //12
-	printf("%zu\n", sizeof(*p));  //4
-	printf("%zu\n", sizeof(p[0]));  //4
-	printf("%zu\n", sizeof(**p));  //8
+    printf("sizeof(p_arr)     : %u Bytes\n", sizeof(p_arr));    //12
+    printf("sizeof(*p_arr)    : %u Bytes\n", sizeof(*p_arr));   //4
+    printf("sizeof(p_arr[0])  : %u Bytes\n", sizeof(p_arr[0]));  //4
+    printf("sizeof(**p_arr)   : %u Bytes\n", sizeof(**p_arr));   //8
 
 }
 ```
@@ -288,21 +239,17 @@ int main()
 ```
 
 
-Bitsel Karsilastirma
---------------------
+## Bitsel Karsilastirma
+
 ```text
-
-x &= ~(1 << n); 
-x |= (1 << n);
-x ^= (1 << n);
-if (x & (1 << n))
-
-100101010?01010100101001001010010100010
-000000000100000000000000000000000000000
-000000000000000000000000000000000000000
+x |= (1 << n);   to set the bit
+x &= ~(1 << n);  to reset the bit
+x ^= (1 << n);   to flip the bit
+x & (1 << n);    to get the bit
 ```
 
 ```c
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -418,7 +365,6 @@ int main()
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 #include <conio.h>
 #include "nutility.h"
 
@@ -442,9 +388,7 @@ int main()
 	for (;;) {
 		printf("%s ", pmons[rand() % asize(pmons)]);
 		_getch();
-
 	}
-
 }
 ```
 
@@ -455,7 +399,6 @@ int main()
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
 #include <conio.h>
 #include "nutility.h"
 
@@ -469,7 +412,7 @@ int main()
 	int *const p[] = { &a, &b, &c, &d };
 	int x = 356;
 
-	//p[2] = &x;  //gecersiz
+	p[2] = &x;  //gecersiz
 	*p[2] = 666;  //gecerli
 
 }
@@ -534,7 +477,6 @@ int main()
 ```c
 #include <stdio.h>
 #include <string.h>
-
 #include "nutility.h"
 
 
@@ -584,7 +526,6 @@ int main()
 ```c
 #include <stdio.h>
 #include <string.h>
-
 #include "nutility.h"
 
 
@@ -635,7 +576,6 @@ int main()
 ```c
 #include <stdio.h>
 #include <string.h>
-
 #include "nutility.h"
 
 
@@ -686,7 +626,6 @@ int main()
 ```c
 #include <stdio.h>
 #include <string.h>
-
 #include "nutility.h"
 
 
@@ -742,7 +681,6 @@ int main()
 ```c
 #include <stdio.h>
 #include <string.h>
-
 #include "nutility.h"
 
 
@@ -982,31 +920,6 @@ int main()
 
 #include "nutility.h"
 
-int is_all_unique(const char *p)
-{
-	if (!*p)
-		return 1;
-
-	for (int i = 0; p[i] != '\0'; ++i) {
-		for (int k = i + 1; p[k] != '\0'; ++k) { 
-			if (p[k] == p[i])
-				return 0;
-		}
-	}
-	return 1;
-}
-```
-
-
-```c
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-
-#include "nutility.h"
-
 const char *p[] = {
 		"kamil", "korhan", "beril", "turhan", "ufuk", "murathan", "figen", "malik", "bulent", "cengiz",
 	"baran", "nurullah", "dilber", "tuncer", "recep", "pelinsu", "cihan", "yesim", "aziz", "kazim",
@@ -1040,6 +953,22 @@ const char *p[] = {
 	"rezzan", "ozer", "tacettin", "nurettin", "seyfettin", "safiye", "aydin", "latife", "sercan", "benfero",
 
 };
+
+
+int is_all_unique(const char *p)
+{
+	if (!*p)
+		return 1;
+
+	for (int i = 0; p[i] != '\0'; ++i) {
+		for (int k = i + 1; p[k] != '\0'; ++k) { 
+			if (p[k] == p[i])
+				return 0;
+		}
+	}
+	return 1;
+}
+
 
 int main()
 {

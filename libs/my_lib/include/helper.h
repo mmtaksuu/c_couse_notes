@@ -138,4 +138,6 @@ int is_hit_button(char ch);
  */
 void bit_print(UINT16 val);
 
+extern const char *pnames[300];
+
 #endif //HELPER_H

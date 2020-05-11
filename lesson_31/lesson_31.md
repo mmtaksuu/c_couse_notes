@@ -1,4 +1,6 @@
-# Generic Functions and Generic Pointers
+# LESSON 31
+
+## Generic Functions and Generic Pointers
 
 ```text
 <string.h> header file icerisinde 5 adet turden bagimsiz generic fonksiyon bulunmaktadir.
@@ -110,12 +112,9 @@ int main()
 #include <string.h>
 #include "nutility.h"
 
-#define   SIZE      100
-
 
 int main()
 {
-
     int x;
     
     memset(&x, 255, sizeof x);
@@ -135,7 +134,7 @@ memset(&x, 255, sizeof x);
 int x;
 memset(&x, 1, sizeof x);
 
-0000 0001 0000 0001 0000 0001 0000 0001
+00000001 00000001 00000001 00000001
 ```
 
 ```c

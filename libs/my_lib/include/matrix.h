@@ -14,6 +14,8 @@
 
 typedef int DATATYPE;
 
+
+/** Handle sistemi verileri */
 typedef struct MATRIX_ {
     DATATYPE *pData;
     size_t row;

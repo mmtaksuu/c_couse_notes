@@ -17,11 +17,13 @@ int main(void)
 {
     HMATRIX hmatrix;
 
-    hmatrix = create_matrix(3, 3);
-    display_matrix(hmatrix);
+    hmatrix = create_matrix(10, 5);
 
     randomize();
     random_matrix(hmatrix);
+    display_matrix(hmatrix);
+
+    qsort(hmatrix->pData, hmatrix->col*hmatrix->row, sizeof(*hmatrix->pData), &icmp);
     display_matrix(hmatrix);
 
     printf("matrix[%d][%d] = %d\n", 2, 3, get_matrix_item(hmatrix, 1, 2));

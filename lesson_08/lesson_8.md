@@ -1,7 +1,13 @@
-// Formatsiz girdi - getchar()
+# Unformatted Input-Output (Formatsiz Girdi - Cikti) 
 
+## getchar() Function
+```text
+    int getchar(void);
+    Standart Input Bufferina girilen karakterlerin karakter kodunu dondurur.
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -11,11 +17,11 @@ int main()
 	printf("bir karakter girin: ");
 	ch = getchar();
 	printf("ch = %d\n", ch);
-
 }
-//----------------------------------------------------------------------------------------------------------
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
@@ -28,12 +34,11 @@ int main()
 	int c4 = getchar();
 
 	printf("%d %d %d %d\n", c1, c2, c3, c4);
-
-
 }
-//----------------------------------------------------------------------------------------------------------
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
@@ -41,17 +46,24 @@ int main()
 	printf("bir giris yapin : "); //15*345
 	int x, y;
 
-	scanf("%d", &x);
-	int c = getchar();
-	scanf("%d", &y);
+	scanf("%d", &x);   // 15
+	int c = getchar(); // *
+	scanf("%d", &y);   // 345
 
 	printf("x = %d   y = %d\n", x, y);
-
-
 }
-//----------------------------------------------------------------------------------------------------------
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+// Standart inputa '\n' karakteri girilene kadar donen dongu idiomu.
+int c;
+while ((c = getchar()) != '\n')
+    ;
+```
+
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
@@ -62,38 +74,62 @@ int main()
 	printf("bir tamsayi giriniz: ");
 
 	while ((c = getchar()) != '\n')
-		sum += c - '0';
+		sum += c - '0';              // Standart inputa girilen sayinin basamak degerini elde etmek icin yapilir.
 
-	if (sum % 3 == 0)
+	if (sum % 2 == 0)
 		printf("evet bolunur\n");
 	else
 		printf("hayir bolunmez\n");
 
-
-
 }
-//----------------------------------------------------------------------------------------------------------
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
 {
-	int x;
+	int x = 0;
 	int c;
 
 	printf("bir tamsayi giriniz: ");
-	//scanf("%d", &x);
-	x = 0;
 
 	while ((c = getchar()) != '\n')
 		x = x * 10 + c - '0';
 
 	printf("x = %d\n", x);
 }
-//----------------------------------------------------------------------------------------------------------
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Enter a number : ");
+
+    int c;
+    int digit_sum = 0;
+    int input = 0;
+
+    while ((c = getchar()) != '\n') {
+        int digit_value = c - '0';    // Standart inputa girilen sayinin basamak degerini elde etmek icin yapilir. '0' = 48'dir.
+        digit_sum += digit_value;
+        input = input * 10 + digit_value;
+    }
+
+    printf("Entered Value is %d\n", input);
+    printf("Sum of the entered digits %d\n", digit_sum);
+
+    return 0;
+}
+```
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
@@ -113,13 +149,10 @@ int main()
 
 	printf("x = %d\n", x);
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
-
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -127,32 +160,35 @@ int main()
 	putchar(65);
 	putchar('A');
 
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-	for (int i = 0; i < 26; ++i)
-		putchar('A' + i);
+    printf("Prints English Alphabet in Capital\n");
+    for (int i = 0; i < 26; ++i)
+        putchar(i + 'A'); // 'A' --> 65
+    printf("\n\n");
 
-	putchar('\n');
+    printf("Prints English Alphabet in Lowercase\n");
+    for (int i = 0; i < 26; ++i)
+        putchar(i + 'a');  // 'a' --> 97
+    printf("\n\n");
 
-	for (int i = 0; i < 26; ++i)
-		putchar('a' + i);
+    printf("Prints Numbers From 0 to 9\n");
+    for (int i = 0; i < 10; ++i)
+        putchar(i + '0');  // '0' --> 48
+    printf("\n\n");
 
-	putchar('\n');
-
-	for (int i = 0; i < 10; ++i)
-		putchar('0' + i);
-
-	putchar('\n');
+    return 0;
 }
-//----------------------------------------------------------------------------------------------------------
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -172,63 +208,25 @@ int main()
 
 	printf("\ngirdiginiz parola : %c%c%c%c\n", c1, c2, c3, c4);
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
 
-OPERATÖRLER
+## OPERATORS in C (OPERATÖRLER)
 
-operator
+```text
+unary operator   ---> Tek operandli
+binary operator  ---> Cift operandli
+ternary operator ---> Uc operandli (?  :)
 
-!  ~ + >
->= ++ >> !=
->>=
-sizeof
+prefix           ---> ön ek  konumunda
+postfix          ---> son ek konumunda
+infix            ---> ara ek konumunda
 
-operand
-
-a + b
-!x
-
-y++
-++x
-
-unary operator
-binary operator
-ternary operator ---->   ?  :
-
-prefix   önek konumunda
-postfix   sonek konumunda
-infix  araek konumunda
-
-a + b
-x > y
--------------------------
-
-5 + 7
-
-generate
-yield
-return
--------------------------
-side effect
-
-constraint
+Side effect : Operatorlerin operandlari uzerinde yaptigi degisikliktir.
+```
 
 
-x = ((y * z++) > (t >> 2));
-
-
-
-x = y * d1 > t >> 2;
-x = d2 > t >> 2;
-x = d2 > d3;
-x = d4;
-
-priority  / precedence
-associativity
-
-::
-
+```text
 TABLO
 -------------------------------------------
 1    ()  []   .  ->
@@ -255,75 +253,17 @@ TABLO
 -------------------------------------------
 12		||
 -------------------------------------------
-13     ? :								    from right to left precedence
+13     ? :	                                from right to left precedence
 -------------------------------------------
 14    = += *= -= /= %=  >>= <<= &= ^=  |=   from right to left precedence
 -------------------------------------------
 15   ,
 -------------------------------------------
+```
 
-
-x = (a + (b * c));
-
-a += ((b >> c) | (d++));
-
-
-+
-
--
-
-&
-
-*
-
-!(~(x++))
-
-
-(a = (b = (c = x)));
-
-
-((a / b) * c) % x
-
-x = x + y;
-
-x += y;
-
-x = x | y;
-x |=
-
-y;
-
-
-+ -  ++ --
-* / %
-+ -
-------------------------------------
-< <= > >=
-------------------------------------
-== !=
-
-
-
-&& || !
-
-
-----------------------------------------------
-~  &  ^  |
->>  <<
-&=  ^=  |=  >>=  <<=
-----------------------------------------------
-
-
-
-
-+x
-
-a + b
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-
 
 int main()
 {
@@ -335,21 +275,11 @@ int main()
 	printf("%d + %d = %d\n", x, y, x + y);
 	printf("%d - %d = %d\n", x, y, x - y);
 }
-/**********************************************************************************************************************/
+```
 
-+y
-
-y
-
--x
---------------------------------------
-
-x = -x;
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-
 
 int main()
 {
@@ -357,20 +287,12 @@ int main()
 	int y = 3;
 
 	int z = -x - y;
-
 	printf("z = %d\n", z);
-
 }
-/**********************************************************************************************************************/
+```
 
-
-
-a * b
-x / y
-z % t
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -383,12 +305,11 @@ int main()
 	printf("%d * %d = %d\n", x, y, x * y);
 	printf("%d / %d = %d\n", x, y, x / y);
 	printf("%d %% %d = %d\n", x, y, x % y);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -401,14 +322,11 @@ int main()
 	printf("kac saat sonra: ");
 	scanf("%d", &n);
 	printf("saat : %d\n", (hour + n) % 12);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 //4569
@@ -425,14 +343,21 @@ int main()
 	printf("onlar  basamagi = %d\n", x % 100 / 10);
 	printf("onlar  basamagi = %d\n", x / 10 % 10);
 	printf("birler basamagi = %d\n", x % 10);
-
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
 
+```c
+void prints_digits(int ival, int nOfdigit)
+{
+    for (int i = 0; i < nOfdigit; ++i) {
+        printf("%-10d basamagi %d\n", power(10, i), ((ival/power(10, i))%10));
+    }
+}
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 //4569
@@ -444,41 +369,48 @@ int main()
 	scanf("%d", &x);
 
 	printf("%d sayisinin tersi %d\n", x, x / 1000 + x % 1000 / 100 * 10 + x / 10 % 10 * 100 + x % 10 * 1000);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
 
--b / 2 / a
 
-if (10 < x < 20)
-
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-
-//4569
-int main()
+```c
+// 1234
+// returns 4321
+int reverse_number(int ival)
 {
-	int x;
+    int nOfdigit = ndigit(ival);
+    int reversed_number = 0;
 
-	printf("dort basamakli bir tamsayi giriniz: ");
-	scanf("%d", &x);
+    for (int i = 0; i < nOfdigit; ++i) {
+        int digit_val = (ival / power(10, i)) % 10;
+        reversed_number += digit_val * power(10, nOfdigit-i-1);
+    }
 
-	printf("%d sayisinin tersi %d\n", x, x / 1000 + x % 1000 / 100 * 10 + x / 10 % 10 * 100 + x % 10 * 1000);
-
+    return reversed_number;
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
 
+
+```text
 ++	increment plus plus
 --  decrement minus minus
 
 ++x     y++
 --a     a--
 
-#define _CRT_SECURE_NO_WARNINGS
+üretilen değer
 
+++x    ---> nesnenin değerinin 1 fazlası
+y++    ---> nesnenin değeri
+
+--x    ---> nesnenin değerinin 1 eksiği
+y--    ---> nesnenin değeri
+```
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main()
@@ -494,13 +426,11 @@ int main()
 	printf("x = %d\n", x);
 	x += 1; //kullanma
 	printf("x = %d\n", x);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -516,37 +446,24 @@ int main()
 	printf("x = %d\n", x);
 	x -= 1; //kullanma
 	printf("x = %d\n", x);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
-üretilen değer
-
-++x    ---> nesnenin değerinin 1 fazlası
-y++    ---> nesnenin değeri
-
---x    ---> nesnenin değerinin 1 eksiği
-y--    ---> nesnenin değeri
-
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
 {
 	int x = 25;
 
-	//printf("%d\n", ++x);
+	printf("%d\n", ++x);
 	printf("%d\n", x++);
-
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 void func(int a)
@@ -559,16 +476,10 @@ int main()
 	int b = 90;
 	func(b++);
 }
-//----------------------------------------------------------------------------------------------------------
+```
 
-
-y = x;
-x = x + 1;
-
-y = x
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -582,19 +493,11 @@ int main()
 
 	printf("y = %d\n", y);
 	printf("x = %d\n", x);
-
 }
-/**********************************************************************************************************************/
+```
 
-
-a = b++;
-
-func(x++);
-
-a[k++]
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 int main()
@@ -606,6 +509,5 @@ int main()
 	printf("%d\n", x++);  //22
 	printf("%d\n", ++x);  //24
 	printf("x = %d\n", x);
-
 }
-/**********************************************************************************************************************/
+```

@@ -184,9 +184,9 @@ void sleep(double sec)
         ;
 }
 
-int is_hit_button(char ch)
+int is_hit_button(int ch)
 {
-    return (!kbhit() || toupper(_getch() )!= ch);
+    return (_kbhit() && toupper(_getch()) == ch);
 }
 
 

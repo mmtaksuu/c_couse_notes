@@ -73,10 +73,15 @@ void set_random_array(int *p, size_t size);
 void display_array(const int *p, size_t size);
 
 
+void set_random_array_d(double *p, size_t size);
+
+
 void display_array_d(const double *p, size_t size);
 
+int find_imax(const int *p, size_t size);
 
-void set_random_array_d(double *p, size_t size);
+double find_dmax(const double *p, size_t size);
+
 
 /**
  *
@@ -118,19 +123,9 @@ int dcmp(const void *vp1, const void *vp2);
  */
 int gcmp(const void *vp1, const void *vp2, size_t width);
 
+void delay(double sec);
 
-/**
- *
- * @param sec
- */
-void sleep(double sec);
-
-/**
- *
- * @param ch
- * @return
- */
-int is_hit_button(char ch);
+int is_hit_button(int ch);
 
 /**
  *

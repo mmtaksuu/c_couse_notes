@@ -8,10 +8,10 @@
 
 #include <stdio.h>
 
-// Define i as a global loop variable.
+// Defines i as a global loop variable.
 int i;
 
-// Define funtion prototypes
+// Defines funtion prototypes
 int f1(void);
 int f2(void);
 void f3(void);
@@ -27,22 +27,23 @@ int main(void)
 }
 
 // Function Definitions
-int f1(void){
+int f1(void)
+{
     i = 0;
     return i;
 }
 
-
-int f2(void){
+int f2(void)
+{
     return i > 10 ? 0 : 1;
 }
 
-
-void f3(void){
+void f3(void)
+{
     ++i;
 }
 
-
-void f4(void){
+void f4(void)
+{
     printf("%d \n", i);
 }

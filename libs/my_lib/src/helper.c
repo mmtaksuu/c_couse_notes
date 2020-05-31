@@ -15,13 +15,13 @@
 
 int gen_rand_int_nums(void)
 {
-    return rand() % 100;
+    return rand() % 30;
 }
 
 
 double gen_rand_real_nums(void)
 {
-    return rand()/(RAND_MAX/100.0);
+    return rand()/(RAND_MAX/30.0);
 }
 
 
@@ -54,6 +54,28 @@ void display_array_d(const double *p, size_t size)
         printf("%.3f%c", p[i], i % 10 == 9 ? '\n' : ' ');
     }
     printf("\n-------------------------------------------------------------------------------\n");
+}
+
+int find_imax(const int *p, size_t size)
+{
+    int max = p[0];
+
+    for (size_t i = 1; i < size; ++i)
+        if (p[i] > max)
+            max = p[i];
+
+    return max;
+}
+
+double find_dmax(const double *p, size_t size)
+{
+    double max = p[0];
+
+    for (size_t i = 1; i < size; ++i)
+        if (p[i] > max)
+            max = p[i];
+
+    return max;
 }
 
 
@@ -176,7 +198,7 @@ int gcmp(const void *vp1, const void *vp2, size_t width)
 }
 
 
-void sleep(double sec)
+void delay(double sec)
 {
     clock_t start = clock();
 

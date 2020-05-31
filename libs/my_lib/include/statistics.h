@@ -16,7 +16,15 @@ double sum_array(const double *p, size_t size);
 
 double get_mean(const double *p, size_t size);
 
+double get_median(double *p, size_t size);
+
+double get_variance(const double *p, size_t size);
+
 double get_std_dev(const double *p, size_t size);
+
+double get_direct_std_dev(const double *p, size_t size);
+
+double get_std_err_of_mean(double std_dev, size_t size);
 
 
 #endif //STATISTICS_H

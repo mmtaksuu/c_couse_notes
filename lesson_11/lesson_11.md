@@ -480,10 +480,12 @@ x > 0 ? x : -x
 ```
 
 
-## C kodlarında koşul operatörünün kullanıldığı tipik senaryolar
+
+## C Kodlarinda Kosul Operatorunun Kullanildigi Tipik Senaryolar
 
 
- 1. Bir nesneye bir koşula bağlı olarak iki değerden biri atanıyor ise
+```text
+1. Bir nesneye bir koşula bağlı olarak iki değerden biri atanıyor ise
 
  if (x > 10)
 	y = a;
@@ -500,8 +502,45 @@ ndays = isleap(y) ? 29 : 28;
 
 yeardays = isleap (y) ? 366 : 365;
 c = islower(c) ? c - 'a' + 'A' : c;
------------------------------------
+```
 
+
+```c
+unsigned int abs(int x)
+{
+    return x > 0 ? x : -x;
+}
+```
+
+```c
+int max2(int x, int y)
+{
+    return x > y ? x : y;
+}
+```
+
+```c
+int is_leap(int x)
+{
+    return x % 4 == 0 && (x % 100 != 0 || x % 400 == 0);
+}
+```
+
+```c
+int ndays(int year)
+{
+    return is_leap(year) ? 29 : 28;
+}
+```
+
+```c
+int year_days(int year)
+{
+    return is_leap(year) ? 366 : 365;
+}
+```
+
+```text
 2. bir fonksiyon bir koşula bağlı olarak iki değerden biri ile çağrılıyor
 
 if (x > 5)
@@ -550,19 +589,39 @@ else
 
 x > 10 ? a : b = z;
 
-## C ve C++ dilleri arasında value category farklılıkları
+a > 10 ? b++ : c++
 
-aşağıdaki ifadeler C dilinde R val. expr iken C++ dilinde L val expr
+x++ > 10 ? f(x) : g(x)
+```
+
+## C ve C++ Dilleri Arasinda Value Category Farkliliklari
+
+```text
+Aşağıdaki ifadeler C dilinde R val. expr iken C++ dilinde L val expr
 
 ++x ifadesi
 
 --x ifadesi
 
 (x, y)
+```
 
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <ctype.h>
 
+int main()
+{
+	int x = 23, a = 10, b = 45, z = 4;
+
+	x > 10 ? a : b = z;  // C'de gecersiz (R val. expr)
+}
+```
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <ctype.h>
 
@@ -571,27 +630,13 @@ int main()
 {
 	int x = 23, a = 10, b = 45, z = 4;
 
-	x > 10 ? a : b = z;  //C'de gecersiz (R val. expr)
+	*(x > 10 ? &a : &b) = z;  // C'de yapilan hile
 }
+```
 
-/**********************************************************************************************************************/
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
-#include <stdio.h>
-#include <ctype.h>
-
-
-int main()
-{
-	int x = 23, a = 10, b = 45, z = 4;
-
-	*(x > 10 ? &a : &b) = z;  //C'de yapilan hile
-}
-
-/**********************************************************************************************************************/
-
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <ctype.h>
 
@@ -608,16 +653,13 @@ int main()
 			x == 19 ? 65 : 26;
 
 	printf("x = %d  y = %d\n", x, y);
-
-
 }
+```
 
-/**********************************************************************************************************************/
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <ctype.h>
-
 
 int main()
 {
@@ -627,13 +669,7 @@ int main()
 	scanf("%d", &x);
 
 	int y = (x == 5 ? 13 :(x == 9 ? 17 : (x == 19 ? 65 : 26)));
-
 	printf("x = %d  y = %d\n", x, y);
 }
+```
 
-/**********************************************************************************************************************/
-
-a > 10 ? b++ : c++
-
-
-x++ > 10 ? f(x) : g(x)

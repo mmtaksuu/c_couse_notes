@@ -6,26 +6,72 @@
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "nutility.h"
 
-int main()
+#define     randomize()       (srand((unsigned)time(NULL)))
+
+void set_rand_arr(int *p, size_t size)
 {
-	size_t n;
-	printf("kac tamsayi:  ");
-	scanf("%zu", &n);
-	int *pd = (int *)malloc(n * sizeof(int));
-	if (!pd) {
-		printf("bellek yetersiz\n");
-		exit(EXIT_FAILURE);
-	}
-	
-	set_random_array(pd, n);
-	bsort(pd, n);
-	display_array(pd, n);
-	///
-	free(pd);
+    while (size--)
+    {
+        *p++ = rand() % 100;
+    }
+}
+
+void display_arr(const int *p, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        printf("%3d%c", p[i], i % 10 == 9 ? '\n' : ' ');
+    }
+    printf("\n\n");
+}
+
+void swap(int *p1, int *p2)
+{
+    int ptemp = *p1;
+    *p1 = *p2;
+    *p2 = ptemp;
+}
+
+void bsort(int *p, size_t size)
+{
+    for (size_t i = 0; i < size-1; ++i) {
+        for (size_t j = 0; j < size-1-i; ++j) {
+            if (p[j] > p[j+1])
+                swap(&p[j], &p[j+1]);
+        }
+    }
+}
+
+int main(void)
+{
+    size_t n = 0;
+    
+    printf("How many number : ");
+    scanf("%u", &n);
+    
+    int * pd = (int *)malloc(n * sizeof(*pd));
+    if (!pd) {
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+    
+    randomize();
+    memset(pd, 0, sizeof(*pd)*n);
+    display_arr(pd, n);
+       
+    set_rand_arr(pd, n);
+    display_arr(pd, n);
+    
+    bsort(pd, n);
+    
+    display_arr(pd, n);
+    
+    free(pd);
+    
+    return 0;
 }
 ```
 
@@ -37,9 +83,9 @@ int main()
 #include <string.h>
 #include "nutility.h"
 
-int main()
+int main(void)
 {
-	size_t n;
+	size_t n = 0;
 	printf("kac tamsayi:  ");
 	scanf("%zu", &n);
 	int *pd = (int *)malloc(n * sizeof(int));
@@ -66,9 +112,7 @@ int main()
 #include <string.h>
 #include "nutility.h"
 
-
-
-int main()
+int main(void)
 {
 	size_t n;
 	printf("kac tamsayi:  ");
@@ -93,7 +137,7 @@ int main()
 
 typedef unsigned long long ullong;
 
-#define   BLOCK_SIZE     (1024 * 1024)
+#define   BLOCK_SIZE     (1024 * 1024) // 1024 Bytes == 1 KB
 
 void *vpa[100000];
 
@@ -149,7 +193,7 @@ int main()
 1. Asla dinamik bir bellek bloğu adresi olmayan bir adresi free işlevine gönderme. (ub)
 2. dangling pointer kullanma!!!!!!!!!
 3. free edilen bir bellek bloğunu tekrar free etme!  (double free)
-4. free ile bier bellek bloğunu küçültme girişiminde bulunma
+4. free ile bir bellek bloğunu küçültme girişiminde bulunma
 5. free etmeyi unutma (memory leak)
 
 free işlevine null pointer gönderilmesi "tanımlı" dvaranıştır. etkisiz koddur.
@@ -749,7 +793,6 @@ int main()
 ```text
 reallocation takes time!
 reallocation invalidates pointers
-
 ```
 
 ```c

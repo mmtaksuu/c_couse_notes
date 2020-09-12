@@ -10,6 +10,8 @@
 #include <stdio.h>
 
 typedef struct {
+    int year;
+    int month;
     int day;
     int hour;
     int minute;
@@ -26,6 +28,13 @@ void get_passing_time(TIME_t *p_time)
 
     p_time->day += p_time->hour / 24;
     p_time->hour %= 24;
+
+    p_time->month += p_time->day / 30;
+    p_time->day %= 30;
+
+    p_time->year += p_time->month / 12;
+    p_time->month %= 12;
+
 }
 
 
@@ -38,7 +47,7 @@ int main(void)
 
     get_passing_time(&time);
 
-    printf("%d Day %d Hour %d Minute %d Second\n", time.day, time.hour, time.minute, time.second);
+    printf("%d Year %d Month %d Day %d Hour %d Minute %d Second\n",time.year, time.month, time.day, time.hour, time.minute, time.second);
 
     return 0;
 }

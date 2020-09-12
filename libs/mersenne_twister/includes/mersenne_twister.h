@@ -19,7 +19,7 @@
 
 
 static unsigned long mt[N]; /* the array for the state vector  */
-static int mti=N+1;         /* mti==N+1 means mt[N] is not initialized */
+static int mti = N + 1;         /* mti==N+1 means mt[N] is not initialized */
 
 /* initializes mt[N] with a seed */
 void init_genrand(unsigned long s);

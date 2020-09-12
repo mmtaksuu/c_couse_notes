@@ -78,6 +78,22 @@ double find_dmax(const double *p, size_t size)
     return max;
 }
 
+void hist_rand_numbers(const int *p, size_t size)
+{
+    int max = find_imax(p, size);
+
+    for (int i = max; i > 0; --i) {
+        printf("%2d |  ", i);
+        for (size_t j = 0; j < size; ++j) {
+            if (p[j] >= i)
+                printf("* ");
+            else
+                printf("  ");
+        }
+        printf("\n");
+    }
+}
+
 
 char *sgets(char *p)
 {
@@ -92,80 +108,6 @@ char *sgets(char *p)
     return ptemp;
 }
 
-
-void swap_arr_items(int *p1, int *p2)
-{
-    int ptemp = *p1;
-    *p1 = *p2;
-    *p2 = ptemp;
-}
-
-
-void gswap(void *vp1, void *vp2, size_t width)
-{
-    char *p1 = (char *)vp1;
-    char *p2 = (char *)vp2;
-
-    while (width--) {
-        char temp = *p1;
-        *p1++ = *p2;
-        *p2++ = temp;
-    }
-}
-
-
-void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *))
-{
-    char *p = vpa;
-    for (size_t i = 0; i < size - 1; ++i) {
-        for (size_t k = 0; k < size - 1 - i; ++k) {
-            if (fp(p + k * width, p + (k + 1) * width) > 0) {
-                gswap(p + k * width, p + (k + 1) * width, width);
-            }
-        }
-    }
-}
-
-
-void bsort(int *p, int size)
-{
-    for (int i = 0; i < size - 1; ++i) {
-        for (int j = 0; j < size - i - 1; ++j) {
-            if (p[j] > p[j+1])
-                swap_arr_items(&p[j], &p[j+1]);
-        }
-    }
-}
-
-
-int icmp(const void *vp1, const void *vp2)
-{
-    const int *p1 = (const int *)vp1;
-    const int *p2 = (const int *)vp2;
-
-    if (*p1 > *p2)
-        return 1;
-
-    if (*p1 < *p2)
-        return -1;
-
-    return 0;
-}
-
-
-int dcmp(const void *vp1, const void *vp2)
-{
-    const double *p1 = (const double *)vp1;
-    const double *p2 = (const double *)vp2;
-
-    if (*p1 > *p2)
-        return 1;
-
-    if (*p1 < *p2)
-        return -1;
-
-    return 0;
-}
 
 
 int gcmp(const void *vp1, const void *vp2, size_t width)

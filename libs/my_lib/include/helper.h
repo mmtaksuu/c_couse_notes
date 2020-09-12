@@ -82,6 +82,7 @@ int find_imax(const int *p, size_t size);
 
 double find_dmax(const double *p, size_t size);
 
+void hist_rand_numbers(const int *p, size_t size);
 
 /**
  *
@@ -90,29 +91,6 @@ double find_dmax(const double *p, size_t size);
  */
 char *sgets(char *p);
 
-/**
- *
- * @param p1
- * @param p2
- */
-void swap_arr_items(int *p1, int *p2);
-
-void gswap(void *vp1, void *vp2, size_t n);
-
-
-void gsort(void *vpa, size_t size, size_t width, int(*fp)(const void *, const void *));
-/**
- * @brief Bubble sort algorithm
- * @param p is the address of the given array
- * @param size is the size of the given array
- * @details Applies bubble sort algorithm for the given array
- */
-void bsort(int *arr, int size);
-
-
-int icmp(const void *vp1, const void *vp2);
-
-int dcmp(const void *vp1, const void *vp2);
 
 /**
  * @brief Generic Compairing Function that is used for all of the types

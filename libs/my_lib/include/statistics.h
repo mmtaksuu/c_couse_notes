@@ -16,6 +16,10 @@ double sum_array(const double *p, size_t size);
 
 double get_mean(const double *p, size_t size);
 
+double get_max(const double * p, size_t size);
+
+double get_min(const double * p, size_t size);
+
 double get_median(double *p, size_t size);
 
 double get_variance(const double *p, size_t size);

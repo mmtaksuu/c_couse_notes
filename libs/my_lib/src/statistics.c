@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "helper.h"
 #include "statistics.h"
+#include "sorting_algorithms.h"
 
 double sum_array(const double *p, size_t size)
 {
@@ -20,6 +21,28 @@ double sum_array(const double *p, size_t size)
         sum += *p++;
 
     return sum;
+}
+
+double get_max(const double * p, size_t size)
+{
+    double max = *p;
+
+    for (size_t i = 1; i < size; ++i)
+        if (p[i] > max)
+            max = p[i];
+
+    return max;
+}
+
+double get_min(const double * p, size_t size)
+{
+    double min = *p;
+
+    for (size_t i = 1; i < size; ++i)
+        if (p[i] < min)
+            min = p[i];
+
+    return min;
 }
 
 

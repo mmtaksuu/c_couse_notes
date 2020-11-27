@@ -820,74 +820,94 @@ Output of the above code is :
 ```
 
 
-
- #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <time.h>
-#include <conio.h>
-#include <stdlib.h>
-
-#define   SIZE      20
-
-int main()
-{
-	int a[SIZE];
-
-	srand((unsigned)time(0));
-
-	for (int i = 0; i < SIZE; ++i) {
-		a[i] = rand() % 20;
-		printf("%3d ", a[i]);
-	}
-	printf("\n");
-	int k;
-
-	for (int i = 0; i < SIZE; ++i) {
-		for (k = 0; k < SIZE; ++k) {
-			if (a[i] == a[k] && i != k)
-				break;
-		}
-		if (k == SIZE)
-			printf("%3d ", a[i]);
-	}
-	printf("\n");
-}
-
-
-/**********************************************************************************************************************/
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
-#include <time.h>
 #include <conio.h>
 #include <stdlib.h>
+#include "helper.h"
 
-//2 2 3 5 5
+#define     SIZE              20
 
-int main()
+int * find_unique_numbers(const int *p, size_t size, int *p_unique)
 {
-	int x;
+    size_t j;
 
-	printf("bir tamsayi giriniz: ");
-	scanf("%d", &x);
-
-	int n = 2;
-
-	while (x != 1) {
-		while (x % n == 0) {
-			printf("%d ", n);
-			x /= n;
-		}
-		++n;
-	}
-
+    for (size_t i = 0; i < size; ++i) {
+        for (j = 0; j < size; ++j) {
+            if (p[i] == p[j] && i != j)
+                break;
+        }
+        if (j == size)
+            *p_unique++ = p[i];
+    }
+    
+    *p_unique = -1;
+    
+    return p_unique;
 }
-/**********************************************************************************************************************/
 
-fonksiyon bildirimleri 
-function prototypes
-------------------------
+void print_unique_numbers(const int *p_unique, size_t size)
+{
+    printf("\nUnique numbers : \n");
+    for (size_t i = 0; i < size && p_unique[i] != -1; ++i) {
+        printf("%3d%c", p_unique[i], i % 20 == 19 ? '\n' : ' ');
+    }
+    printf("\n-------------------------------------------------------------------------------\n");
+}
 
+
+int main(void)
+{
+    int a[SIZE] = {0};
+    int unique[SIZE] = {0};
+    
+    randomize();
+    set_random_array(a, SIZE);
+    display_array(a, SIZE);
+    
+    find_unique_numbers(a, SIZE, unique);
+    print_unique_numbers(unique, SIZE);
+    
+    return 0;
+}
+```
+
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void find_all_factors (int x)
+{
+    int n = 2;
+    
+    while (x != 1) {
+        while (x % n == 0) {
+            printf("%d ", n);
+            x /= n;
+        }
+        ++n;
+    }
+}
+
+
+int main(void)
+{
+    int x;
+    printf("Enter a number : ");
+    scanf("%d", &x);
+    
+    find_all_factors(x);
+    
+    return 0;
+}
+```
+
+
+## Fonksiyon Bildirimleri (Function Prototypes)
+
+```text
 external reference
 
 func(x, y);
@@ -902,4 +922,5 @@ ilgili şu bilgilere sahip olması gerekir:
 
 a) fonksiyonun geri dönüş değeri türü
 b) fonksiyonun parametre değişkeni sayısı
-c) fonksiyonun herbir parametredeğişkeninin türü
+c) fonksiyonun her bir parametre değişkeninin türünu
+```

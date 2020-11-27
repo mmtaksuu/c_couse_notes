@@ -1,11 +1,13 @@
-// Siralama ve arama algoritmalrina iliskin ornekler
+# LESSON 19
 
-/**********************************************************************************************************************/
+## Sorting and Searching Algorithms 
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
-int a[10];
+int a[10]; // Global namespace de tanimli oldugu icin init degeri 0 olur.
 
 int main()
 {
@@ -14,12 +16,11 @@ int main()
 	}
 
 	printf("\n");
-
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int a[10];
@@ -32,16 +33,17 @@ int main()
 
 	printf("\n");
 
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "nutility.h"
 
 #define   SIZE      100
 
+// Array Toplamini Bul
 int main()
 {
 	int a[SIZE];
@@ -60,16 +62,17 @@ int main()
 
 	printf("sum = %d\n", sum);
 
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "nutility.h"
 
 #define   SIZE      100
 
+// Array Ortalamasini bul
 int main()
 {
 	int a[SIZE];
@@ -87,17 +90,17 @@ int main()
 	}
 
 	printf("ortalama = %f\n", (double)sum / SIZE);
-
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "nutility.h"
 
 #define   SIZE      3
 
+// Tek sayilarin ortalamasini bul
 int main()
 {
 	int a[SIZE];
@@ -124,9 +127,11 @@ int main()
 		printf("dizide hic tek sayi yok\n");
 
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -135,6 +140,7 @@ int main()
 
 #define   SIZE      100
 
+// Standart sapmayi hesapla
 int main()
 {
 	int a[SIZE];
@@ -159,12 +165,13 @@ int main()
 
 	printf("std. deviation is %f\n", sqrt(sum_square / SIZE));
 }
-/**********************************************************************************************************************/
+```
 
-linear search (doğrusal arama)
 
+## Linear Search (Dogrusal Arama)
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -172,7 +179,7 @@ linear search (doğrusal arama)
 #include "nutility.h"
 
 #define   SIZE      100
-
+// Flag kullanilarak yapilir.
 int main()
 {
 	int a[SIZE];
@@ -203,11 +210,11 @@ int main()
 	else
 		printf("bulunamadi\n");
 
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -215,7 +222,7 @@ int main()
 #include "nutility.h"
 
 #define   SIZE      100
-
+// break ile fonguden cikilir.
 int main()
 {
 	int a[SIZE];
@@ -244,11 +251,11 @@ int main()
 	else
 		printf("bulunamadi\n");
 
-
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -256,7 +263,7 @@ int main()
 #include "nutility.h"
 
 #define   SIZE      100
-
+// Idiomatic bir dongu ile arama islemi yapilir ve donguden cikilir.
 int main()
 {
 	int a[SIZE];
@@ -282,15 +289,11 @@ int main()
 	else
 		printf("bulunamadi\n");
 
-
 }
-/**********************************************************************************************************************/
+```
 
-a[i++] ==
-
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -328,9 +331,22 @@ int main()
 
 
 }
-/**********************************************************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS
+```
 
+
+```text
+Arama isleminin karmasikliginin 3n'den 2n yapilmasi:
+    i < SIZE;
+    a[i] == val;
+    ++i;
+    
+Dizinin sonuna aranan degeri koy ve donguyu soyle tanimla:
+    for (i = 0; a[i] != val; ++i)
+    		;
+```
+    
+```c
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -364,15 +380,13 @@ int main()
 	else
 		printf("bulunamadi\n");
 
-
 }
-/**********************************************************************************************************************/
+```
 
-min
-max
-min - max
-runner-up
 
+
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -381,7 +395,7 @@ runner-up
 #include "nutility.h"
 
 #define   SIZE      20
-
+// Min Bul
 int main()
 {
 	int a[SIZE];
@@ -403,9 +417,9 @@ int main()
 	printf("min = %d\n", min);
 
 }
-/**********************************************************************************************************************/
-min = a[17] = 34
+```
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -439,7 +453,9 @@ int main()
 	printf("min = a[%d] ==> %d\n", idx_min, min);
 
 }
-/**********************************************************************************************************************/
+```
+
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -448,7 +464,7 @@ int main()
 #include "nutility.h"
 
 #define   SIZE      20
-
+// Min-Max Bul
 int main()
 {
 	int a[SIZE];
@@ -473,8 +489,9 @@ int main()
 	printf("min = %d\n", min);
 	printf("max = %d\n", max);
 }
+```
 
-/**********************************************************************************************************************/
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -484,6 +501,7 @@ int main()
 
 #define   SIZE      20
 
+// RUNNER_UP Bul
 int main()
 {
 	int a[SIZE];
@@ -510,14 +528,10 @@ int main()
 
 	printf("runner_up = %d\n", runner_up);
 }
+```
 
-/**********************************************************************************************************************/
 
-169 963 880 679 275 661 445 477 367 180  48 784 936 340 494 837  86 997 647 607
-607 963 880 679 275 661 445 477 367 180  48 784 936 340 494 837  86 997 647 169
-607 647 880 679 275 661 445 477 367 180  48 784 936 340 494 837  86 997 963 169
-607 647 997 679 275 661 445 477 367 180  48 784 936 340 494 837  86 997 963 169
-
+```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
@@ -527,6 +541,7 @@ int main()
 
 #define   SIZE      20
 
+// Swap Islemi
 int main()
 {
 	int a[SIZE];
@@ -550,8 +565,8 @@ int main()
 	}
 	printf("\n\n");
 }
+```
 
-/**********************************************************************************************************************/
 
 #define _CRT_SECURE_NO_WARNINGS
 

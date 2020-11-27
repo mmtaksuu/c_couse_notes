@@ -24,7 +24,7 @@ void find_all_factors (int x)
 }
 
 
-int main()
+int main(void)
 {
     int x;
     printf("Enter a number : ");

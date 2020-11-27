@@ -34,6 +34,3 @@ add_executable(unique_numbers_finder src/unique_numbers_finder.c)
 target_link_libraries(unique_numbers_finder ${UTILS_LIB})
 
 add_executable(find_all_factors src/find_all_factors.c)
-
-add_executable(ders_13 src/ders_13.c)
-target_link_libraries(ders_13 ${UTILS_LIB})

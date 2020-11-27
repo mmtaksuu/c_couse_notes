@@ -31,7 +31,7 @@ int main(void)
     printf("Enter a number : ");
     scanf("%d", &x);
 
-    bool true = 1;
+    bool true  = 1;
     bool false = 0;
 
     printf("True : %d\n", true);

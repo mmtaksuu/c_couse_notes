@@ -1,6 +1,6 @@
 # Lesson 35
 
-
+## Realloc Impl.
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -49,8 +49,7 @@ int main()
 
 
 
-# dynamic array (dinamik dizi)
-### fixed array
+# Dynamic Array Implementation Examples in C++ Through Vector Library
 
 ```c++
 #include <vector>
@@ -107,7 +106,7 @@ int main()
 
 
 
-# storage class specifiers (yer belirleyici)
+# Storage Class Specifiers (yer belirleyici)
 
 ```text
 auto =========> kullanımdan düştü
@@ -116,7 +115,7 @@ extern
 static
 ```
 
-# type modifiers (tür niteleyici)
+# Type Modifiers (tür niteleyici)
 
 ```text
 const
@@ -125,7 +124,7 @@ restrict (C99)
 ```
 
 
-# auto specifier
+# Auto specifier in C
 
 ```c
 #include <stdio.h>
@@ -146,7 +145,7 @@ int main()
 ```
 
 
-# C++ type deduction (tür çıkarımı)
+# C++ Type Deduction (tür çıkarımı)
 
 ```c++
 int foo();
@@ -167,7 +166,7 @@ int main()
 }
 ```
 
-# register specifier
+# Register specifier
 
 ```c
 int main()
@@ -180,7 +179,7 @@ int main()
 ```
 
 ```text
-C' ce C++  dillerinde register anahtar sözcüğü ile tanımlanmış bir değişken
+C' ve C++  dillerinde register anahtar sözcüğü ile tanımlanmış bir değişken
 adres operatörünün operandı olamaz
 ```
 
@@ -226,11 +225,11 @@ int main()
 }
 ```
 
-# static specifier
-
-#include <stdio.h>
+# Static Specifier
 
 ```c
+#include <stdio.h>
+
 void func()
 {
 	int x = 10;
@@ -278,7 +277,7 @@ int main()
 ```
 
 
-# Neden statik ömürlü yerel değişkenleri kullanıyoruz?
+# Neden Statik Omurlu Yerel Degiskenleri Kullanıyoruz ?
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -559,7 +558,7 @@ int main()
 }
 ```
 
-# Look-up tablolarinin static olarak tanitilmasi
+# Look-up Tablolarinin Static Olarak Tanitilmasi
 
 ```c
 #define _CRT_SECURE_NO_WARNINGS
@@ -676,8 +675,8 @@ const int *func(void);
 
 int main()
 {
-	*foo() = 45;
-	//*func() = 45;  // gecersiz
+	*foo()  = 45;
+	*func() = 45;  // gecersiz
 }
 ```
 

@@ -1,4 +1,6 @@
 # LESSON 36
+
+
 ## Yapi Nesneleri ve Fonksiyonlar Arasindaki Iliski
 
 ```c
@@ -13,10 +15,9 @@ typedef struct {
 }Data;
 
 
-void f1(Data); //call by value
-void f2(Data *); //mutator - set functions //output parameter
-void f3(Data *); //input-output  in-out
-
+void f1(Data);         //call by value
+void f2(Data *);       //mutator - set functions //output parameter
+void f3(Data *);       //input-output  in-out
 void f4(const Data *); //accessor - getter - get functions - input parameter
 ```
 
@@ -35,7 +36,7 @@ typedef struct Matrix_ {
 
 void add_matrix(const Matrix *p1, const Matrix *p2, Matrix *presult);
 
-int main()
+int main(void)
 {
 	printf("sizeof(Matrix) = %zu\n", sizeof(Matrix));
 	//mx = ma + mb;
@@ -49,12 +50,10 @@ int main()
 ```
 
 
-
 ```c
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
-
 
 typedef struct {
 	int x, y, z;
@@ -63,7 +62,6 @@ typedef struct {
 }Data;
 
 Data f1(/* ???? */);
-
 Data *f2(/* ???? */);
 const Data *f3(/* ???? */);
 
@@ -110,11 +108,9 @@ int main()
 
 #include <stdio.h>
 
-
 struct Data{
 	int x, y, z;
 };
-
 
 typedef const struct Data* CDataPtr;
 
@@ -130,12 +126,11 @@ int main()
 }
 ```
 
-## Yapilar ile ilgili Kutuphaneler
+## Yapilar ile Ilgili Kutuphaneler
 
 ```text
 1) C tarzı kütüphaneler 
 2) OOP tarzı kütüphaneler
-
 
 struct Fighter {
 	int power;
@@ -143,7 +138,6 @@ struct Fighter {
 	int gender;
 	int age;
 };
-
 
 struct Fighter {
 	void *vptr;
@@ -155,7 +149,6 @@ set_age
 
 
 struct Fighter {
-	
 	Weapon a[10];
 	int gender;
 	int age;
@@ -164,15 +157,11 @@ struct Fighter {
 ```
 
 
-
-
 ```c
-
 #include <stdio.h>
 #include <string.h>
 #include "nutility.h"
 #include <stdlib.h>
-
 
 #define			SIZE		5
 
@@ -182,7 +171,7 @@ int main()
 	char *p[SIZE];
 
 	for (int i = 0; i < 5; ++i) {
-		printf("yazi girin: ");
+		printf("yazi girin : ");
 		sgets(entry);
 		p[i] = _strdup(entry);
 	}
@@ -194,7 +183,8 @@ int main()
 	for (int i = 0; i < 5; ++i) {
 		free(p[i]);
 	}
-
+    
+    return 0;
 }
 ```
 
@@ -204,7 +194,6 @@ int main()
 #include <string.h>
 #include "nutility.h"
 #include <stdlib.h>
-
 
 #define			SIZE		5
 #define			MAX_LEN		32
@@ -221,7 +210,8 @@ int main()
 	for (int i = 0; i < 5; ++i) {
 		puts(names[i]);
 	}
-	
+    
+	return 0;
 }
 ```
 
@@ -235,17 +225,15 @@ struct tm	türü  (broken-down time)
 
 clock_t		türü
 
-
-
 struct tm {
-	int tm_year;  //2020 - 1900
-	int tm_mon;   //0 Ocak, 1 Subat 2 Mart
-	int tm_mday;  //
-	int tm_yday;   //0 => 1 ocak  
-	int tm_wday;   //0 Pazar ---> 1 Pazartesi
-	int tm_hour;  // 0 - 24
-	int tm_min;   //0-59
-	int tm_sec;    //0 - 59
+	int tm_year;   // 2020 - 1900
+	int tm_mon;    // 0 Ocak, 1 Subat 2 Mart
+	int tm_mday;   // 
+	int tm_yday;   // 0 => 1 ocak  
+	int tm_wday;   // 0 Pazar ---> 1 Pazartesi
+	int tm_hour;   //  0 - 24
+	int tm_min;    // 0 - 59
+	int tm_sec;    // 0 - 59
 	int tm_isdst; 
 };
 
@@ -253,10 +241,10 @@ is daylight saving time
 
 tm_isdst < 0
 	bilgi tutulmuyor
+
 tm_isdst > 0  gun isigi t.modunda
 tm_isdst = 0  gun isigi t.modunda
 ```
-
 
 
 ```c
@@ -278,17 +266,19 @@ int main(void)
 
 ```c
 #include <time.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <conio.h>
-#include <ctype.h>
 
-#define     EXIT     'Q'
+int is_hit_button(int ch)
+{
+    return (_kbhit() && toupper(_getch()) == ch);
+}
 
 int main(void)
 {
-
-    while (!kbhit() || toupper(_getch() )!= EXIT)
-        printf("saniye = %ld\r", time(NULL));
+    while (!is_hit_button('Q'))
+        printf("Second : %ld\r", time(NULL));
     
     return 0;
 }

@@ -1,26 +1,30 @@
+# LESSON 15
+ 
+## Function-like macros or Functional macros
 
-function-like macros
-functional macros
-----------------------
 
+```c
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <stdio.h>
 
 #define  square(a)		(a) * (a)
 
-int main()
+int main(void)
 {
-	int x;
-
-	printf("bir tamsayi giriniz: ");
-	scanf("%d", &x);
-
-	int y = square(x + 1);
-	//int y = (x + 1) * (x + 1);
-	printf("y = %d\n", y);
-
+    int x;
+    
+    printf("bir tamsayi giriniz: ");
+    scanf("%d", &x);
+    
+    int y = square(x + 1);  //int y = (x + 1) * (x + 1);
+    printf("y = %d\n", y);
+    
+    return 0;
 }
+```
+
+
+
 /**********************************************************************************************************************/
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -187,6 +191,8 @@ a = func(x, y);
 
 
 early optimization is evil
+Donald Knuth
+American computer scientist
 
 
  (y * z + a * b - ar[5]) * (y * z + a * b - ar[5]);
@@ -283,7 +289,6 @@ int main()
 }
 /**********************************************************************************************************************/
 
-önişlemci operatörleri
 
 
 #define  PUBLIC
@@ -299,6 +304,8 @@ PUBLIC int multiply(int x, int y)
 	return x * y;
 }
 /**********************************************************************************************************************/
+
+## Preprocessor Operators (On Islemci Operatörleri)
 
 
 önişlemci operatörleri
